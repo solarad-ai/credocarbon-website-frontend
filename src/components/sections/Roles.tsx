@@ -5,7 +5,7 @@ const roles = [
   {
     icon: Users,
     label: "Project Developers & Asset Owners",
-    desc: "Digitise the entire lifecycle — from onboarding assets to MRV, verification cycles, issuance and buyer-facing disclosures.",
+    desc: "Comprehensive project management — from asset onboarding through MRV cycles to credit issuance and market-ready disclosures.",
     bullets: [
       "Guided onboarding for projects, assets, baselines and methodologies.",
       "Upload PDDs, monitoring evidence and annexes with version control.",
@@ -17,7 +17,7 @@ const roles = [
   {
     icon: FileSearch,
     label: "VVBs & Auditors",
-    desc: "A structured, audit-grade workspace to manage verification cycles with clarity, traceability and cryptographic certainty.",
+    desc: "Professional verification environment with organized dossiers, systematic review cycles and digital audit trails.",
     bullets: [
       "Reviewer queues with SLA timers and priority breakdown.",
       "Raise comments on documents, data, annex pages or methodology parameters.",
@@ -29,7 +29,7 @@ const roles = [
   {
     icon: CheckCircle,
     label: "Registries & Standard Bodies",
-    desc: "Receive structured, machine-checkable submissions instead of fragmented attachments and long email chains.",
+    desc: "Standardized submission workflows with automated validation, reducing manual review overhead and processing delays.",
     bullets: [
       "Registry-aligned templates for baseline, monitoring and issuance files.",
       "Packet generator creates ready-to-validate submissions with hashed evidence.",
@@ -41,10 +41,10 @@ const roles = [
   {
     icon: Briefcase,
     label: "Corporate Buyers, Brokers & Funds",
-    desc: "Transparent procurement, risk scoring and lifecycle traceability — so every purchased credit is backed by real MRV context.",
+    desc: "Advanced procurement tools with risk analytics, portfolio optimization and comprehensive due diligence capabilities.",
     bullets: [
       "Portfolio filters by geography, methodology, SDG alignment and risk level.",
-      "Deal rooms with term sheets, NDAs, data bundles and structured negotiation.",
+      "Deal rooms with term sheets, NDAs, data bundles and professional negotiation.",
       "Pricing signals, quality scoring and due-diligence insight layers.",
       "Track serial ranges, vintage allocation and retirement certificates.",
       "Chain-of-custody from issuance → transfer → retirement with full auditability.",
@@ -75,13 +75,13 @@ export default function Roles() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Built for every actor in the 
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> carbon ecosystem</span>
+            Unified workflows for 
+            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> carbon professionals</span>
           </h2>
           
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-            Developers, VVBs, Registries and Buyers operate on the same structured project file —
-            eliminating fragmented tools and enabling verification-grade collaboration from day one.
+            Purpose-built interfaces for each stakeholder role — while maintaining shared data integrity 
+            and seamless handoffs throughout the credit lifecycle.
           </p>
         </div>
 

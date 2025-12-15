@@ -4,7 +4,7 @@ import { Search, MessageSquare, Shield, TrendingUp } from "lucide-react";
 const verificationSteps = [
   {
     phase: "Intake",
-    title: "Structured Project Review",
+    title: "Organized Project Review",
     desc: "Receive organized dossiers with methodology alignment and version history",
     icon: Search,
     metrics: "90% faster intake"
@@ -53,7 +53,7 @@ export default function VVBJourney() {
           </h2>
           
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Audit-ready workflows with structured evidence and cryptographic integrity
+            Systematic verification cycles with automated compliance checks
           </p>
         </div>
 

@@ -24,8 +24,8 @@ export default function Hero() {
           <TextGenerateEffect words={"CredoCarbon: One Stack for Developers, VVBs & Buyers"} />
 
           <p className="max-w-xl text-sm md:text-base lg:text-lg leading-relaxed text-emerald-50/90 mb-6 mt-4">
-            A dedicated layer to digitise project MRV, registry workflows and OTC trading — so every actor in the
-            carbon stack works off the same transparent system of record.
+            A dedicated infrastructure layer that digitises project MRV, registry workflows and OTC trading — 
+            creating unified carbon credit operations from development to retirement.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -86,7 +86,7 @@ export default function Hero() {
                 </div>
 
                 <div className="flex items-center justify-between rounded-xl bg-slate-900/70 px-3 py-2">
-                  <span>End-to-end traceability</span>
+                  <span>Complete traceability</span>
                   <span className="font-semibold text-emerald-300">Developer → Registry → Buyer</span>
                 </div>
               </div>

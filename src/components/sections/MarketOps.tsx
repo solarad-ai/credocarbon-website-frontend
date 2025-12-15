@@ -5,7 +5,7 @@ const marketFeatures = [
   {
     icon: MessageSquare,
     title: "Direct Deal Rooms",
-    desc: "Structured negotiation environments with term sheets, NDAs, and MRV context linking for transparent bilateral deals.",
+    desc: "Professional negotiation environments with term sheets, NDAs, and MRV context linking for transparent bilateral deals.",
     capabilities: ["Vetted buyer-developer spaces", "Timeline tracking", "Evidence linking"]
   },
   {
@@ -68,8 +68,8 @@ export default function MarketOps() {
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed mb-8">
-            Structured deal rooms, pricing intelligence and secure settlement 
-            flows turn verified credits into programmable, trustworthy assets.
+            Professional trading infrastructure with pricing analytics, risk assessment 
+            and automated settlement workflows for institutional-grade transactions.
           </p>
         </div>
 

@@ -17,14 +17,14 @@ const keyFeatures = [
   {
     icon: CheckCircle,
     title: "Verification & Submission",
-    desc: "Structured VVB workflows with completeness checks and audit trails",
+    desc: "Organized VVB workflows with completeness checks and audit trails",
     highlight: "Streamlined cycles"
   },
   {
     icon: Zap,
     title: "Post-Issuance Management",
     desc: "Deal rooms, batch tracking, and retirement coordination in one workspace",
-    highlight: "End-to-end visibility"
+    highlight: "Complete lifecycle view"
   }
 ] as const;
 
@@ -55,7 +55,7 @@ export default function DeveloperJourney() {
           </h2>
           
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            One unified workspace for the entire project lifecycle
+            Streamlined project management from conception to credit issuance
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function DeveloperJourney() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 text-sm text-slate-400">
-            <span>Complete project lifecycle in one platform</span>
+            <span>Integrated project management from PDD to credits</span>
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
           </div>
         </div>

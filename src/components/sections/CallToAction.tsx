@@ -10,7 +10,7 @@ export default function CallToAction() {
         </h2>
         <p className="mt-4 text-sm md:text-base text-slate-400">
           Start with one asset or portfolio. We help you configure MRV, registry workflows and OTC rails
-          end-to-end.
+          for your specific requirements.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Button

@@ -1,173 +1,334 @@
 // src/components/sections/Lifecycle.tsx
+import { useState } from "react";
+
+// SVG Icons for each stage
+const DesignIcon = () => (
+  <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
+    <circle cx="32" cy="32" r="28" className="stroke-current" strokeWidth="2" strokeDasharray="4 2" />
+    <rect x="20" y="18" width="24" height="28" rx="3" className="fill-current opacity-20 stroke-current" strokeWidth="1.5" />
+    <path d="M24 26h16M24 32h12M24 38h8" className="stroke-current" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="44" cy="44" r="8" className="fill-current opacity-30" />
+    <path d="M41 44l2 2 4-4" className="stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const MonitoringIcon = () => (
+  <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
+    <rect x="8" y="12" width="48" height="32" rx="4" className="stroke-current" strokeWidth="2" />
+    <path d="M16 32l8-8 8 12 8-16 8 8" className="stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="16" cy="32" r="3" className="fill-current" />
+    <circle cx="24" cy="24" r="3" className="fill-current" />
+    <circle cx="32" cy="36" r="3" className="fill-current" />
+    <circle cx="40" cy="20" r="3" className="fill-current" />
+    <circle cx="48" cy="28" r="3" className="fill-current" />
+    <rect x="20" y="48" width="24" height="4" rx="2" className="fill-current opacity-40" />
+  </svg>
+);
+
+const ReportingIcon = () => (
+  <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
+    <path d="M16 8h24l12 12v36a4 4 0 01-4 4H16a4 4 0 01-4-4V12a4 4 0 014-4z" className="fill-current opacity-10 stroke-current" strokeWidth="2" />
+    <path d="M40 8v12h12" className="stroke-current" strokeWidth="2" strokeLinejoin="round" />
+    <rect x="20" y="28" width="24" height="4" rx="1" className="fill-current opacity-60" />
+    <rect x="20" y="36" width="18" height="4" rx="1" className="fill-current opacity-40" />
+    <rect x="20" y="44" width="20" height="4" rx="1" className="fill-current opacity-40" />
+    <circle cx="50" cy="50" r="10" className="fill-emerald-500/30 stroke-emerald-400" strokeWidth="2" />
+    <path d="M46 50l3 3 6-6" className="stroke-emerald-400" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const MarketIcon = () => (
+  <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
+    <circle cx="32" cy="32" r="24" className="stroke-current" strokeWidth="2" />
+    <path d="M32 16v32M24 24h16M20 32h24M24 40h16" className="stroke-current opacity-30" strokeWidth="1" />
+    <path d="M32 20c8 0 12 4 12 12s-4 12-12 12" className="stroke-current" strokeWidth="2" strokeLinecap="round" />
+    <circle cx="32" cy="32" r="6" className="fill-current" />
+    <path d="M48 48l8 8" className="stroke-emerald-400" strokeWidth="3" strokeLinecap="round" />
+    <circle cx="56" cy="56" r="4" className="fill-emerald-400/30 stroke-emerald-400" strokeWidth="2" />
+  </svg>
+);
 
 const stages = [
   {
     id: "01",
-    title: "Project design & onboarding",
-    desc: "Define the project, assets, baseline logic, methodologies and stakeholders. Establish the digital foundation for the entire carbon credit lifecycle.",
-    bullets: [
-      "Configure project details, commissioning year, asset metadata and technology parameters.",
-      "Select methodologies and registry pathways with system intelligence recommendations.",
-      "Upload PDD drafts, safeguards documentation and stakeholder consultation evidence.",
-      "Map monitoring data sources (SCADA, IoT, meters, satellite, weather APIs).",
-      "Initiate baseline modelling with traceable equations and parameter sources.",
-    ],
+    title: "Design & Onboard",
+    shortDesc: "Project Foundation",
+    icon: DesignIcon,
+    color: "emerald",
+    highlights: ["PDD Setup", "Baseline Logic", "Stakeholder Mapping"],
   },
   {
     id: "02",
-    title: "Monitoring & data integrity",
-    desc: "Ingest and validate high-frequency datasets using methodology-aware rules to prepare monitoring outputs.",
-    bullets: [
-      "Import SCADA, IoT, inverter, meter and weather datasets at various resolutions.",
-      "Detect anomalies: missing hours, negative values, drift, step changes and curtailment.",
-      "Apply plausibility checks linked to plant capacity, irradiance patterns and methodology logic.",
-      "Align all datasets to monitoring period boundaries with automated corrections.",
-      "Generate monitoring snapshots with evidence traceability and version history.",
-    ],
+    title: "Monitor & Validate",
+    shortDesc: "Data Integrity",
+    icon: MonitoringIcon,
+    color: "cyan",
+    highlights: ["IoT Integration", "Anomaly Detection", "Auto-Correction"],
   },
   {
     id: "03",
-    title: "Reporting & submission",
-    desc: "Assemble methodology-aligned reports, evidence bundles and registry-ready data packets with completeness and validation checks.",
-    bullets: [
-      "Auto-generate monitoring reports using methodology formulae and parameter tables.",
-      "Attach evidence files, annexes and real-time dataset references.",
-      "Run completeness checks for missing annexes, fields and inconsistent parameter values.",
-      "Compile registry-ready packets with structured naming and hashed evidence lists.",
-      "Freeze submissions with cryptographic integrity for VVB and registry review.",
-    ],
+    title: "Report & Submit",
+    shortDesc: "Registry Ready",
+    icon: ReportingIcon,
+    color: "indigo",
+    highlights: ["Auto-Reports", "Evidence Bundles", "Crypto Integrity"],
   },
   {
     id: "04",
-    title: "Verification, issuance & market",
-    desc: "Enable VVB review cycles, approval, issuance and buyer-facing liquidity with full traceability.",
-    bullets: [
-      "VVBs review monitoring sheets, data anomalies, evidence bundles and clarifications.",
-      "Developers resolve comments with version-tracked updates and state transitions.",
-      "Lock verification opinions with cryptographic signatures and freeze states.",
-      "Submit approved packets to registry pathways for issuance.",
-      "Expose issued credits to deal rooms with pricing signals, risk scores and provenance.",
-    ],
+    title: "Verify & Trade",
+    shortDesc: "Market Access",
+    icon: MarketIcon,
+    color: "purple",
+    highlights: ["VVB Review", "Issuance", "Deal Rooms"],
   },
 ];
 
+const colorMap: Record<string, { gradient: string; bg: string; border: string; text: string; glow: string }> = {
+  emerald: {
+    gradient: "from-emerald-400 to-teal-500",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-400/40",
+    text: "text-emerald-400",
+    glow: "shadow-emerald-500/20",
+  },
+  cyan: {
+    gradient: "from-cyan-400 to-blue-500",
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-400/40",
+    text: "text-cyan-400",
+    glow: "shadow-cyan-500/20",
+  },
+  indigo: {
+    gradient: "from-indigo-400 to-purple-500",
+    bg: "bg-indigo-500/10",
+    border: "border-indigo-400/40",
+    text: "text-indigo-400",
+    glow: "shadow-indigo-500/20",
+  },
+  purple: {
+    gradient: "from-purple-400 to-pink-500",
+    bg: "bg-purple-500/10",
+    border: "border-purple-400/40",
+    text: "text-purple-400",
+    glow: "shadow-purple-500/20",
+  },
+};
+
+// Animated Arrow Component
+const FlowArrow = ({ className = "" }: { className?: string }) => (
+  <div className={`hidden lg:flex items-center justify-center ${className}`}>
+    <svg width="48" height="24" viewBox="0 0 48 24" className="text-slate-600">
+      <defs>
+        <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+          <stop offset="50%" stopColor="currentColor" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M0 12h36M30 6l8 6-8 6"
+        stroke="url(#arrowGradient)"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="animate-pulse"
+      />
+    </svg>
+  </div>
+);
+
 export default function Lifecycle() {
+  const [activeStage, setActiveStage] = useState<number | null>(null);
+
   return (
     <section
       id="lifecycle"
-      className="relative bg-gradient-to-b from-slate-950 to-slate-900 py-20 md:py-24 border-t border-emerald-500/10"
+      className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-24 md:py-32 overflow-hidden"
     >
-      <div className="mx-auto max-w-6xl px-4">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4">
         {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-400">
-              End-to-End Lifecycle
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-3 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-5 py-2.5 mb-6 backdrop-blur-sm">
+            <div className="relative">
+              <div className="w-2.5 h-2.5 bg-indigo-400 rounded-full animate-ping absolute" />
+              <div className="w-2.5 h-2.5 bg-indigo-400 rounded-full" />
+            </div>
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
+              Complete Lifecycle Flow
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            From first PDD to final retirement —
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent"> all in one workspace</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+            From PDD to Retirement
+            <span className="block bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              One Seamless Journey
+            </span>
           </h2>
 
-          <p className="text-lg text-slate-300 leading-relaxed">
-            CredoCarbon structures the entire carbon credit lifecycle into predictable, 
-            auditable stages — enabling Developers, VVBs, Registries and Buyers to operate 
-            on one shared, verified system of record.
+          <p className="text-lg text-slate-400 leading-relaxed">
+            Four interconnected stages. Complete visibility. Full traceability.
           </p>
         </div>
 
-        {/* ENHANCED STAGES - Flow Layout */}
+        {/* VISUAL FLOW DIAGRAM */}
         <div className="relative">
-          {/* Flow connector line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent transform -translate-y-1/2" />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Main flow container */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-0">
             {stages.map((stage, index) => {
-              const colors = [
-                'from-emerald-500/20 to-teal-600/20',
-                'from-cyan-500/20 to-blue-600/20', 
-                'from-indigo-500/20 to-purple-600/20',
-                'from-purple-500/20 to-pink-600/20'
-              ];
-              
+              const colors = colorMap[stage.color];
+              const Icon = stage.icon;
+              const isActive = activeStage === index;
+              const isLast = index === stages.length - 1;
+
               return (
-                <div key={stage.title} className="relative">
-                  {/* Flow node */}
-                  {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full border-4 border-slate-950 z-10 hidden lg:block" /> */}
-                  
-                  <div className="group relative overflow-hidden rounded-3xl border border-slate-700 bg-slate-900/60 backdrop-blur-sm p-6 h-full transition-all duration-300 hover:border-indigo-400/40 hover:bg-slate-800/80">
-                    {/* Enhanced hover effect */}
-                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${colors[index]} opacity-10`} />
+                <div key={stage.id} className="flex items-center">
+                  {/* Stage Node */}
+                  <div
+                    className="relative group cursor-pointer"
+                    onMouseEnter={() => setActiveStage(index)}
+                    onMouseLeave={() => setActiveStage(null)}
+                  >
+                    {/* Glow effect */}
+                    <div
+                      className={`absolute -inset-4 rounded-3xl bg-gradient-to-r ${colors.gradient} opacity-0 blur-xl transition-opacity duration-500 ${isActive ? "opacity-30" : "group-hover:opacity-20"
+                        }`}
+                    />
 
-                    <div className="relative">
-                      {/* Stage indicator */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${colors[index]} border border-indigo-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                          <span className="text-sm font-bold text-indigo-300">{stage.id}</span>
+                    {/* Main card */}
+                    <div
+                      className={`relative w-56 md:w-64 rounded-3xl border-2 transition-all duration-500 ${isActive
+                          ? `${colors.border} ${colors.bg} shadow-2xl ${colors.glow} scale-105`
+                          : "border-slate-700/50 bg-slate-900/50 hover:border-slate-600"
+                        }`}
+                    >
+                      {/* Top section with icon */}
+                      <div className="p-6 text-center">
+                        {/* Stage number badge */}
+                        <div
+                          className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${colors.gradient} text-slate-900`}
+                        >
+                          Stage {stage.id}
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-slate-50 group-hover:text-indigo-100 transition-colors">
-                            {stage.title}
-                          </h3>
+
+                        {/* Animated Icon Container */}
+                        <div
+                          className={`relative w-20 h-20 mx-auto mb-4 mt-2 ${colors.text} transition-transform duration-300 ${isActive ? "scale-110" : ""
+                            }`}
+                        >
+                          {/* Rotating ring */}
+                          <div
+                            className={`absolute inset-0 rounded-full border-2 border-dashed ${colors.border} transition-all duration-700 ${isActive ? "rotate-180 opacity-100" : "rotate-0 opacity-50"
+                              }`}
+                          />
+                          {/* Icon */}
+                          <div className="absolute inset-2">
+                            <Icon />
+                          </div>
                         </div>
+
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-slate-100 mb-1">{stage.title}</h3>
+                        <p className={`text-sm font-medium ${colors.text}`}>{stage.shortDesc}</p>
                       </div>
 
-                      <p className="text-sm text-slate-300 mb-4 leading-relaxed">{stage.desc}</p>
-
-                      {/* Enhanced bullets */}
-                      <div className="space-y-2">
-                        {stage.bullets.slice(0, 3).map((bullet, bulletIndex) => (
-                          <div key={bullet} className="flex gap-2 items-start">
-                            <div className="relative mt-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400" />
-                              <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-indigo-400/50 blur-sm animate-pulse" />
-                            </div>
-                            <span className="text-xs text-slate-400 leading-relaxed">{bullet}</span>
-                          </div>
-                        ))}
-                        
-                        {stage.bullets.length > 3 && (
-                          <div className="flex gap-2 items-center mt-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                            <span className="text-xs text-slate-500">+{stage.bullets.length - 3} more capabilities</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Stage progress indicator */}
-                      <div className="mt-4 pt-3 border-t border-slate-700">
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs text-slate-500">Stage {stage.id}</span>
-                          <div className="flex gap-1">
-                            {Array.from({ length: 4 }).map((_, i) => (
-                              <div 
-                                key={i} 
-                                className={`w-1.5 h-1.5 rounded-full ${i <= index ? 'bg-indigo-400' : 'bg-slate-600'}`} 
-                              />
+                      {/* Expandable highlights section */}
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ${isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                          }`}
+                      >
+                        <div className="px-6 pb-6 border-t border-slate-700/50">
+                          <div className="pt-4 space-y-2">
+                            {stage.highlights.map((highlight, i) => (
+                              <div
+                                key={highlight}
+                                className="flex items-center gap-2 text-sm text-slate-300"
+                                style={{ animationDelay: `${i * 100}ms` }}
+                              >
+                                <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${colors.gradient}`} />
+                                <span>{highlight}</span>
+                              </div>
                             ))}
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    {/* Connection line (mobile) */}
+                    {!isLast && (
+                      <div className="lg:hidden flex justify-center my-2">
+                        <svg width="24" height="32" viewBox="0 0 24 32" className="text-slate-600">
+                          <path d="M12 0v24M6 18l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                    )}
                   </div>
+
+                  {/* Connecting Arrow (desktop) */}
+                  {!isLast && <FlowArrow className="mx-2" />}
                 </div>
               );
             })}
           </div>
+
+          {/* Progress bar underneath */}
+          <div className="mt-16 max-w-3xl mx-auto">
+            <div className="relative h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-400 via-cyan-400 via-indigo-400 to-purple-400 rounded-full transition-all duration-700"
+                style={{ width: activeStage !== null ? `${((activeStage + 1) / 4) * 100}%` : "100%" }}
+              />
+              {/* Stage markers */}
+              {stages.map((_, index) => (
+                <div
+                  key={index}
+                  className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 transition-all duration-300 ${activeStage !== null && activeStage >= index
+                      ? "bg-slate-50 border-slate-50 scale-125"
+                      : "bg-slate-700 border-slate-600"
+                    }`}
+                  style={{ left: `calc(${((index + 1) / 4) * 100}% - 8px)` }}
+                />
+              ))}
+            </div>
+
+            {/* Stage labels */}
+            <div className="flex justify-between mt-4 px-4">
+              {stages.map((stage, index) => (
+                <span
+                  key={stage.id}
+                  className={`text-xs font-medium transition-colors duration-300 ${activeStage === index ? colorMap[stage.color].text : "text-slate-500"
+                    }`}
+                >
+                  {stage.shortDesc}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Bottom summary */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-700 bg-slate-900/50 px-8 py-4">
-            <span className="text-sm font-medium text-slate-300">Complete lifecycle visibility</span>
-            <div className="w-px h-6 bg-slate-600" />
-            <span className="text-sm font-medium text-slate-300">Predictable, auditable stages</span>
-            <div className="w-px h-6 bg-slate-600" />
-            <span className="text-sm font-medium text-slate-300">Shared system of record</span>
-          </div>
+        {/* Feature highlights */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {[
+            { icon: "⚡", label: "Real-time Tracking", desc: "Live status updates" },
+            { icon: "🔐", label: "Crypto Integrity", desc: "Immutable records" },
+            { icon: "🔗", label: "Full Traceability", desc: "End-to-end audit" },
+            { icon: "🌍", label: "Multi-Registry", desc: "Global compliance" },
+          ].map((feature) => (
+            <div
+              key={feature.label}
+              className="text-center p-4 rounded-2xl border border-slate-800 bg-slate-900/30 hover:border-slate-700 transition-colors"
+            >
+              <div className="text-3xl mb-2">{feature.icon}</div>
+              <div className="text-sm font-semibold text-slate-200">{feature.label}</div>
+              <div className="text-xs text-slate-500">{feature.desc}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

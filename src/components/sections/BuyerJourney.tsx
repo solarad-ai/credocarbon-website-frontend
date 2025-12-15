@@ -18,7 +18,7 @@ const buyerFlow = [
   },
   {
     step: "Negotiate",
-    title: "Structured Deal Rooms",
+    title: "Professional Deal Rooms",
     desc: "Term sheets, pricing trends, and secure negotiation workflows with escrow",
     icon: Handshake,
     color: "from-orange-400 to-yellow-400"
@@ -59,7 +59,7 @@ export default function BuyerJourney() {
           </h2>
           
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            From discovery to retirement with complete chain-of-custody integrity
+            Intelligent procurement with risk-adjusted pricing and provenance tracking
           </p>
         </div>
 
