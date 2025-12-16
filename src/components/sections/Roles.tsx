@@ -75,13 +75,13 @@ export default function Roles() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Unified workflows for 
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> carbon professionals</span>
+            Built for every actor in the  
+            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> carbon ecosystem</span>
           </h2>
           
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-            Purpose-built interfaces for each stakeholder role — while maintaining shared data integrity 
-            and seamless handoffs throughout the credit lifecycle.
+            Developers, VVBs, Registries and Buyers operate on the same structured project file —
+            eliminating fragmented tools and enabling verification-grade collaboration from day one
           </p>
         </div>
 
