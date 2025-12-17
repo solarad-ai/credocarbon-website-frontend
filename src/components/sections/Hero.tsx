@@ -8,7 +8,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.45; // slow, cinematic
+      videoRef.current.playbackRate = 0.6; // slow, cinematic
     }
   }, []);
 
@@ -31,7 +31,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videoes/Hero.mp4" type="video/mp4" />
+        <source src="/videoes/Hero.webm" type="video/webm" />
       </video>
 
       {/* Dark overlay (reduced opacity) */}
