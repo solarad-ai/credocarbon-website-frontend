@@ -6,6 +6,7 @@ import {
   Users,
   Mail,
   Linkedin,
+  TrendingUp,
 } from "lucide-react";
 
 export default function AboutUs() {
@@ -17,8 +18,8 @@ export default function AboutUs() {
     },
     {
       icon: ShieldCheck,
-      title: "Trust by architecture",
-      text: "Every action, every dataset, every verification is structurally traceable and auditable by design.",
+      title: "Structurally auditable",
+      text: "Every action, dataset, and verification is traceable by design — not by policy, but by architecture.",
     },
     {
       icon: Globe2,
@@ -34,7 +35,7 @@ export default function AboutUs() {
     linkedIn: "https://www.linkedin.com/in/-haiderabbas/",
     mail: "mailto:haider@solarad.ai",
     credential: "PhD, IIT Delhi | Climate & AI Systems Architect",
-    bio: "Haider builds next-generation forecasting and weather-intelligence systems that make solar power more predictable, bankable, and resilient. At Solarad AI, he leads the design of AI-driven irradiance forecasts and data platforms that power decision-making across utilities, traders, and clean-energy operators.",
+    bio: "Haider brings deep expertise in building climate data infrastructure from his work at Solarad AI, where he designed AI-driven forecasting systems for solar power prediction. That experience in making climate data reliable and actionable now informs CredoCarbon's approach to carbon market infrastructure.",
     vision:
       "His long-term vision is to make climate data as trusted, auditable, and foundational to global markets as financial data is today.",
   };
@@ -44,6 +45,7 @@ export default function AboutUs() {
       name: "Dr. Vikram Singh",
       picture: "/images/vikram.jpeg",
       desg: "Prof IIT Delhi || Cornell",
+      expertise: "Energy systems, climate policy, and renewable energy markets",
       linkedIn:
         "https://www.linkedin.com/in/vikram-singh-53548521/?originalSubdomain=in",
     },
@@ -60,45 +62,104 @@ export default function AboutUs() {
 
       <div className="relative max-w-7xl mx-auto px-4">
 
-        {/* HERO */}
-        <div className="text-center mb-28">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-300" />
-            <span className="text-xs tracking-[0.3em] uppercase text-cyan-200">
-              About CredoCarbon
-            </span>
+        {/* HERO SECTION - REDESIGNED */}
+        <div className="mb-32">
+          {/* Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-cyan-300" />
+              <span className="text-xs tracking-[0.3em] uppercase text-cyan-200">
+                About CredoCarbon
+              </span>
+            </div>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-50 leading-tight mb-7">
-            Climate infrastructure,
-            <br />
-            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">
-              engineered for trust
-            </span>
-          </h2>
+          {/* Main Content - Two Column Layout */}
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-          <p className="max-w-3xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed">
-            CredoCarbon is a digital backbone for the next era of carbon markets — where
-            transparency, verification integrity and market confidence operate on a
-            single shared system of record.
-          </p>
-        </div>
+            {/* LEFT: Hero Content */}
+            <div className="lg:col-span-3 space-y-8">
+              <div>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                  <span className="text-slate-50">Climate infrastructure,</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">
+                    engineered for trust
+                  </span>
+                </h1>
 
-        {/* MISSION */}
-        <div className="mb-28 text-center max-w-3xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300/80 mb-3">
-            Our Mission
-          </p>
+                <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-6">
+                  CredoCarbon is a digital backbone for the next era of carbon markets — where
+                  transparency, verification integrity and market confidence operate on a
+                  shared system of record.
+                </p>
 
-          <h3 className="text-2xl md:text-3xl font-semibold text-slate-50 mb-4">
-            To build the world&apos;s most trusted digital infrastructure for carbon markets
-          </h3>
+                {/* Differentiator with visual emphasis */}
+                <div className="relative pl-6 border-l-2 border-emerald-400/30">
+                  <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-emerald-400 to-transparent" />
+                  <p className="text-base md:text-lg text-slate-300 leading-relaxed">
+                    Unlike registries, consultants, or marketplaces, we are a{" "}
+                    <span className="text-emerald-300 font-bold">neutral infrastructure layer</span>
+                    {" "}that connects all three.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-            Where every credit, every dataset and every verification can be independently
-            trusted without blind reliance — forming the backbone for scalable, credible
-            global climate action.
-          </p>
+            {/* RIGHT: Why Now + Mission Stack */}
+            <div className="lg:col-span-2 space-y-8">
+
+              {/* Why Now - Compact Card */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="relative rounded-2xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 to-slate-900/50 backdrop-blur-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-400/20 border border-emerald-400/40 flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-emerald-300 font-bold text-sm uppercase tracking-wider mb-2">
+                        Why now
+                      </h3>
+                      <p className="text-slate-300 text-sm leading-relaxed">
+                        Rising compliance pressure, Article 6 implementation, increased buyer scrutiny,
+                        and registry scaling demands require infrastructure-grade solutions.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-gradient-to-r from-emerald-400 to-transparent transition-all duration-700" />
+                </div>
+              </div>
+
+              {/* Mission - Elegant Card */}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 to-violet-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="relative rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-slate-900/80 to-slate-900/60 backdrop-blur-xl p-8">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                      Our Mission
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl md:text-2xl font-bold leading-tight mb-3">
+                    <span className="text-slate-50">To build infrastructure where </span>
+                    <span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">
+                      every credit, dataset, and verification
+                    </span>
+                    <span className="text-slate-50"> can be independently verified</span>
+                  </h3>
+
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    Forming the backbone for scalable, credible global climate action
+                  </p>
+
+                  <div className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-gradient-to-r from-cyan-400 via-violet-400 to-transparent transition-all duration-700" />
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
 
         {/* VISION — FLOATING NODES */}
@@ -178,7 +239,7 @@ export default function AboutUs() {
               </p>
 
               <p className="mt-6 text-sm italic text-violet-300 leading-relaxed">
-                “{founder.vision}”
+                "{founder.vision}"
               </p>
             </div>
           </div>
@@ -215,6 +276,9 @@ export default function AboutUs() {
                   </h4>
                   <p className="text-xs text-cyan-300 mt-1">
                     {member.desg}
+                  </p>
+                  <p className="text-xs text-slate-400 mt-2 italic">
+                    {member.expertise}
                   </p>
 
                   <div className="mt-5 flex justify-center">
