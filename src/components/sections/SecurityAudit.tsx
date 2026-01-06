@@ -3,129 +3,110 @@
 import {
   ShieldCheck,
   Lock,
-  Fingerprint,
   KeyRound,
   FileCheck2,
-  ServerCog,
+  CheckCircle2,
 } from "lucide-react";
 
 const blocks = [
   {
-    title: "Immutable evidence integrity",
-    desc: "All documents, datasets and annexes in CredoCarbon are cryptographically anchored to ensure tamper-proof evidence management.",
+    title: "File Verification",
+    desc: "Every uploaded file is hashed and tracked to ensure authenticity throughout the verification process.",
     items: [
-      "SHA-256 hashing for every uploaded file, dataset and annex.",
-      "Immutable evidence ledger mapping each file to its version chain.",
-      "Hash mismatches flagged instantly for integrity violations.",
-      "Submission snapshots include hash manifests for registry audits.",
+      "SHA-256 hashing for all uploaded files and datasets",
+      "Version control with automatic freeze on VVB approval",
+      "Full lineage tracking from upload to final report",
     ],
     icon: ShieldCheck,
+    gradient: "from-indigo-500 to-purple-500",
+    glowColor: "rgba(99, 102, 241, 0.4)",
   },
   {
-    title: "Secure roles & permission layers",
-    desc: "Access to projects, data and evidence is controlled with fine-grained role-based permissions designed for Developer, VVB and Registry workflows.",
+    title: "Access Permissions",
+    desc: "Role-based controls ensure each stakeholder sees exactly what they need — nothing more, nothing less.",
     items: [
-      "Granular permissions for view, comment, upload, freeze, approve.",
-      "Isolated review environments for VVBs with read-only evidence states.",
-      "Registry reviewers get structured submissions, not full project access.",
+      "Customizable permissions for view, comment, upload, and approve",
+      "Isolated workspaces for developers, VVBs, and registries",
+      "Encrypted data transfer and storage",
     ],
     icon: Lock,
+    gradient: "from-purple-500 to-pink-500",
+    glowColor: "rgba(168, 85, 247, 0.4)",
   },
   {
-    title: "Chain-of-custody & provenance trails",
-    desc: "Every action — from upload to verification to retirement — is captured in an unbroken provenance graph.",
+    title: "Activity Logging",
+    desc: "Track who did what and when, with exportable logs for registry compliance reviews.",
     items: [
-      "Track who uploaded, modified or approved each file.",
-      "Trace dataset origins from raw → validated → processed → reported.",
-      "Structured linkage of evidence, calculations and submissions.",
-    ],
-    icon: Fingerprint,
-  },
-  {
-    title: "Cryptographic signatures & state freezing",
-    desc: "Verification opinions and submissions are frozen with digital signatures to guarantee downstream trust.",
-    items: [
-      "VVB sign-off anchored with cryptographic identifiers.",
-      "State freeze locks all associated evidence and datasets.",
-      "Frozen states cannot be altered without creating a new verified version.",
-    ],
-    icon: KeyRound,
-  },
-  {
-    title: "Compliance-grade audit logs",
-    desc: "Designed to meet audit expectations from registries, accreditation bodies and corporate sustainability teams.",
-    items: [
-      "Complete log of actions with timestamps, users and impact scope.",
-      "Filters to view activities by entity, project or workflow phase.",
-      "Export logs in audit-compliant formats (JSON, CSV, registry XML).",
+      "Timestamped records of all user actions and changes",
+      "Filter by entity, project, or workflow phase",
+      "Export in JSON, CSV, or registry XML formats",
     ],
     icon: FileCheck2,
+    gradient: "from-cyan-500 to-blue-500",
+    glowColor: "rgba(6, 182, 212, 0.4)",
   },
   {
-    title: "Data isolation & security fundamentals",
-    desc: "Underlying infrastructure follows enterprise security architecture for real-world carbon projects and multi-stakeholder usage.",
+    title: "Final Approval",
+    desc: "VVB sign-offs create a permanent, verifiable record that buyers and registries can trust.",
     items: [
-      "Encrypted storage at rest and in transit across all modules.",
-      "Isolated environments for developer, VVB and registry interactions.",
-      "Secure object-store for large annexes and asset-heavy projects.",
+      "One-click approval workflow for verified projects",
+      "Permanent record linking approval to evidence package",
+      "Automated notifications to all stakeholders",
     ],
-    icon: ServerCog,
+    icon: KeyRound,
+    gradient: "from-emerald-500 to-teal-500",
+    glowColor: "rgba(16, 185, 129, 0.4)",
   },
 ] as const;
 
 export default function SecurityAudit() {
-  const [primary, second, third, ...rest] = blocks;
-
   return (
     <section
       id="security"
-      className="relative overflow-hidden bg-[#020617] py-24 md:py-28 border-t border-indigo-500/10"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-20 md:py-32 border-t border-indigo-500/10"
     >
-      {/* ✅ Purple–Indigo Cryptographic Background */}
+      {/* Enhanced Background Elements */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.22),transparent_55%),radial-gradient(circle_at_bottom,rgba(15,23,42,0.9),transparent_65%)]" />
-        <div className="absolute left-0 top-24 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl" />
-        <div className="absolute right-0 bottom-16 w-72 h-72 rounded-full bg-purple-500/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.15),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.1),transparent_50%)]" />
+        <div className="absolute left-0 top-32 w-96 h-96 rounded-full bg-indigo-500/10 blur-[120px] animate-pulse" />
+        <div className="absolute right-0 bottom-32 w-96 h-96 rounded-full bg-purple-500/10 blur-[120px] animate-pulse delay-1000" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-[100px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4">
-        {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/40 bg-indigo-500/10 px-5 py-2 mb-5">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-indigo-300">
-              Security & Trust Fabric
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 backdrop-blur-sm px-4 py-2 mb-6">
+            <ShieldCheck className="w-4 h-4 text-indigo-400" />
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-300">
+              Platform Security
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4 leading-tight">
-            Cryptographic integrity for
-            <span className="block bg-gradient-to-r from-indigo-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-              every dataset, annex and signature
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+            Built for{" "}
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Verification Trust
             </span>
           </h2>
 
-          <p className="text-base md:text-lg text-slate-300/90 leading-relaxed">
-            A security layer that tracks how evidence moves, who touches it, and how
-            it is frozen for registries and buyers — with full cryptographic trust.
+          <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
+            Secure infrastructure designed for multi-stakeholder carbon verification workflows.
           </p>
         </div>
 
-        {/* ✅ REBALANCED MIXED LAYOUT */}
-        <div className="space-y-16">
-          {/* Top Row */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            <HeroCard block={primary} />
-            <div className="grid gap-8">
-              <StandardCard block={second} />
-              <StandardCard block={third} />
-            </div>
-          </div>
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {blocks.map((block, index) => (
+            <SecurityCard key={block.title} block={block} index={index} />
+          ))}
+        </div>
 
-          {/* Bottom Row */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {rest.map((block) => (
-              <StandardCard key={block.title} block={block} />
-            ))}
+        {/* Bottom Trust Indicator */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 text-sm text-slate-400">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <span>SOC 2 Type II • ISO 27001 • GDPR Compliant</span>
           </div>
         </div>
       </div>
@@ -135,57 +116,66 @@ export default function SecurityAudit() {
 
 type Block = (typeof blocks)[number];
 
-function HeroCard({ block }: { block: Block }) {
+function SecurityCard({ block, index }: { block: Block; index: number }) {
   const Icon = block.icon;
 
   return (
-    <div className="group relative rounded-[2.5rem] border border-indigo-500/30 bg-slate-900/70 backdrop-blur-xl p-8 min-h-[300px] transition-all hover:border-indigo-400/70 hover:shadow-[0_0_70px_rgba(99,102,241,0.45)]">
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-cyan-500/20 transition" />
+    <div
+      className="group relative rounded-3xl border border-slate-800/50 bg-slate-900/40 backdrop-blur-xl p-8 transition-all duration-500 hover:border-slate-700 hover:-translate-y-1"
+      style={{
+        animationDelay: `${index * 100}ms`,
+      }}
+    >
+      {/* Glow Effect on Hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500 blur-xl -z-10"
+        style={{
+          background: `radial-gradient(circle at center, ${block.glowColor}, transparent 70%)`,
+        }}
+      />
 
-      <div className="relative flex flex-col gap-5">
-        <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-indigo-500/40 to-purple-500/40 flex items-center justify-center border border-indigo-400/40">
-          <Icon className="h-6 w-6 text-white" />
+      {/* Gradient Overlay on Hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br from-white to-transparent transition-opacity duration-500 rounded-3xl pointer-events-none" />
+
+      <div className="relative flex flex-col h-full">
+        {/* Icon Container */}
+        <div className="mb-6">
+          <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${block.gradient} shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+            <Icon className="h-7 w-7 text-white" />
+          </div>
         </div>
 
-        <h3 className="text-xl font-semibold text-white">{block.title}</h3>
-        <p className="text-sm text-slate-300 leading-relaxed">{block.desc}</p>
+        {/* Content */}
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-slate-50 mb-3 group-hover:text-white transition-colors">
+            {block.title}
+          </h3>
 
-        <ul className="space-y-2 mt-2">
-          {block.items.map((item) => (
-            <li key={item} className="flex gap-2 text-xs text-slate-300">
-              <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
+          <p className="text-sm text-slate-400 leading-relaxed mb-6">
+            {block.desc}
+          </p>
 
-function StandardCard({ block }: { block: Block }) {
-  const Icon = block.icon;
-
-  return (
-    <div className="group relative rounded-[2.2rem] border border-slate-800 bg-slate-900/60 backdrop-blur-lg p-6 min-h-[240px] hover:border-indigo-400/50 hover:shadow-[0_0_50px_rgba(99,102,241,0.35)] transition-all">
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-indigo-500/15 via-purple-500/15 to-cyan-500/15 transition" />
-
-      <div className="relative flex flex-col gap-4">
-        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500/40 to-purple-500/40 flex items-center justify-center border border-indigo-400/30">
-          <Icon className="h-5 w-5 text-white" />
+          {/* Feature List */}
+          <ul className="space-y-3">
+            {block.items.map((item, idx) => (
+              <li
+                key={idx}
+                className="flex gap-3 text-sm text-slate-300 group/item"
+                style={{
+                  animationDelay: `${(index * 100) + (idx * 50)}ms`,
+                }}
+              >
+                <span className={`mt-1.5 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${block.gradient} flex-shrink-0 group-hover/item:scale-150 transition-transform duration-300`} />
+                <span className="leading-relaxed group-hover:text-slate-200 transition-colors">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <h3 className="text-sm font-semibold text-white">{block.title}</h3>
-        <p className="text-xs text-slate-300 leading-relaxed">{block.desc}</p>
-
-        <ul className="space-y-1.5 mt-1">
-          {block.items.map((item) => (
-            <li key={item} className="flex gap-2 text-[11px] text-slate-300">
-              <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400" />
-              {item}
-            </li>
-          ))}
-        </ul>
+        {/* Bottom Accent Line */}
+        <div className={`mt-6 h-1 w-0 group-hover:w-full bg-gradient-to-r ${block.gradient} rounded-full transition-all duration-700`} />
       </div>
     </div>
   );

@@ -103,7 +103,6 @@ const CertifyIllustration = () => (
 
     {/* Digital signature line */}
     <line x1="22" y1="42" x2="44" y2="42" stroke="#22d3ee" strokeWidth="1" />
-    <text x="24" y="47" fill="#22d3ee" fontSize="3" opacity="0.7">CRYPTOGRAPHICALLY SIGNED</text>
 
     {/* Lock icon */}
     <g transform="translate(65, 15)">
@@ -140,10 +139,10 @@ const verificationSteps = [
   },
   {
     phase: "Certify",
-    title: "Digital Sign-off & Tracking",
-    desc: "Cryptographic verification opinions with post-issuance monitoring",
+    title: "Issue & Monitor",
+    desc: "Digital sign-off with ongoing credit performance tracking",
     icon: TrendingUp,
-    metrics: "Full audit trail",
+    metrics: "Post-issuance monitoring",
     Illustration: CertifyIllustration,
   }
 ] as const;
@@ -194,44 +193,47 @@ export default function VVBJourney() {
                     }`}
                 >
                   {/* Timeline node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full border-4 border-slate-950 z-10 hidden md:block" />
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full border-4 border-slate-950 z-10 hidden md:block shadow-lg shadow-cyan-400/50" />
 
                   {/* Content card */}
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                    <div className="group relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-cyan-400/40 group-hover:bg-slate-800/80">
+                    <div className="group relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/50 hover:bg-slate-800/80 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(6,182,212,0.25)]">
                       {/* Illustration area */}
-                      <div className="h-28 bg-gradient-to-b from-slate-800/50 to-transparent flex items-center justify-center p-4">
-                        <div className="w-full h-full transform group-hover:scale-105 transition-transform duration-500">
+                      <div className="h-32 bg-gradient-to-b from-slate-800/50 to-transparent flex items-center justify-center p-6">
+                        <div className="w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-out">
                           <Illustration />
                         </div>
                       </div>
 
                       {/* Animated gradient overlay */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 pointer-events-none" />
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-emerald-500/10 pointer-events-none" />
 
-                      <div className="relative p-6 pt-2">
+                      <div className="relative p-6 pt-3">
                         {/* Phase badge */}
-                        <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/15 border border-cyan-400/30 px-3 py-1 mb-4">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/15 border border-cyan-400/30 px-3 py-1.5 mb-4">
                           <step.icon className="w-4 h-4 text-cyan-400" />
                           <span className="text-xs font-medium text-cyan-300">{step.phase}</span>
                         </div>
 
-                        <h3 className="text-xl font-semibold text-slate-50 mb-2 group-hover:text-cyan-100 transition-colors">
+                        <h3 className="text-xl font-bold text-slate-50 mb-3 group-hover:text-cyan-50 transition-colors">
                           {step.title}
                         </h3>
 
-                        <p className="text-slate-400 mb-4 leading-relaxed">
+                        <p className="text-slate-400 mb-4 leading-relaxed group-hover:text-slate-300 transition-colors">
                           {step.desc}
                         </p>
 
                         {/* Metrics badge */}
                         <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50" />
                           <span className="text-sm font-medium text-emerald-300">
                             {step.metrics}
                           </span>
                         </div>
                       </div>
+
+                      {/* Bottom accent line */}
+                      <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-700" />
                     </div>
                   </div>
                 </div>
@@ -241,52 +243,59 @@ export default function VVBJourney() {
         </div>
 
         {/* VVB Partners Section */}
-        <div className="mt-20">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold text-slate-200 mb-2">
-              Trusted by Leading VVBs
+        <div className="mt-24">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-200 mb-3">
+              Trusted by Leading{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                VVBs
+              </span>
             </h3>
-            <p className="text-slate-400 text-sm">
+            <p className="text-slate-400">
               Partnering with world-class verification bodies
             </p>
           </div>
 
           {/* VVB Partners Logos */}
-          <div className="flex flex-wrap justify-center items-center gap-10">
+          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-16">
 
             {/* TÜV SÜD */}
-            <div className="flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+            <div className="group relative flex items-center justify-center transition-all duration-300 ease-out hover:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src="/images/TUV_sud.png"
                 alt="TÜV SÜD"
-                className="h-24 w-auto"
+                className="relative h-24 w-auto filter brightness-90 group-hover:brightness-110 transition-all duration-300"
               />
             </div>
 
             {/* DNV */}
-            <div className="flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+            <div className="group relative flex items-center justify-center transition-all duration-300 ease-out hover:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src="/images/Dnv.png"
                 alt="DNV"
-                className="h-24 w-auto"
+                className="relative h-24 w-auto filter brightness-90 group-hover:brightness-110 transition-all duration-300"
               />
             </div>
 
             {/* Ecolance */}
-            <div className="flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+            <div className="group relative flex items-center justify-center transition-all duration-300 ease-out hover:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src="/images/Ecolance.png"
                 alt="Ecolance"
-                className="h-14 w-auto"
+                className="relative h-14 w-auto filter brightness-90 group-hover:brightness-110 transition-all duration-300"
               />
             </div>
 
             {/* Earthood */}
-            <div className="flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+            <div className="group relative flex items-center justify-center transition-all duration-300 ease-out hover:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src="/images/Earthood.png"
                 alt="Earthood"
-                className="h-14 w-auto"
+                className="relative h-14 w-auto filter brightness-90 group-hover:brightness-110 transition-all duration-300"
               />
             </div>
 

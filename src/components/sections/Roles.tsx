@@ -120,7 +120,7 @@ const roles = [
   {
     title: "Project Developers",
     subtitle: "& Asset Owners",
-    desc: "End-to-end project management from onboarding to credit issuance",
+    desc: "Guided workflows from onboarding to credit issuance",
     theme: "emerald",
     highlights: ["Guided onboarding", "Version-controlled docs", "Registry-ready submissions"],
     Illustration: DeveloperIllustration,
@@ -221,8 +221,7 @@ export default function Roles() {
           </h2>
 
           <p className="text-lg text-slate-400 leading-relaxed">
-            One structured project file for developers, VVBs, registries and buyers —
-            verification-grade collaboration from day one
+            Connecting developers, VVBs, registries, and buyers with verification-grade collaboration
           </p>
         </div>
 
@@ -235,7 +234,7 @@ export default function Roles() {
             return (
               <div
                 key={role.title}
-                className={`group relative rounded-3xl ${colors.border} ${colors.hoverBorder} bg-slate-900/40 backdrop-blur-sm overflow-hidden transition-all duration-500`}
+                className={`group relative rounded-3xl ${colors.border} ${colors.hoverBorder} bg-slate-900/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:-translate-y-1`}
               >
                 {/* Themed background gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -245,7 +244,7 @@ export default function Roles() {
 
                 <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6">
                   {/* Illustration */}
-                  <div className="w-full md:w-40 h-32 md:h-auto flex-shrink-0 transform group-hover:scale-105 transition-transform duration-500">
+                  <div className="w-full md:w-40 h-32 md:h-auto flex-shrink-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
                     <Illustration />
                   </div>
 
@@ -258,7 +257,7 @@ export default function Roles() {
                       <span className={`text-sm ${colors.accent}`}>{role.subtitle}</span>
                     </div>
 
-                    <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                    <p className="text-sm text-slate-400 mb-4 leading-relaxed group-hover:text-slate-300 transition-colors">
                       {role.desc}
                     </p>
 
@@ -275,6 +274,9 @@ export default function Roles() {
                     </div>
                   </div>
                 </div>
+
+                {/* Bottom accent line */}
+                <div className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-gradient-to-r ${colors.border.replace('border-', 'from-')} to-transparent transition-all duration-700`} />
               </div>
             );
           })}
@@ -296,11 +298,6 @@ export default function Roles() {
             })}
           </div>
         </div>
-
-        {/* Tagline */}
-        <p className="text-center text-sm text-slate-500 mt-6">
-          All stakeholders operate on the same structured project file
-        </p>
       </div>
     </section>
   );

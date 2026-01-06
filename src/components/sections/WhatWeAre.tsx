@@ -147,9 +147,9 @@ const TradingIllustration = () => (
 
 const pillars = [
   {
-    title: "Centralized Workspace",
-    desc: "Consolidated project management from documentation through verification to trading.",
-    highlights: ["Single project file", "No spreadsheets", "Auditable events"],
+    title: "Project Management",
+    desc: "Consolidated workspace from documentation through verification to trading.",
+    highlights: ["Structured files", "Version control", "Auditable events"],
     Illustration: WorkspaceIllustration,
   },
   {
@@ -159,7 +159,7 @@ const pillars = [
     Illustration: AutomatedIllustration,
   },
   {
-    title: "Market & Portfolio Intelligence",
+    title: "Market Intelligence",
     desc: "Credit marketplace with pricing intelligence and portfolio management.",
     highlights: ["Deal rooms", "Portfolio optimization", "Provenance tracking"],
     Illustration: TradingIllustration,
@@ -196,38 +196,37 @@ export default function WhatWeAre() {
             <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
               digital layer
             </span>
-            <br />for carbon project lifecycles
+            <br />for carbon project operations
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed">
-            CredoCarbon replaces fragmented spreadsheets and disconnected tools with
-            a single infrastructure layer — where documents, data, workflows and credits
-            maintain integrity across the entire project lifecycle.
+            CredoCarbon provides the infrastructure where documents, data, workflows, and credits
+            maintain integrity across project operations.
           </p>
         </div>
 
         {/* Illustrated Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8">
           {pillars.map((pillar) => {
             const { Illustration } = pillar;
             return (
               <div
                 key={pillar.title}
-                className="group relative rounded-3xl bg-slate-900/50 border border-slate-700/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-blue-400/30 hover:bg-slate-800/50"
+                className="group relative rounded-3xl bg-slate-900/50 border border-slate-700/40 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-blue-400/40 hover:bg-slate-800/60 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)]"
               >
                 {/* Illustration container */}
                 <div className="relative h-44 bg-gradient-to-b from-slate-800/50 to-transparent p-4 flex items-center justify-center">
-                  <div className="w-full h-full transform group-hover:scale-105 transition-transform duration-500">
+                  <div className="w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-out">
                     <Illustration />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 pt-2">
-                  <h3 className="text-xl font-semibold text-slate-100 mb-2 text-center">
+                  <h3 className="text-xl font-bold text-slate-100 mb-2 text-center group-hover:text-blue-100 transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed text-center mb-4">
+                  <p className="text-sm text-slate-400 leading-relaxed text-center mb-4 group-hover:text-slate-300 transition-colors">
                     {pillar.desc}
                   </p>
 
@@ -246,32 +245,13 @@ export default function WhatWeAre() {
 
                 {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-blue-500/5 to-transparent pointer-events-none" />
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-gradient-to-r from-blue-400 to-violet-400 transition-all duration-700" />
               </div>
             );
           })}
         </div>
-
-        {/* Visual flow connector - Hidden on mobile */}
-        <div className="hidden md:flex justify-center items-center gap-4 mb-8">
-          {pillars.map((pillar, index) => (
-            <div key={pillar.title} className="flex items-center">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-violet-400" />
-                <span className="text-sm font-medium text-slate-400">{pillar.title}</span>
-              </div>
-              {index < pillars.length - 1 && (
-                <svg className="w-10 h-5 mx-4 text-slate-600" viewBox="0 0 40 20">
-                  <path d="M0 10h30M24 5l8 5-8 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Tagline */}
-        <p className="text-center text-xs md:text-sm text-slate-500 px-4">
-          Developers ship faster · VVBs trust what they review · Buyers trust what they buy
-        </p>
       </div>
     </section>
   );

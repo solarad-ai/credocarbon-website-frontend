@@ -106,26 +106,26 @@ const ComplianceIllustration = () => (
 
 const methodologyFeatures = [
   {
-    title: "Smart Methodology Mapping",
-    desc: "Auto-detect eligible methodologies and generate registry-specific templates",
+    title: "Methodology Detection",
+    desc: "Auto-identify eligible methodologies and generate project templates",
     tags: ["Verra", "Gold Standard", "GCC"],
     Illustration: MappingIllustration,
   },
   {
-    title: "Baseline & Parameter Logic",
-    desc: "Traceable calculations with emission factors and technology profiles",
+    title: "Baseline Setup",
+    desc: "Configure emission factors and technology profiles with fallback logic",
     tags: ["Grid factors", "Conservative", "Fallback"],
     Illustration: CalculatorIllustration,
   },
   {
-    title: "Monitoring Computations",
+    title: "Monitoring Automation",
     desc: "Auto-generated monitoring sheets with anomaly detection",
     tags: ["Missing hours", "Outage adj.", "Curtailment"],
     Illustration: ChartIllustration,
   },
   {
-    title: "Compliance Validation",
-    desc: "Automated rule enforcement and cross-registry compatibility",
+    title: "Validation Rules",
+    desc: "Automated rule enforcement and cross-registry compatibility checks",
     tags: ["Completeness", "Validation", "Format"],
     Illustration: ComplianceIllustration,
   }
@@ -156,17 +156,17 @@ export default function MethodologyEngine() {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-2 mb-4 backdrop-blur-sm">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-400">
-              Methodology Engine
+              Calculation Engine
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Registry-Aligned
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"> Calculations</span>
+            Automated{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Calculations</span>
           </h2>
 
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Methodology-aware baselines and monitoring with full traceability
+            Methodology-aware computation with automated validation
           </p>
         </div>
 
@@ -179,19 +179,19 @@ export default function MethodologyEngine() {
             return (
               <div
                 key={feature.title}
-                className={`group flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 items-center rounded-2xl border border-blue-500/20 bg-slate-900/40 backdrop-blur-sm p-4 md:p-6 transition-all duration-300 hover:border-blue-400/40 hover:bg-slate-800/50`}
+                className={`group flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 items-center rounded-2xl border border-blue-500/20 bg-slate-900/40 backdrop-blur-sm p-4 md:p-6 transition-all duration-500 hover:border-blue-400/50 hover:bg-slate-800/60 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)]`}
               >
                 {/* Illustration */}
-                <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-500">
+                <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
                   <Illustration />
                 </div>
 
                 {/* Content */}
                 <div className={`flex-1 ${isEven ? 'md:text-left' : 'md:text-right'} text-center`}>
-                  <h3 className="text-lg font-semibold text-slate-50 mb-1 group-hover:text-blue-100 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-50 mb-1 group-hover:text-blue-100 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-slate-400 mb-3">
+                  <p className="text-sm text-slate-400 mb-3 group-hover:text-slate-300 transition-colors">
                     {feature.desc}
                   </p>
                   <div className={`flex flex-wrap gap-1 ${isEven ? 'md:justify-start' : 'md:justify-end'} justify-center`}>
@@ -210,19 +210,12 @@ export default function MethodologyEngine() {
                 <div className="hidden md:flex w-10 h-10 rounded-full bg-blue-500/20 border border-blue-400/30 items-center justify-center flex-shrink-0">
                   <span className="text-sm font-bold text-blue-400">{index + 1}</span>
                 </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-gradient-to-r from-blue-400 to-indigo-400 transition-all duration-700" />
               </div>
             );
           })}
-        </div>
-
-        {/* Bottom highlight */}
-        <div className="mt-10 text-center">
-          <span className="inline-flex items-center gap-2 text-sm text-slate-500">
-            <svg className="w-4 h-4 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-            Full calculation traceability from parameter to output
-          </span>
         </div>
       </div>
     </section>

@@ -140,30 +140,30 @@ const CreditsIllustration = () => (
 const keyFeatures = [
   {
     icon: FileText,
-    title: "Project Setup & Documentation",
-    desc: "Registry-aligned templates with smart placeholders and version control",
+    title: "Project Setup",
+    desc: "Smart templates with auto-populated fields and guided workflows",
     highlight: "60% faster setup",
     Illustration: SetupIllustration,
   },
   {
     icon: Database,
-    title: "Data Integration & MRV",
-    desc: "Connect SCADA, meters, and sensors with automated validation and reporting",
+    title: "Data Integration",
+    desc: "Connect SCADA, meters, and sensors with automated validation",
     highlight: "Real-time monitoring",
     Illustration: DataIllustration,
   },
   {
     icon: CheckCircle,
-    title: "Verification & Submission",
-    desc: "Organized VVB workflows with completeness checks and audit trails",
+    title: "VVB Collaboration",
+    desc: "Organized workflows with completeness checks and comment threads",
     highlight: "Streamlined cycles",
     Illustration: VerifyIllustration,
   },
   {
     icon: Zap,
-    title: "Post-Issuance Management",
-    desc: "Deal rooms, batch tracking, and retirement coordination in one workspace",
-    highlight: "Complete lifecycle view",
+    title: "Credit Management",
+    desc: "Deal rooms, batch tracking, and retirement coordination",
+    highlight: "Post-issuance tools",
     Illustration: CreditsIllustration,
   }
 ] as const;
@@ -185,17 +185,17 @@ export default function DeveloperJourney() {
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2 mb-4">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-              Developer Journey
+              Developer Tools
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            From PDD to
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"> Credits</span>
+            Project{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Workflow</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Streamlined project management from conception to credit issuance
+            Streamlined tools for every stage of your carbon project
           </p>
         </div>
 
@@ -212,10 +212,10 @@ export default function DeveloperJourney() {
                   <div className="hidden lg:block absolute top-20 -right-3 w-6 h-px bg-gradient-to-r from-emerald-400/50 to-transparent z-10" />
                 )}
 
-                <div className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm h-full transition-all duration-300 group-hover:border-emerald-400/40 group-hover:bg-slate-800/80">
+                <div className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-slate-900/60 backdrop-blur-sm h-full transition-all duration-500 hover:border-emerald-400/50 hover:bg-slate-800/80 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(16,185,129,0.25)]">
                   {/* Illustration area */}
-                  <div className="h-24 bg-gradient-to-b from-slate-800/50 to-transparent flex items-center justify-center p-3">
-                    <div className="w-full h-full transform group-hover:scale-105 transition-transform duration-500">
+                  <div className="h-28 bg-gradient-to-b from-slate-800/50 to-transparent flex items-center justify-center p-4">
+                    <div className="w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-out">
                       <Illustration />
                     </div>
                   </div>
@@ -224,22 +224,25 @@ export default function DeveloperJourney() {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
 
                   <div className="relative p-5 pt-2">
-                    <h3 className="text-base font-semibold text-slate-50 mb-2 group-hover:text-emerald-100 transition-colors">
+                    <h3 className="text-base font-bold text-slate-50 mb-2 group-hover:text-emerald-100 transition-colors">
                       {feature.title}
                     </h3>
 
-                    <p className="text-sm text-slate-400 mb-3 leading-relaxed">
+                    <p className="text-sm text-slate-400 mb-3 leading-relaxed group-hover:text-slate-300 transition-colors">
                       {feature.desc}
                     </p>
 
                     {/* Highlight badge */}
                     <div className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 px-3 py-1">
-                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50" />
                       <span className="text-xs font-medium text-emerald-300">
                         {feature.highlight}
                       </span>
                     </div>
                   </div>
+
+                  {/* Bottom accent line */}
+                  <div className="h-1 w-0 group-hover:w-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-700" />
                 </div>
               </div>
             );
@@ -258,11 +261,6 @@ export default function DeveloperJourney() {
               )}
             </div>
           ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-6 text-center">
-          <span className="text-sm text-slate-500">Integrated project management from PDD to credits</span>
         </div>
       </div>
     </section>

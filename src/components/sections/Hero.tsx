@@ -50,14 +50,14 @@ export default function Hero() {
         <div className="flex-1">
           <div className="mb-4 md:mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-700/20 px-2.5 md:px-3 py-1 md:py-1.5 text-[9px] md:text-[11px] font-semibold uppercase tracking-[0.12em] md:tracking-[0.18em] text-emerald-50 backdrop-blur">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-300" />
-            Unified carbon credit infrastructure
+            Carbon Infrastructure Platform
           </div>
 
           <TextGenerateEffect words={"CredoCarbon: One Stack for Developers, VVBs & Buyers"} />
 
           <p className="max-w-xl text-xs md:text-sm lg:text-lg leading-relaxed text-emerald-50/90 mb-4 md:mb-6 mt-3 md:mt-4">
-            A dedicated infrastructure layer that digitises project MRV, registry workflows and OTC trading —
-            creating unified carbon credit operations from development to retirement.
+            A dedicated platform that digitizes project MRV, registry workflows, and OTC trading —
+            connecting developers, VVBs, and buyers.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
@@ -118,8 +118,8 @@ export default function Hero() {
                 </div>
 
                 <div className="flex items-center justify-between rounded-xl bg-slate-900/70 px-3 py-2">
-                  <span>Complete traceability</span>
-                  <span className="font-semibold text-emerald-300">Developer → Registry → Buyer</span>
+                  <span>Platform coverage</span>
+                  <span className="font-semibold text-emerald-300">MRV → Registry → Trading</span>
                 </div>
               </div>
 

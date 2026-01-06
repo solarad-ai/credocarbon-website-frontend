@@ -58,7 +58,7 @@ export default function Footer() {
             </div>
 
             <p className="text-xs md:text-sm leading-relaxed text-slate-400 max-w-xs">
-              A unified platform for carbon credit registration, validation, issuance, and trading across all global registries.
+              Infrastructure for carbon credit registration, validation, issuance, and trading across global registries.
             </p>
 
             {/* Contact Info */}
