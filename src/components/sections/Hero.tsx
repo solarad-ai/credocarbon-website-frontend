@@ -64,17 +64,6 @@ export default function Hero() {
             <Button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-[11px] md:text-[13px] font-extrabold px-4 md:px-6 py-2.5 md:py-3 text-white hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300">
               Talk to us
             </Button>
-
-            <Button
-              variant="outline"
-              className="
-                bg-white/10 text-[11px] md:text-[13px] font-extrabold px-3 md:px-5 py-2.5
-                text-emerald-50 hover:bg-slate-800 border-emerald-200/50
-              "
-            >
-              <BarChart3 className="mr-1.5 md:mr-2 h-3.5 md:h-4 w-3.5 md:w-4" />
-              View lifecycle
-            </Button>
           </div>
 
           <p className="mt-3 md:mt-4 text-[9px] md:text-[11px] uppercase tracking-[0.18em] md:tracking-[0.22em] text-emerald-100/80">
