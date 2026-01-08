@@ -12,6 +12,7 @@ export default function Footer() {
     ],
     company: [
       { label: "About Us", href: "/about-us" },
+      { label: "Insights", href: "/insights" },
       { label: "Careers", href: "/careers" },
       { label: "Blogs & Newsletters", href: "/blog" }
     ],

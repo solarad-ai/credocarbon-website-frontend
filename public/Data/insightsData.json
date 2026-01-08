@@ -1,0 +1,473 @@
+{
+    "lastUpdated": "2025-01-07",
+    "description": "Market insights and registry data breakdown by sector and technology",
+    "carbonCredits": {
+        "summary": {
+            "totalIssued": 219626369,
+            "totalRetired": 49480354,
+            "unit": "tCO2e"
+        },
+        "registries": [
+            {
+                "id": "gold-standard",
+                "name": "Gold Standard",
+                "symbol": "GS",
+                "issued": 66995611,
+                "retired": 29317886,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Renewable Energy",
+                        "subsectors": [
+                            {
+                                "name": "Solar",
+                                "issued": 18500000,
+                                "retired": 8100000
+                            },
+                            {
+                                "name": "Wind",
+                                "issued": 15200000,
+                                "retired": 6700000
+                            },
+                            {
+                                "name": "Hydro",
+                                "issued": 12800000,
+                                "retired": 5600000
+                            },
+                            {
+                                "name": "Biomass",
+                                "issued": 5400000,
+                                "retired": 2400000
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Energy Efficiency",
+                        "subsectors": [
+                            {
+                                "name": "Cookstoves",
+                                "issued": 8900000,
+                                "retired": 4200000
+                            },
+                            {
+                                "name": "Industrial",
+                                "issued": 3200000,
+                                "retired": 1400000
+                            },
+                            {
+                                "name": "Buildings",
+                                "issued": 2995611,
+                                "retired": 917886
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "verra",
+                "name": "Verra VCS",
+                "symbol": "VCS",
+                "issued": 64157842,
+                "retired": 19746982,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Renewable Energy",
+                        "subsectors": [
+                            {
+                                "name": "Solar",
+                                "issued": 16800000,
+                                "retired": 5100000
+                            },
+                            {
+                                "name": "Wind",
+                                "issued": 14500000,
+                                "retired": 4400000
+                            },
+                            {
+                                "name": "Hydro",
+                                "issued": 11200000,
+                                "retired": 3400000
+                            },
+                            {
+                                "name": "Geothermal",
+                                "issued": 2100000,
+                                "retired": 640000
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Nature-Based Solutions",
+                        "subsectors": [
+                            {
+                                "name": "REDD+",
+                                "issued": 12500000,
+                                "retired": 3800000
+                            },
+                            {
+                                "name": "Afforestation",
+                                "issued": 4300000,
+                                "retired": 1300000
+                            },
+                            {
+                                "name": "Blue Carbon",
+                                "issued": 2757842,
+                                "retired": 1106982
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "acr",
+                "name": "American Carbon Registry",
+                "symbol": "ACR",
+                "issued": 41587681,
+                "retired": null,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Forestry",
+                        "subsectors": [
+                            {
+                                "name": "Improved Forest Management",
+                                "issued": 18500000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Avoided Conversion",
+                                "issued": 9200000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Reforestation",
+                                "issued": 6800000,
+                                "retired": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Agriculture",
+                        "subsectors": [
+                            {
+                                "name": "Livestock",
+                                "issued": 4200000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Rice Cultivation",
+                                "issued": 2887681,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "car",
+                "name": "Climate Action Reserve",
+                "symbol": "CAR",
+                "issued": 22534527,
+                "retired": null,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Forestry",
+                        "subsectors": [
+                            {
+                                "name": "Urban Forestry",
+                                "issued": 6800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Avoided Deforestation",
+                                "issued": 5900000,
+                                "retired": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Waste Management",
+                        "subsectors": [
+                            {
+                                "name": "Landfill Methane",
+                                "issued": 5200000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Organic Waste",
+                                "issued": 2834527,
+                                "retired": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Industrial",
+                        "subsectors": [
+                            {
+                                "name": "ODS Destruction",
+                                "issued": 1800000,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "accu",
+                "name": "Australian Carbon Credits",
+                "symbol": "ACCU",
+                "issued": 14959799,
+                "retired": null,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Land Management",
+                        "subsectors": [
+                            {
+                                "name": "Human-Induced Regeneration",
+                                "issued": 6500000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Soil Carbon",
+                                "issued": 3800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Savanna Burning",
+                                "issued": 2659799,
+                                "retired": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Industrial",
+                        "subsectors": [
+                            {
+                                "name": "Carbon Capture",
+                                "issued": 2000000,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "art-trees",
+                "name": "ART TREES",
+                "symbol": "ART",
+                "issued": 8732929,
+                "retired": null,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Jurisdictional REDD+",
+                        "subsectors": [
+                            {
+                                "name": "National Programs",
+                                "issued": 5800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Subnational Programs",
+                                "issued": 2932929,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "puro-earth",
+                "name": "Puro Earth",
+                "symbol": "PURO",
+                "issued": 658000,
+                "retired": 415486,
+                "unit": "tCO2e",
+                "sectors": [
+                    {
+                        "name": "Carbon Removal",
+                        "subsectors": [
+                            {
+                                "name": "Biochar",
+                                "issued": 320000,
+                                "retired": 202000
+                            },
+                            {
+                                "name": "Bio-Based Construction",
+                                "issued": 180000,
+                                "retired": 113000
+                            },
+                            {
+                                "name": "Enhanced Weathering",
+                                "issued": 158000,
+                                "retired": 100486
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "renewableEnergyCertificates": {
+        "summary": {
+            "totalIssued": 429452580.25,
+            "totalRetired": 238631795.45,
+            "unit": "MWh"
+        },
+        "registries": [
+            {
+                "id": "i-rec",
+                "name": "I-REC Standard",
+                "symbol": "I-REC",
+                "issued": 346033936.25,
+                "retired": 238631795.45,
+                "unit": "MWh",
+                "sectors": [
+                    {
+                        "name": "Renewable Sources",
+                        "subsectors": [
+                            {
+                                "name": "Solar",
+                                "issued": 138400000,
+                                "retired": 95400000
+                            },
+                            {
+                                "name": "Wind",
+                                "issued": 103800000,
+                                "retired": 71600000
+                            },
+                            {
+                                "name": "Hydro",
+                                "issued": 69200000,
+                                "retired": 47700000
+                            },
+                            {
+                                "name": "Biomass",
+                                "issued": 20800000,
+                                "retired": 14300000
+                            },
+                            {
+                                "name": "Geothermal",
+                                "issued": 13833936.25,
+                                "retired": 9631795.45
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "lgc",
+                "name": "LGC Australia",
+                "symbol": "LGC",
+                "issued": 42813904,
+                "retired": null,
+                "unit": "MWh",
+                "sectors": [
+                    {
+                        "name": "Renewable Sources",
+                        "subsectors": [
+                            {
+                                "name": "Solar (Large Scale)",
+                                "issued": 19200000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Wind",
+                                "issued": 15800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Hydro",
+                                "issued": 5200000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Biomass",
+                                "issued": 2613904,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "rec-india",
+                "name": "REC India",
+                "symbol": "REC-IN",
+                "issued": 40604740,
+                "retired": null,
+                "unit": "MWh",
+                "sectors": [
+                    {
+                        "name": "Renewable Sources",
+                        "subsectors": [
+                            {
+                                "name": "Solar",
+                                "issued": 22800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Wind",
+                                "issued": 12500000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Hydro (Small)",
+                                "issued": 3800000,
+                                "retired": null
+                            },
+                            {
+                                "name": "Biomass Cogeneration",
+                                "issued": 1504740,
+                                "retired": null
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "marketTrends": {
+        "topGrowingSectors": [
+            {
+                "name": "Solar",
+                "growth": 34.2,
+                "unit": "%"
+            },
+            {
+                "name": "Carbon Removal",
+                "growth": 28.5,
+                "unit": "%"
+            },
+            {
+                "name": "Wind",
+                "growth": 22.1,
+                "unit": "%"
+            }
+        ],
+        "regionBreakdown": [
+            {
+                "region": "Asia Pacific",
+                "share": 38,
+                "unit": "%"
+            },
+            {
+                "region": "Europe",
+                "share": 28,
+                "unit": "%"
+            },
+            {
+                "region": "Americas",
+                "share": 24,
+                "unit": "%"
+            },
+            {
+                "region": "Africa & Middle East",
+                "share": 10,
+                "unit": "%"
+            }
+        ]
+    }
+}

@@ -69,6 +69,13 @@ export default function CarbonTradingBanner() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/5 to-transparent animate-shimmer" />
 
             <div className="relative flex items-center py-2 md:py-2.5 px-2 md:px-4">
+                {/* Last 12 months label - left side */}
+                <div className="flex-shrink-0 mr-2 md:mr-4 px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-slate-800/80 border border-slate-600/50">
+                    <span className="text-[9px] md:text-[10px] font-medium text-slate-400">
+                        Last 12 months
+                    </span>
+                </div>
+
                 <div className="flex-1 overflow-hidden">
                     <div className="flex gap-4 md:gap-6 animate-scroll-left">
                         {/* First sequence */}
@@ -296,16 +303,13 @@ export default function CarbonTradingBanner() {
                     </div>
                 </div>
 
-                {/* Info button - links to detailed registry page */}
+                {/* Info button - links to detailed registry page - right side */}
                 <Link
                     to="/admin/registry"
-                    className="flex items-center gap-1.5 flex-shrink-0 ml-2 md:ml-4 px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-slate-800/80 border border-slate-600/50 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all duration-200 group"
+                    className="flex items-center justify-center flex-shrink-0 ml-2 md:ml-4 w-6 h-6 md:w-7 md:h-7 rounded-full bg-slate-800/80 border border-slate-600/50 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all duration-200"
                     title="View detailed registry data"
                 >
                     <span className="text-[10px] md:text-xs font-bold">i</span>
-                    <span className="text-[9px] md:text-[10px] font-medium hidden sm:inline text-slate-500 group-hover:text-emerald-400/70">
-                        Last 12 months
-                    </span>
                 </Link>
             </div>
 
@@ -321,12 +325,10 @@ export default function CarbonTradingBanner() {
                 }
 
                 .animate-scroll-left {
-                    animation: scroll-left 40s linear infinite;
+                    animation: scroll-left 25s linear infinite;
                 }
 
-                .animate-scroll-left:hover {
-                    animation-play-state: paused;
-                }
+                /* Continuous scrolling - no pause on hover */
 
                 .animate-shimmer {
                     animation: shimmer 4s ease-in-out infinite;

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function ExploreDashboard() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  // null means no view selected (show video), otherwise show the selected image
+  const [selectedView, setSelectedView] = useState<number | null>(null);
 
   const dashboardViews = [
     {
@@ -36,31 +36,18 @@ export default function ExploreDashboard() {
     }
   ];
 
-  // Auto-play carousel
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % dashboardViews.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, dashboardViews.length]);
-
-  const goToNext = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev + 1) % dashboardViews.length);
+  const handleViewSelect = (index: number) => {
+    setSelectedView(index);
   };
 
-  const goToPrev = () => {
-    setIsAutoPlaying(false);
-    setCurrentIndex((prev) => (prev - 1 + dashboardViews.length) % dashboardViews.length);
+  const handleBackToVideo = () => {
+    setSelectedView(null);
   };
 
-  const goToSlide = (index: number) => {
-    setIsAutoPlaying(false);
-    setCurrentIndex(index);
-  };
+  // Get current gradient for glow effect
+  const currentGradient = selectedView !== null
+    ? dashboardViews[selectedView].gradient
+    : "from-emerald-500 to-teal-500";
 
   return (
     <section className="relative py-20 md:py-32 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
@@ -95,21 +82,39 @@ export default function ExploreDashboard() {
           </p>
         </div>
 
-        {/* Carousel Container */}
+        {/* Video/Image Container */}
         <div className="relative max-w-5xl mx-auto mb-12 md:mb-16">
           {/* Main Display */}
           <div className="relative aspect-video rounded-2xl md:rounded-3xl overflow-hidden bg-slate-900/50 backdrop-blur-xl border border-slate-700/50 shadow-2xl">
             {/* Gradient Glow */}
-            <div className={`absolute -inset-1 bg-gradient-to-r ${dashboardViews[currentIndex].gradient} opacity-20 blur-2xl transition-all duration-1000`} />
+            <div className={`absolute -inset-1 bg-gradient-to-r ${currentGradient} opacity-20 blur-2xl transition-all duration-1000`} />
 
-            {/* Image Container */}
+            {/* Video/Image Content */}
             <div className="relative h-full p-3 md:p-6">
+              {/* Dashboard Video - shown when no view is selected */}
+              <div
+                className={`absolute inset-3 md:inset-6 transition-all duration-700 ${selectedView === null
+                    ? 'opacity-100 scale-100 z-10'
+                    : 'opacity-0 scale-95 z-0'
+                  }`}
+              >
+                <video
+                  src="/videoes/dashboard.webm"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover rounded-xl md:rounded-2xl shadow-2xl"
+                />
+              </div>
+
+              {/* Static Images - shown when a view is selected */}
               {dashboardViews.map((view, index) => (
                 <div
                   key={view.id}
-                  className={`absolute inset-3 md:inset-6 transition-all duration-700 ${index === currentIndex
-                    ? 'opacity-100 scale-100 z-10'
-                    : 'opacity-0 scale-95 z-0'
+                  className={`absolute inset-3 md:inset-6 transition-all duration-700 ${index === selectedView
+                      ? 'opacity-100 scale-100 z-10'
+                      : 'opacity-0 scale-95 z-0'
                     }`}
                 >
                   <img
@@ -121,46 +126,29 @@ export default function ExploreDashboard() {
               ))}
             </div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={goToPrev}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-slate-900/90 backdrop-blur-sm hover:bg-slate-800 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 border border-slate-700/50 touch-manipulation"
-            >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-            <button
-              onClick={goToNext}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-slate-900/90 backdrop-blur-sm hover:bg-slate-800 text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 border border-slate-700/50 touch-manipulation"
-            >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 md:gap-3 mt-6 md:mt-8">
-            {dashboardViews.map((view, index) => (
+            {/* Back to Video Button - shown when a view is selected */}
+            {selectedView !== null && (
               <button
-                key={view.id}
-                onClick={() => goToSlide(index)}
-                className="group relative touch-manipulation"
+                onClick={handleBackToVideo}
+                className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-slate-900/90 backdrop-blur-sm hover:bg-slate-800 text-white px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 border border-slate-700/50"
               >
-                <div className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                  ? 'w-8 md:w-12 bg-gradient-to-r ' + view.gradient
-                  : 'w-2 bg-slate-600 hover:bg-slate-500'
-                  }`} />
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                <span className="text-sm font-medium">Watch Video</span>
               </button>
-            ))}
+            )}
           </div>
 
-          {/* Thumbnail Preview - Hidden on Mobile */}
-          <div className="hidden md:grid grid-cols-4 gap-4 mt-8">
+          {/* Thumbnail Preview - Feature Selection */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8">
             {dashboardViews.map((view, index) => (
               <button
                 key={view.id}
-                onClick={() => goToSlide(index)}
-                className={`relative group rounded-xl overflow-hidden transition-all duration-300 ${index === currentIndex
-                  ? 'ring-2 ring-emerald-400 scale-105'
-                  : 'opacity-60 hover:opacity-100'
+                onClick={() => handleViewSelect(index)}
+                className={`relative group rounded-xl overflow-hidden transition-all duration-300 touch-manipulation ${index === selectedView
+                    ? 'ring-2 ring-emerald-400 scale-105'
+                    : 'opacity-70 hover:opacity-100 hover:scale-102'
                   }`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${view.gradient} opacity-0 group-hover:opacity-20 transition-opacity`} />
@@ -169,8 +157,8 @@ export default function ExploreDashboard() {
                   alt={view.title}
                   className="w-full aspect-video object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent flex items-end p-3">
-                  <span className="text-xs font-semibold text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex items-end p-3">
+                  <span className="text-xs md:text-sm font-semibold text-white">
                     {view.title}
                   </span>
                 </div>
