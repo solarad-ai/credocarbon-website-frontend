@@ -665,6 +665,25 @@ export default function Pricing() {
                 </div>
             </section>
 
+            {/* Contact Section */}
+            <section className="relative py-16 md:py-20 bg-white">
+                <div className="mx-auto max-w-4xl px-6 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                        Want to Know More?
+                    </h2>
+                    <p className="text-lg text-slate-600 mb-8">
+                        Get in touch with our team for detailed pricing information and custom solutions.
+                    </p>
+                    <a
+                        href="mailto:info@credocarbon.com"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold hover:from-emerald-400 hover:to-emerald-500 transition-all duration-300 hover:scale-105 shadow-lg shadow-emerald-500/30"
+                    >
+                        <span>Contact us at info@credocarbon.com</span>
+                        <ArrowRight className="w-5 h-5" />
+                    </a>
+                </div>
+            </section>
+
             {/* Bottom Note */}
             <section className="relative py-10 md:py-12 bg-slate-900">
                 <div className="mx-auto max-w-5xl px-6">
