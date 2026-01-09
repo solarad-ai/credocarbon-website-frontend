@@ -185,7 +185,7 @@ export default function CarbonTradingBanner() {
 
                 {/* Info button - links to detailed registry page - right side */}
                 <Link
-                    to="/admin/registry"
+                    to="/insights"
                     className="flex items-center justify-center flex-shrink-0 ml-2 md:ml-4 w-6 h-6 md:w-7 md:h-7 rounded-full bg-slate-800/80 border border-slate-600/50 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all duration-200"
                     title="View detailed registry data"
                 >
