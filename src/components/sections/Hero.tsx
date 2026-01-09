@@ -2,10 +2,12 @@ import { Leaf, Shield, BarChart3 } from "lucide-react";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import { Button } from "../ui/Button";
 import CarbonTradingBanner from "../ui/CarbonTradingBanner";
-import { useEffect, useRef } from "react";
+import ContactFormModal from "../ui/ContactFormModal";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -86,7 +88,10 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            <Button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-[11px] md:text-[13px] font-extrabold px-4 md:px-6 py-2.5 md:py-3 text-white hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300">
+            <Button
+              onClick={() => setIsContactOpen(true)}
+              className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-[11px] md:text-[13px] font-extrabold px-4 md:px-6 py-2.5 md:py-3 text-white hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300"
+            >
               Talk to us
             </Button>
           </div>
@@ -144,6 +149,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </section>
   );
 }

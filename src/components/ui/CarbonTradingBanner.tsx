@@ -6,7 +6,7 @@ interface Registry {
     id: string;
     name: string;
     symbol: string;
-    issued: number;
+    issued: number | null;
     retired: number | null;
     unit: string;
     records: number | null;
@@ -59,9 +59,9 @@ export default function CarbonTradingBanner() {
         );
     }
 
-    // Filter active registries
-    const activeCarbon = data.carbonRegistries.filter(r => r.active);
-    const activeRec = data.recRegistries.filter(r => r.active);
+    // Filter active registries with valid issued data for the banner
+    const activeCarbon = data.carbonRegistries.filter(r => r.active && r.issued !== null);
+    const activeRec = data.recRegistries.filter(r => r.active && r.issued !== null);
 
     return (
         <div className="relative w-full bg-slate-950/80 backdrop-blur-md border-b border-white/10">
@@ -78,226 +78,106 @@ export default function CarbonTradingBanner() {
 
                 <div className="flex-1 overflow-hidden">
                     <div className="flex gap-4 md:gap-6 animate-scroll-left">
-                        {/* First sequence */}
-                        {/* === CARBON REGISTRIES SECTION === */}
-                        <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                            <Leaf className="h-3.5 w-3.5 text-emerald-400" />
-                            <span className="text-[10px] md:text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                                Carbon Credits
-                            </span>
-                        </div>
-
-                        {/* Carbon Registry Items */}
-                        {activeCarbon.map((registry) => (
-                            <div
-                                key={`carbon-${registry.id}`}
-                                className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 shadow-lg group"
-                            >
-                                {/* Symbol */}
-                                <div className="flex flex-col">
-                                    <span className="text-xs md:text-sm font-bold text-emerald-50">
-                                        {registry.symbol}
-                                    </span>
-                                    <span className="text-[8px] md:text-[9px] text-emerald-200/60 hidden sm:block">
-                                        {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
+                        {/* Combined sequence: Carbon + RECs, then duplicate for seamless loop */}
+                        {[0, 1].map((seq) => (
+                            <div key={seq} className="flex gap-4 md:gap-6 flex-shrink-0">
+                                {/* === CARBON REGISTRIES === */}
+                                <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
+                                    <Leaf className="h-3.5 w-3.5 text-emerald-400" />
+                                    <span className="text-[10px] md:text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                                        Carbon Credits
                                     </span>
                                 </div>
 
-                                {/* Issued */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-emerald-300/70 uppercase tracking-wide">
-                                        Issued
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-emerald-100 flex items-center gap-1">
-                                        <TrendingUp className="h-2.5 w-2.5 text-emerald-400 hidden md:block" />
-                                        {formatNumber(registry.issued)}
+                                {/* Carbon Registry Items */}
+                                {activeCarbon.map((registry) => (
+                                    <div
+                                        key={`carbon-${seq}-${registry.id}`}
+                                        className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 shadow-lg"
+                                    >
+                                        <div className="flex flex-col">
+                                            <span className="text-xs md:text-sm font-bold text-emerald-50">
+                                                {registry.symbol}
+                                            </span>
+                                            <span className="text-[8px] md:text-[9px] text-emerald-200/60 hidden sm:block">
+                                                {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-[8px] md:text-[9px] text-emerald-300/70 uppercase tracking-wide">
+                                                Issued
+                                            </span>
+                                            <span className="text-xs md:text-sm font-semibold text-emerald-100 flex items-center gap-1">
+                                                <TrendingUp className="h-2.5 w-2.5 text-emerald-400 hidden md:block" />
+                                                {formatNumber(registry.issued!)}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
+                                                Retired
+                                            </span>
+                                            <span className="text-xs md:text-sm font-semibold text-cyan-100">
+                                                {registry.retired ? formatNumber(registry.retired) : 'N/A'}
+                                            </span>
+                                        </div>
+                                        <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
+                                            {registry.unit}
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {/* Divider */}
+                                <div className="flex-shrink-0 flex items-center px-2">
+                                    <div className="w-px h-6 bg-gradient-to-b from-transparent via-slate-500/50 to-transparent" />
+                                </div>
+
+                                {/* === REC REGISTRIES === */}
+                                <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
+                                    <Zap className="h-3.5 w-3.5 text-cyan-400" />
+                                    <span className="text-[10px] md:text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                                        RECs
                                     </span>
                                 </div>
 
-                                {/* Retired */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
-                                        Retired
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-cyan-100">
-                                        {registry.retired ? formatNumber(registry.retired) : 'N/A'}
-                                    </span>
-                                </div>
+                                {/* REC Registry Items */}
+                                {activeRec.map((registry) => (
+                                    <div
+                                        key={`rec-${seq}-${registry.id}`}
+                                        className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 shadow-lg"
+                                    >
+                                        <div className="flex flex-col">
+                                            <span className="text-xs md:text-sm font-bold text-cyan-50">
+                                                {registry.symbol}
+                                            </span>
+                                            <span className="text-[8px] md:text-[9px] text-cyan-200/60 hidden sm:block">
+                                                {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
+                                                Issued
+                                            </span>
+                                            <span className="text-xs md:text-sm font-semibold text-cyan-100 flex items-center gap-1">
+                                                <TrendingUp className="h-2.5 w-2.5 text-cyan-400 hidden md:block" />
+                                                {formatNumber(registry.issued!)}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-[8px] md:text-[9px] text-amber-300/70 uppercase tracking-wide">
+                                                Redeemed
+                                            </span>
+                                            <span className="text-xs md:text-sm font-semibold text-amber-100">
+                                                {registry.retired ? formatNumber(registry.retired) : 'N/A'}
+                                            </span>
+                                        </div>
+                                        <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
+                                            {registry.unit}
+                                        </div>
+                                    </div>
+                                ))}
 
-                                {/* Unit badge */}
-                                <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
-                                    {registry.unit}
-                                </div>
-                            </div>
-                        ))}
-
-                        {/* Divider */}
-                        <div className="flex-shrink-0 flex items-center px-2">
-                            <div className="w-px h-6 bg-gradient-to-b from-transparent via-slate-500/50 to-transparent" />
-                        </div>
-
-                        {/* === REC REGISTRIES SECTION === */}
-                        <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
-                            <Zap className="h-3.5 w-3.5 text-cyan-400" />
-                            <span className="text-[10px] md:text-xs font-bold text-cyan-400 uppercase tracking-wider">
-                                RECs
-                            </span>
-                        </div>
-
-                        {/* REC Registry Items */}
-                        {activeRec.map((registry) => (
-                            <div
-                                key={`rec-${registry.id}`}
-                                className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 shadow-lg group"
-                            >
-                                {/* Symbol */}
-                                <div className="flex flex-col">
-                                    <span className="text-xs md:text-sm font-bold text-cyan-50">
-                                        {registry.symbol}
-                                    </span>
-                                    <span className="text-[8px] md:text-[9px] text-cyan-200/60 hidden sm:block">
-                                        {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
-                                    </span>
-                                </div>
-
-                                {/* Issued */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
-                                        Issued
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-cyan-100 flex items-center gap-1">
-                                        <TrendingUp className="h-2.5 w-2.5 text-cyan-400 hidden md:block" />
-                                        {formatNumber(registry.issued)}
-                                    </span>
-                                </div>
-
-                                {/* Redeemed */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-amber-300/70 uppercase tracking-wide">
-                                        Redeemed
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-amber-100">
-                                        {registry.retired ? formatNumber(registry.retired) : 'N/A'}
-                                    </span>
-                                </div>
-
-                                {/* Unit badge */}
-                                <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
-                                    {registry.unit}
-                                </div>
-                            </div>
-                        ))}
-
-                        {/* Spacer */}
-                        <div className="flex-shrink-0 w-8" />
-
-                        {/* Second sequence (for seamless infinite scroll) */}
-                        {/* === CARBON REGISTRIES SECTION === */}
-                        <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                            <Leaf className="h-3.5 w-3.5 text-emerald-400" />
-                            <span className="text-[10px] md:text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                                Carbon Credits
-                            </span>
-                        </div>
-
-                        {/* Carbon Registry Items - duplicate */}
-                        {activeCarbon.map((registry) => (
-                            <div
-                                key={`carbon2-${registry.id}`}
-                                className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-emerald-400/20 hover:border-emerald-400/40 transition-all duration-300 shadow-lg group"
-                            >
-                                {/* Symbol */}
-                                <div className="flex flex-col">
-                                    <span className="text-xs md:text-sm font-bold text-emerald-50">
-                                        {registry.symbol}
-                                    </span>
-                                    <span className="text-[8px] md:text-[9px] text-emerald-200/60 hidden sm:block">
-                                        {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
-                                    </span>
-                                </div>
-
-                                {/* Issued */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-emerald-300/70 uppercase tracking-wide">
-                                        Issued
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-emerald-100 flex items-center gap-1">
-                                        <TrendingUp className="h-2.5 w-2.5 text-emerald-400 hidden md:block" />
-                                        {formatNumber(registry.issued)}
-                                    </span>
-                                </div>
-
-                                {/* Retired */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
-                                        Retired
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-cyan-100">
-                                        {registry.retired ? formatNumber(registry.retired) : 'N/A'}
-                                    </span>
-                                </div>
-
-                                {/* Unit badge */}
-                                <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
-                                    {registry.unit}
-                                </div>
-                            </div>
-                        ))}
-
-                        {/* Divider */}
-                        <div className="flex-shrink-0 flex items-center px-2">
-                            <div className="w-px h-6 bg-gradient-to-b from-transparent via-slate-500/50 to-transparent" />
-                        </div>
-
-                        {/* === REC REGISTRIES SECTION === */}
-                        <div className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
-                            <Zap className="h-3.5 w-3.5 text-cyan-400" />
-                            <span className="text-[10px] md:text-xs font-bold text-cyan-400 uppercase tracking-wider">
-                                RECs
-                            </span>
-                        </div>
-
-                        {/* REC Registry Items - duplicate */}
-                        {activeRec.map((registry) => (
-                            <div
-                                key={`rec2-${registry.id}`}
-                                className="flex-shrink-0 flex items-center gap-3 md:gap-4 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-slate-900/90 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 shadow-lg group"
-                            >
-                                {/* Symbol */}
-                                <div className="flex flex-col">
-                                    <span className="text-xs md:text-sm font-bold text-cyan-50">
-                                        {registry.symbol}
-                                    </span>
-                                    <span className="text-[8px] md:text-[9px] text-cyan-200/60 hidden sm:block">
-                                        {registry.name.length > 15 ? registry.name.slice(0, 15) + '...' : registry.name}
-                                    </span>
-                                </div>
-
-                                {/* Issued */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-cyan-300/70 uppercase tracking-wide">
-                                        Issued
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-cyan-100 flex items-center gap-1">
-                                        <TrendingUp className="h-2.5 w-2.5 text-cyan-400 hidden md:block" />
-                                        {formatNumber(registry.issued)}
-                                    </span>
-                                </div>
-
-                                {/* Redeemed */}
-                                <div className="flex flex-col items-center">
-                                    <span className="text-[8px] md:text-[9px] text-amber-300/70 uppercase tracking-wide">
-                                        Redeemed
-                                    </span>
-                                    <span className="text-xs md:text-sm font-semibold text-amber-100">
-                                        {registry.retired ? formatNumber(registry.retired) : 'N/A'}
-                                    </span>
-                                </div>
-
-                                {/* Unit badge */}
-                                <div className="hidden md:flex px-1.5 py-0.5 rounded bg-slate-800/80 text-[8px] text-slate-400">
-                                    {registry.unit}
-                                </div>
+                                {/* Spacer between sequences */}
+                                <div className="flex-shrink-0 w-8" />
                             </div>
                         ))}
                     </div>

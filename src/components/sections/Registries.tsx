@@ -1,216 +1,363 @@
 // src/components/sections/Registries.tsx
-import { Globe, Package, CheckCircle, Database, Hash, Layers } from "lucide-react";
+import { Globe, Database, Zap, Shield, CheckCircle, MapPin, Building2, Leaf, Sun, Factory } from "lucide-react";
+import { useState } from "react";
 
-const registryFeatures = [
+// Registry type definition
+interface Registry {
+  name: string;
+  country: string;
+  logo?: string;
+  hasLogo?: boolean;
+  abbr?: string;
+}
+
+// Voluntary Carbon Registries
+const voluntaryCarbon: Registry[] = [
+  { name: "Verra – VCS", country: "USA", logo: "/images/verra.webp", hasLogo: true },
+  { name: "Gold Standard", country: "Switzerland", logo: "/images/gold_standards.png", hasLogo: true },
+  { name: "ACR", country: "USA", logo: "/images/ACR_logo.png", hasLogo: true },
+  { name: "Climate Action Reserve", country: "USA", abbr: "CAR" },
+  { name: "Puro.Earth", country: "Finland", logo: "/images/PURO_logo.png", hasLogo: true },
+  { name: "Plan Vivo", country: "UK", logo: "/images/Plan_vivo.png", hasLogo: true },
+  { name: "ART-TREES", country: "USA", abbr: "ART" },
+  { name: "Global Carbon Council", country: "Qatar", logo: "/images/Gcc.png", hasLogo: true },
+  { name: "UK Woodland Carbon Code", country: "UK", logo: "/images/Woodland_logo.png", hasLogo: true },
+  { name: "UK Peatland Code", country: "UK", abbr: "UPC" },
+  { name: "CERC India Carbon Registry", country: "India", abbr: "CERC" },
+  { name: "China CCER", country: "China", abbr: "CCER" },
+  { name: "Korean Carbon Standard", country: "South Korea", abbr: "KCS" },
+  { name: "Australian ACCU", country: "Australia", abbr: "ACCU" },
+  { name: "South Africa COAS", country: "South Africa", abbr: "COAS" },
+  { name: "Colombia RENARE", country: "Colombia", abbr: "REN" },
+  { name: "Japan J-Credit", country: "Japan", abbr: "J-CR" },
+  { name: "Thailand T-VER", country: "Thailand", abbr: "T-VER" },
+  { name: "Indonesia SPEI", country: "Indonesia", abbr: "SPEI" },
+  { name: "Singapore Carbon Services", country: "Singapore", abbr: "SCS" },
+  { name: "CORSIA (ICAO)", country: "Global", abbr: "COR" },
+];
+
+// REC Registries
+const recRegistries: Registry[] = [
+  { name: "I-REC Standard", country: "Global", abbr: "I-REC" },
+  { name: "GCC I-REC", country: "MENA", abbr: "GCC" },
+  { name: "TIGR Registry", country: "USA", abbr: "TIGR" },
+  { name: "EU EACs / GO", country: "EU", abbr: "EAC" },
+  { name: "Green-e®", country: "USA", abbr: "GRN" },
+  { name: "REC India CERC", country: "India", abbr: "REC" },
+  { name: "China GEC", country: "China", abbr: "GEC" },
+  { name: "Malaysia T-REC", country: "Malaysia", abbr: "T-REC" },
+  { name: "Japan J-Credit RE", country: "Japan", abbr: "J-RE" },
+  { name: "Australia LGC/SREC", country: "Australia", abbr: "LGC" },
+  { name: "UK REGOs", country: "UK", abbr: "REGO" },
+  { name: "Turkey YEK-G", country: "Turkey", abbr: "YEK" },
+  { name: "Colombia CER", country: "Colombia", abbr: "CER" },
+];
+
+// ETS/Compliance Registries
+const etsRegistries: Registry[] = [
+  { name: "EU ETS Registry", country: "EU", abbr: "EU" },
+  { name: "California CARB", country: "USA", abbr: "CARB" },
+  { name: "RGGI", country: "USA", abbr: "RGGI" },
+  { name: "UK ETS", country: "UK", abbr: "UK" },
+  { name: "China National ETS", country: "China", abbr: "CN" },
+  { name: "Korea K-ETS", country: "South Korea", abbr: "K-ETS" },
+  { name: "New Zealand ETS", country: "New Zealand", abbr: "NZ" },
+  { name: "Switzerland ETS", country: "Switzerland", abbr: "CH" },
+  { name: "Japan GX League", country: "Japan", abbr: "GX" },
+  { name: "Quebec ETS", country: "Canada", abbr: "QC" },
+  { name: "Mexico ETS", country: "Mexico", abbr: "MX" },
+  { name: "Kazakhstan ETS", country: "Kazakhstan", abbr: "KZ" },
+  { name: "Colombia ETS", country: "Colombia", abbr: "CO" },
+  { name: "Indonesia ETS", country: "Indonesia", abbr: "ID" },
+];
+
+// Category tabs
+const categories = [
   {
-    icon: Globe,
-    title: "Multi-Registry Compatibility",
-    desc: "Unified data structure supporting Verra, Gold Standard, GCC, Plan Vivo, and emerging regional registries with cross-registry consistency.",
-    capabilities: ["5+ major registries", "Unified data model", "Cross-registry portfolios"]
+    id: "carbon",
+    label: "Carbon Credit Registries",
+    icon: Leaf,
+    data: voluntaryCarbon,
+    color: "emerald",
+    gradient: "from-emerald-400 to-teal-400",
+    borderColor: "border-emerald-400/30",
+    bgColor: "bg-emerald-500/10",
+    count: voluntaryCarbon.length
   },
   {
-    icon: Package,
-    title: "Submission Packet Generator",
-    desc: "Auto-generates registry-ready digital packets with proper naming conventions, data tables, and hash-anchored evidence bundles.",
-    capabilities: ["Machine-checkable format", "Integrity metadata", "Multiple submission types"]
+    id: "rec",
+    label: "REC Registries",
+    icon: Sun,
+    data: recRegistries,
+    color: "amber",
+    gradient: "from-amber-400 to-orange-400",
+    borderColor: "border-amber-400/30",
+    bgColor: "bg-amber-500/10",
+    count: recRegistries.length
   },
   {
-    icon: CheckCircle,
-    title: "Validation & Rule Engine",
-    desc: "Comprehensive validation system detecting inconsistencies, ensuring completeness, and enforcing registry-specific constraints.",
-    capabilities: ["Formula validation", "Completeness checks", "Anomaly detection"]
+    id: "ets",
+    label: "Compliance / ETS",
+    icon: Factory,
+    data: etsRegistries,
+    color: "sky",
+    gradient: "from-sky-400 to-blue-400",
+    borderColor: "border-sky-400/30",
+    bgColor: "bg-sky-500/10",
+    count: etsRegistries.length
   },
-  {
-    icon: Database,
-    title: "Project Type Coverage",
-    desc: "Support for 70+ project types including renewables, RECs, nature-based solutions, and industrial efficiency projects.",
-    capabilities: ["Renewable energy", "Nature-based solutions", "Industrial processes"]
-  },
-  {
-    icon: Hash,
-    title: "Serialization & Metadata",
-    desc: "Advanced serial range management, vintage allocation, and cryptographically anchored provenance tracking for each credit.",
-    capabilities: ["Serial range tracking", "Vintage management", "Provenance anchoring"]
-  },
-  {
-    icon: Layers,
-    title: "Template & Methodology Engine",
-    desc: "Registry-specific templates with parameter libraries, baseline equations, and guided methodology selection for streamlined onboarding.",
-    capabilities: ["Template versioning", "Parameter libraries", "Methodology guidance"]
-  }
-] as const;
+];
+
+// Featured registries with logos
+const featuredLogos = [
+  { src: "/images/verra.webp", alt: "Verra VCS" },
+  { src: "/images/gold_standards.png", alt: "Gold Standard" },
+  { src: "/images/ACR_logo.png", alt: "American Carbon Registry" },
+  { src: "/images/Gcc.png", alt: "Global Carbon Council" },
+  { src: "/images/Plan_vivo.png", alt: "Plan Vivo" },
+  { src: "/images/PURO_logo.png", alt: "Puro Earth" },
+  { src: "/images/Woodland_logo.png", alt: "Woodland Carbon Code" },
+];
 
 export default function Registries() {
+  const [activeCategory, setActiveCategory] = useState("carbon");
+
+  const currentCategory = categories.find(c => c.id === activeCategory) || categories[0];
+  const totalRegistries = voluntaryCarbon.length + recRegistries.length + etsRegistries.length;
+  const totalCountries = new Set([
+    ...voluntaryCarbon.map(r => r.country),
+    ...recRegistries.map(r => r.country),
+    ...etsRegistries.map(r => r.country)
+  ]).size;
+
   return (
     <section
       id="registries"
-      className="relative bg-gradient-to-b from-slate-950/20 to-slate-900 py-20 md:py-24 border-t border-emerald-500/10 overflow-hidden"
+      className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-24 md:py-32 overflow-hidden"
     >
-      {/* Registry-themed background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/3 left-1/3 w-88 h-88 bg-gradient-to-r from-sky-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-300" />
-        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 rounded-full blur-3xl animate-pulse delay-700" />
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-[600px] h-[600px] bg-gradient-to-r from-sky-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse delay-700" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-amber-500/5 to-orange-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4">
-        {/* ENHANCED HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-2 mb-4">
-            <Globe className="w-4 h-4 text-sky-400" />
-            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-400">
-              Registries & Standards
+      <div className="relative mx-auto max-w-7xl px-4">
+        {/* HERO HEADER */}
+        <div className="text-center max-w-5xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-5 py-2.5 mb-6">
+            <Globe className="w-4 h-4 text-emerald-400" />
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
+              Global Registry Integration
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Built to operate across
-            <span className="bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent"> global standards</span>
-          </h2>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-50 mb-6 leading-tight">
+            Integrated with
+            <span className="block bg-gradient-to-r from-emerald-400 via-teal-400 to-sky-400 bg-clip-text text-transparent mt-2">
+              {totalRegistries}+ Global Registries
+            </span>
+          </h1>
 
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-8 px-4">
-            CredoCarbon aligns projects, methodologies and monitoring outputs
-            with major registries — ensuring structured, compliant and
-            machine-checkable submissions for seamless issuance & verification cycles.
+          <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
+            CredoCarbon connects seamlessly with major carbon credit registries, renewable energy certificate systems,
+            and compliance emission trading platforms worldwide — ensuring one unified interface for all your environmental assets.
           </p>
-        </div>
 
-        {/* Registry logos strip */}
-        <div className="mb-16">
-          <div
-            className="
-   mx-auto max-w-4xl
-  rounded-3xl
-  border border-slate-200/60
-  bg-gradient-to-r
-  from-white/95
-  via-slate-20/20
-  to-white/95
-  backdrop-blur-md
-  px-10 py-8
-"
-          >
-            <div className="flex flex-wrap justify-center items-center gap-16">
-              <img
-                src="/images/verra.webp"
-                alt="Verra"
-                className="
-          h-16 w-auto object-contain
-          opacity-95
-          transition-transform duration-300 ease-out
-          hover:scale-125
-        "
-              />
-              <img
-                src="/images/gold_standards.png"
-                alt="Gold Standard"
-                className="
-          h-16 w-auto object-contain
-          opacity-95
-          transition-transform duration-300 ease-out
-          hover:scale-125
-        "
-              />
-              <img
-                src="/images/Gcc.png"
-                alt="GCC"
-                className="
-          h-14 w-auto object-contain
-          opacity-95
-          transition-transform duration-300 ease-out
-          hover:scale-125
-        "
-              />
-              <img
-                src="/images/Plan_vivo.png"
-                alt="Plan Vivo"
-                className="
-          h-14 w-auto object-contain
-          opacity-95
-          transition-transform duration-300 ease-out
-          hover:scale-125
-        "
-              />
-            </div>
-          </div>
-        </div>
-
-
-        {/* UNIFIED REGISTRY FEATURES GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {registryFeatures.map((feature, index) => {
-            const colors = [
-              'from-sky-500/20 to-blue-600/20 border-sky-400/30',
-              'from-blue-500/20 to-indigo-600/20 border-blue-400/30',
-              'from-indigo-500/20 to-purple-600/20 border-indigo-400/30',
-              'from-purple-500/20 to-pink-600/20 border-purple-400/30',
-              'from-cyan-500/20 to-sky-600/20 border-cyan-400/30',
-              'from-teal-500/20 to-blue-600/20 border-teal-400/30'
-            ];
-
-            return (
-              <div
-                key={feature.title}
-                className="group relative overflow-hidden rounded-3xl border border-slate-700 bg-slate-900/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-sky-400/40 hover:bg-slate-800/80"
-              >
-                {/* Enhanced hover effect */}
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${colors[index]} opacity-10`} />
-
-                <div className="relative">
-                  {/* Registry icon */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${colors[index]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <feature.icon className="w-6 h-6 text-sky-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-slate-50 group-hover:text-sky-100 transition-colors">
-                      {feature.title}
-                    </h3>
+          {/* Quick stats */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+            {[
+              { value: `${voluntaryCarbon.length}+`, label: "Carbon Registries", icon: Leaf, color: "emerald" },
+              { value: `${recRegistries.length}+`, label: "REC Systems", icon: Sun, color: "amber" },
+              { value: `${etsRegistries.length}+`, label: "ETS Platforms", icon: Factory, color: "sky" },
+              { value: `${totalCountries}+`, label: "Countries", icon: MapPin, color: "purple" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-center gap-3 group">
+                <div className={`w-12 h-12 rounded-2xl bg-${stat.color}-500/10 border border-${stat.color}-400/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <stat.icon className={`w-5 h-5 text-${stat.color}-400`} />
+                </div>
+                <div className="text-left">
+                  <div className={`text-2xl font-bold bg-gradient-to-r from-${stat.color}-400 to-${stat.color}-300 bg-clip-text text-transparent`}>
+                    {stat.value}
                   </div>
-
-                  <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                    {feature.desc}
-                  </p>
-
-                  {/* Key capabilities */}
-                  <div className="space-y-2">
-                    {feature.capabilities.map((capability) => (
-                      <div key={capability} className="flex gap-2 items-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-sky-400 to-blue-400 animate-pulse" />
-                        <span className="text-xs text-slate-400 font-medium">{capability}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="text-xs text-slate-400 font-medium">{stat.label}</div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* REGISTRY PERFORMANCE METRICS */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          {[
-            { label: "Registries", value: "5+", desc: "Major standards supported" },
-            { label: "Project Types", value: "70+", desc: "Across all sectors" },
-            { label: "Methodologies", value: "200+", desc: "Registry-approved" },
-            { label: "Submission Success", value: "99.5%", desc: "First-time approval rate" }
-          ].map((stat) => (
-            <div key={stat.label} className="text-center p-6 rounded-2xl border border-slate-800 bg-slate-900/30 group hover:border-sky-400/30 transition-colors">
-              <div className="text-3xl font-bold bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent mb-1">
-                {stat.value}
-              </div>
-              <div className="text-sm font-medium text-slate-300 mb-1">{stat.label}</div>
-              <div className="text-xs text-slate-500">{stat.desc}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* BOTTOM CTA */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-700 bg-slate-900/50 px-8 py-4">
-            <CheckCircle className="w-5 h-5 text-sky-400" />
-            <span className="text-sm font-medium text-slate-300">Compliant, structured, and machine-checkable submissions</span>
+            ))}
           </div>
         </div>
+
+        {/* FEATURED LOGOS BANNER */}
+        <div className="mb-20">
+          <div className="text-center mb-8">
+            <span className="text-sm font-medium text-slate-400 uppercase tracking-widest">
+              Featured Integrations
+            </span>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-r from-white/[0.03] via-white/[0.07] to-white/[0.03] backdrop-blur-sm px-8 py-10">
+            {/* Animated scrolling logo strip */}
+            <div className="flex animate-scroll-slow">
+              <div className="flex items-center gap-16 px-8">
+                {[...featuredLogos, ...featuredLogos].map((logo, i) => (
+                  <div key={i} className="flex-shrink-0 group cursor-pointer">
+                    <div className="relative bg-white/90 rounded-2xl px-6 py-4 transition-all duration-300 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 group-hover:scale-110">
+                      <img
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="h-12 md:h-14 w-auto object-contain filter grayscale-0 transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CATEGORY TABS */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`
+                  group flex items-center gap-3 px-6 py-4 rounded-2xl border transition-all duration-300
+                  ${activeCategory === category.id
+                    ? `${category.borderColor} ${category.bgColor} shadow-lg`
+                    : 'border-slate-700/50 bg-slate-900/50 hover:border-slate-600'
+                  }
+                `}
+              >
+                <category.icon className={`w-5 h-5 ${activeCategory === category.id ? `text-${category.color}-400` : 'text-slate-400 group-hover:text-slate-300'}`} />
+                <span className={`font-semibold ${activeCategory === category.id ? 'text-slate-50' : 'text-slate-300 group-hover:text-slate-100'}`}>
+                  {category.label}
+                </span>
+                <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${activeCategory === category.id
+                  ? `bg-gradient-to-r ${category.gradient} text-slate-900`
+                  : 'bg-slate-800 text-slate-400'
+                  }`}>
+                  {category.count}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+
+
+        {/* PLATFORM FEATURES GRID */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
+              Why Our Registry Integration
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"> Matters</span>
+            </h3>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              A unified platform for managing environmental assets across multiple registries with consistent data structures
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Globe,
+                title: "Multi-Registry Compatibility",
+                desc: "Unified data structure supporting all major registries with cross-registry consistency and seamless portfolio management.",
+                gradient: "from-emerald-500/20 to-teal-600/20",
+                borderColor: "border-emerald-400/30",
+                iconColor: "text-emerald-400"
+              },
+              {
+                icon: Database,
+                title: "Unified Data Model",
+                desc: "Standardized schemas across registries enabling consistent reporting, analytics, and compliance tracking.",
+                gradient: "from-sky-500/20 to-blue-600/20",
+                borderColor: "border-sky-400/30",
+                iconColor: "text-sky-400"
+              },
+              {
+                icon: Shield,
+                title: "Compliance Assurance",
+                desc: "Registry-specific validation rules and automated compliance checks ensure every submission meets requirements.",
+                gradient: "from-amber-500/20 to-orange-600/20",
+                borderColor: "border-amber-400/30",
+                iconColor: "text-amber-400"
+              },
+              {
+                icon: Zap,
+                title: "Real-time Sync",
+                desc: "Automatic synchronization with registry updates, methodology changes, and regulatory requirements.",
+                gradient: "from-purple-500/20 to-pink-600/20",
+                borderColor: "border-purple-400/30",
+                iconColor: "text-purple-400"
+              },
+              {
+                icon: Building2,
+                title: "ETS Integration",
+                desc: "Direct connection to compliance markets for seamless offset management and regulatory reporting.",
+                gradient: "from-cyan-500/20 to-sky-600/20",
+                borderColor: "border-cyan-400/30",
+                iconColor: "text-cyan-400"
+              },
+              {
+                icon: CheckCircle,
+                title: "99.5% First-Pass Rate",
+                desc: "Machine-checkable submissions with pre-validation ensure near-perfect first-time registry acceptance.",
+                gradient: "from-teal-500/20 to-emerald-600/20",
+                borderColor: "border-teal-400/30",
+                iconColor: "text-teal-400"
+              },
+            ].map((feature) => (
+              <div
+                key={feature.title}
+                className={`group relative overflow-hidden rounded-3xl border ${feature.borderColor} bg-slate-900/60 backdrop-blur-sm p-8 transition-all duration-300 hover:bg-slate-800/80 hover:shadow-xl`}
+              >
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${feature.gradient}`} />
+
+                <div className="relative">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} border ${feature.borderColor} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                    <feature.icon className={`w-7 h-7 ${feature.iconColor}`} />
+                  </div>
+
+                  <h4 className="text-xl font-bold text-slate-50 mb-3 group-hover:text-white transition-colors">
+                    {feature.title}
+                  </h4>
+
+                  <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
+                    {feature.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+
       </div>
+
+      {/* Custom CSS for scrolling animation */}
+      <style>{`
+        @keyframes scroll-slow {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-slow {
+          animation: scroll-slow 30s linear infinite;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </section>
   );
 }

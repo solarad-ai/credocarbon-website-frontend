@@ -71,23 +71,6 @@ export default function AboutUsPage() {
                     </div>
                 </div>
             </section>
-
-            {/* Team CTA */}
-            <section className="relative py-16 md:py-20">
-                <div className="mx-auto max-w-4xl px-4">
-                    <div className="rounded-3xl border border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 backdrop-blur-sm p-12 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
-                            Join our mission
-                        </h2>
-                        <p className="text-lg text-slate-300 mb-8">
-                            We're always looking for talented individuals passionate about climate action.
-                        </p>
-                        <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-semibold hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
-                            View Open Positions
-                        </button>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 }
