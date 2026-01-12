@@ -15,8 +15,8 @@
 
 const GCS_BUCKET_URL = 'https://storage.googleapis.com/credocarbon-metadata';
 
-// Cache buster to force refresh after CORS configuration update (can remove after 2026-01-13)
-const CACHE_BUSTER = 'v=20260112';
+// Cache buster to force refresh - increment to bypass browser cache
+const CACHE_BUSTER = `v=${Date.now()}`;
 
 // Backend API URL (requires authentication for write operations)
 export const BACKEND_API_URL = 'https://credocarbon-website-backend-641001192587.asia-south2.run.app';
