@@ -42,12 +42,41 @@ export default function AboutUs() {
 
   const advisors = [
     {
-      name: "Dr. Vikram Singh",
+      name: "Prof. Vikram Singh",
       picture: "/images/vikram.jpeg",
-      desg: "Prof IIT Delhi || Cornell",
+      desg: "Advisor",
       expertise: "Energy systems, climate policy, and renewable energy markets",
       linkedIn:
         "https://www.linkedin.com/in/vikram-singh-53548521/?originalSubdomain=in",
+    },
+    {
+      name: "Dr. Asad Abbas",
+      picture: "/images/Asad.jpeg",
+      desg: "Advisor - MRV Engineering",
+      expertise: "MRV systems and petrochemical engineering",
+      linkedIn: "https://www.linkedin.com/in/asad-petrochem/",
+    },
+    {
+      name: "Ali Abbas",
+      picture: null, // Placeholder
+      desg: "Strategy and Business Head",
+      expertise: "Business strategy and market development",
+      linkedIn: "#", // Placeholder
+    },
+  ];
+
+  const teamMembers = [
+    {
+      name: "Ritesh Kumar",
+      picture: "/images/ritesh.jpeg", // Placeholder
+      desg: "Technology Head",
+      linkedIn: "https://www.linkedin.com/in/ritz-riteshkumar/",
+    },
+    {
+      name: "Sidhant Rajpoot",
+      picture: "/images/Sidhant.jpeg",
+      desg: "Software Development Engineer",
+      linkedIn: "https://www.linkedin.com/in/sidhantraj007/",
     },
   ];
 
@@ -163,7 +192,7 @@ export default function AboutUs() {
         </div>
 
         {/* VISION — FLOATING NODES */}
-        <div className="grid gap-12 md:grid-cols-3 mb-36">
+        <div className="grid gap-12 md:grid-cols-3 mb-24">
           {visionPoints.map((item) => (
             <div
               key={item.title}
@@ -189,8 +218,28 @@ export default function AboutUs() {
           ))}
         </div>
 
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        {/* MEET THE TEAM SECTION */}
+        {/* ═══════════════════════════════════════════════════════════════ */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-violet-400/30 bg-violet-400/10 backdrop-blur-sm mb-6">
+              <Users className="w-4 h-4 text-violet-300" />
+              <span className="text-xs tracking-[0.3em] uppercase text-violet-200">
+                Our People
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
+              Meet The <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">Team</span>
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              The passionate individuals building the future of carbon market infrastructure
+            </p>
+          </div>
+        </div>
+
         {/* FOUNDER — CINEMATIC BLOCK */}
-        <div className="mb-40">
+        <div className="mb-28">
           <h3 className="text-3xl font-bold text-slate-50 mb-12 text-center">
             Founder & CEO
           </h3>
@@ -246,29 +295,37 @@ export default function AboutUs() {
         </div>
 
         {/* ADVISORS */}
-        <div>
+        <div className="mb-28">
           <h3 className="text-3xl font-bold text-slate-50 mb-12 text-center">
             Advisors
           </h3>
 
-          <div className="grid md:grid-cols-1 gap-10 max-w-xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {advisors.map((member) => (
               <div
                 key={member.name}
-                className="relative rounded-[2.5rem] border border-slate-800 bg-[#0b1220]/70 p-8 
+                className="group relative rounded-[2rem] border border-slate-800 bg-[#0b1220]/70 p-8 
                            hover:-translate-y-2 hover:border-cyan-400/40 transition duration-500 text-center"
               >
-                <div className="absolute inset-0 opacity-0 hover:opacity-100 bg-gradient-to-br 
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[2rem] bg-gradient-to-br 
                                 from-cyan-400/10 via-transparent to-violet-400/10 transition" />
 
                 <div className="relative">
                   <div className="relative inline-block mb-5">
                     <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-cyan-400/30 to-violet-400/30" />
-                    <img
-                      src={member.picture}
-                      alt={member.name}
-                      className="relative w-36 h-36 mx-auto rounded-full object-cover border border-cyan-300/40"
-                    />
+                    {member.picture ? (
+                      <img
+                        src={member.picture}
+                        alt={member.name}
+                        className="relative w-28 h-28 mx-auto rounded-full object-cover border border-cyan-300/40"
+                      />
+                    ) : (
+                      <div className="relative w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-cyan-300/40 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-cyan-300">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <h4 className="text-lg font-semibold text-slate-50">
@@ -277,12 +334,19 @@ export default function AboutUs() {
                   <p className="text-xs text-cyan-300 mt-1">
                     {member.desg}
                   </p>
-                  <p className="text-xs text-slate-400 mt-2 italic">
-                    {member.expertise}
-                  </p>
+                  {member.expertise && (
+                    <p className="text-xs text-slate-400 mt-2 italic">
+                      {member.expertise}
+                    </p>
+                  )}
 
                   <div className="mt-5 flex justify-center">
-                    <a href={member.linkedIn}>
+                    <a
+                      href={member.linkedIn}
+                      target={member.linkedIn !== '#' ? '_blank' : undefined}
+                      rel={member.linkedIn !== '#' ? 'noopener noreferrer' : undefined}
+                      className={member.linkedIn === '#' ? 'opacity-50 cursor-not-allowed' : ''}
+                    >
                       <Linkedin className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
                     </a>
                   </div>
@@ -292,8 +356,70 @@ export default function AboutUs() {
           </div>
         </div>
 
+        {/* DIVIDER LINE */}
+        <div className="relative my-16 max-w-4xl mx-auto">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-600 to-transparent" />
+          <div className="absolute left-1/2 -translate-x-1/2 -top-3 px-4 bg-[#05080f]">
+            <div className="w-6 h-6 rounded-full border border-emerald-400/40 bg-emerald-400/10 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-emerald-400" />
+            </div>
+          </div>
+        </div>
+
+        {/* TEAM MEMBERS (No Title) */}
+        <div className="mb-20">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {teamMembers.map((member) => (
+              <div
+                key={member.name}
+                className="group relative rounded-[2rem] border border-slate-800 bg-[#0b1220]/70 p-8 
+                           hover:-translate-y-2 hover:border-emerald-400/40 transition duration-500 text-center"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[2rem] bg-gradient-to-br 
+                                from-emerald-400/10 via-transparent to-teal-400/10 transition" />
+
+                <div className="relative">
+                  <div className="relative inline-block mb-5">
+                    <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-emerald-400/30 to-teal-400/30" />
+                    {member.picture ? (
+                      <img
+                        src={member.picture}
+                        alt={member.name}
+                        className="relative w-28 h-28 mx-auto rounded-full object-cover object-top border border-emerald-300/40"
+                      />
+                    ) : (
+                      <div className="relative w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-slate-700 to-slate-800 border border-emerald-300/40 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-emerald-300">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <h4 className="text-lg font-semibold text-slate-50">
+                    {member.name}
+                  </h4>
+                  <p className="text-xs text-emerald-300 mt-1">
+                    {member.desg}
+                  </p>
+
+                  <div className="mt-5 flex justify-center">
+                    <a
+                      href={member.linkedIn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin className="w-5 h-5 text-slate-400 hover:text-emerald-400 transition" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* POSITIONING TAG */}
-        <div className="mt-28 text-center">
+        <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-3 rounded-full 
                           border border-slate-700 bg-[#070b14]/70 px-7 py-2.5 
                           text-xs tracking-wide text-slate-300">
