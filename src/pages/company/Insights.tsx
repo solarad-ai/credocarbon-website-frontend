@@ -105,12 +105,23 @@ function SectorCard({
         onToggle();
     };
 
+    const cardId = `sector-card-${sector.name.replace(/\s+/g, '-').toLowerCase()}`;
+
     return (
-        <div className={`bg-slate-900/60 backdrop-blur-sm border ${isCarbon ? 'border-emerald-500/20 hover:border-emerald-500/40' : 'border-cyan-500/20 hover:border-cyan-500/40'} rounded-2xl overflow-hidden transition-all duration-300`}>
+        <div
+            className={`bg-slate-900/60 backdrop-blur-sm border ${isCarbon ? 'border-emerald-500/20 hover:border-emerald-500/40' : 'border-cyan-500/20 hover:border-cyan-500/40'} rounded-2xl overflow-hidden transition-all duration-300`}
+            data-testid={cardId}
+            data-sector={sector.name}
+            data-expanded={isExpanded}
+        >
             {/* Card Header - Clickable */}
             <div
                 className="p-5 cursor-pointer hover:bg-slate-800/30 transition-colors"
-                onClick={handleClick}
+                onClick={(e) => {
+                    console.log(`[SectorCard] Clicked: ${sector.name}, isExpanded: ${isExpanded}`);
+                    handleClick(e);
+                }}
+                data-testid={`${cardId}-header`}
             >
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
@@ -162,7 +173,9 @@ function SectorCard({
             {/* Expanded Content - Registry Breakdown */}
             {isExpanded && (
                 <div className="border-t border-slate-700/50 p-5 animate-fadeIn">
-                    <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Registry Breakdown</h4>
+                    <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">
+                        Registry Breakdown for <span className={`${isCarbon ? 'text-emerald-400' : 'text-cyan-400'} font-bold`}>{sector.name}</span>
+                    </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {sector.registryBreakdown.map((reg, idx) => (
                             <div
@@ -461,14 +474,14 @@ export default function Insights() {
                     <div className="flex items-center gap-3">
                         <TabButton
                             active={activeTab === 'carbon'}
-                            onClick={() => setActiveTab('carbon')}
+                            onClick={() => handleTabChange('carbon')}
                             icon={<Leaf className="w-4 h-4" />}
                             label="Carbon Credits"
                             isCarbon={true}
                         />
                         <TabButton
                             active={activeTab === 'rec'}
-                            onClick={() => setActiveTab('rec')}
+                            onClick={() => handleTabChange('rec')}
                             icon={<Zap className="w-4 h-4" />}
                             label="RECs"
                             isCarbon={false}
@@ -476,14 +489,19 @@ export default function Insights() {
                     </div>
 
                     {/* Sector Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {activeSectors.map((sector) => (
-                            <SectorCard
-                                key={`${activeTab}-${sector.name}`}
-                                sector={sector}
-                                isCarbon={activeTab === 'carbon'}
-                            />
-                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        {activeSectors.map((sector) => {
+                            const cardKey = `${activeTab}-${sector.name}`;
+                            return (
+                                <SectorCard
+                                    key={cardKey}
+                                    sector={sector}
+                                    isCarbon={activeTab === 'carbon'}
+                                    isExpanded={expandedCards.has(cardKey)}
+                                    onToggle={() => toggleCard(cardKey)}
+                                />
+                            );
+                        })}
                     </div>
 
                     {/* Data Notice */}
