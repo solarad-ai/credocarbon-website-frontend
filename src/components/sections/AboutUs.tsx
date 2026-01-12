@@ -271,7 +271,7 @@ export default function AboutUs() {
                 <a href={founder.mail}>
                   <Mail className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
                 </a>
-                <a href={founder.linkedIn}>
+                <a href={founder.linkedIn} target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
                 </a>
               </div>
