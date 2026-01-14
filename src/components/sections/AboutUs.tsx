@@ -251,9 +251,17 @@ export default function AboutUs() {
 
         {/* FOUNDER — CINEMATIC BLOCK */}
         <div className="mb-28">
-          <h3 className="text-3xl font-bold text-slate-50 mb-12 text-center">
-            Founder & CEO
-          </h3>
+          {/* Decorative Title with Icon and Lines */}
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-violet-400/50" />
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-6 h-6 text-violet-400" />
+              <h3 className="text-3xl font-bold text-slate-50">
+                Founder & CEO
+              </h3>
+            </div>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-violet-400/50" />
+          </div>
 
           <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center 
                           border border-violet-500/25 bg-[#0b1220]/80 rounded-[3rem] p-14 overflow-hidden">
@@ -289,8 +297,8 @@ export default function AboutUs() {
             </div>
 
             {/* Founder Content */}
-            <div className="relative">
-              <p className="text-xs text-slate-400 mb-4">
+            <div className="relative space-y-6">
+              <p className="text-xs text-slate-400">
                 {founder.credential}
               </p>
 
@@ -298,9 +306,15 @@ export default function AboutUs() {
                 {founder.bio}
               </p>
 
-              <p className="mt-6 text-sm italic text-violet-300 leading-relaxed">
-                "{founder.vision}"
-              </p>
+              {/* Enhanced Vision Quote */}
+              <div className="relative mt-8">
+                <div className="absolute -left-2 top-0 text-5xl text-violet-400/20 font-serif">"</div>
+                <div className="pl-6 pr-4 py-4 border-l-2 border-violet-400/40">
+                  <p className="text-base font-medium text-slate-200 leading-relaxed italic">
+                    {founder.vision}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
