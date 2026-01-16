@@ -7,6 +7,7 @@ import {
   Mail,
   Linkedin,
   TrendingUp,
+  Globe,
 } from "lucide-react";
 
 export default function AboutUs() {
@@ -34,6 +35,7 @@ export default function AboutUs() {
     desg: "Founder & CEO, CredoCarbon",
     linkedIn: "https://www.linkedin.com/in/-haiderabbas/",
     mail: "mailto:haider@solarad.ai",
+    portfolio: "https://drhaiderabbas.com",
     credential: "PhD, IIT Delhi | Climate & AI Systems Architect",
     bio: "Haider brings deep expertise in building climate data infrastructure from his work at Solarad AI, where he designed AI-driven forecasting systems for solar power prediction. That experience in making climate data reliable and actionable now informs CredoCarbon's approach to carbon market infrastructure.",
     vision:
@@ -292,6 +294,9 @@ export default function AboutUs() {
                 </a>
                 <a href={founder.linkedIn} target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
+                </a>
+                <a href={founder.portfolio} target="_blank" rel="noopener noreferrer" title="Portfolio">
+                  <Globe className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
                 </a>
               </div>
             </div>
