@@ -42,13 +42,26 @@ export default function AboutUs() {
       "His long-term vision is to make climate data as trusted, auditable, and foundational to global markets as financial data is today.",
   };
 
-  const strategyHead = {
-    name: "Ali Abbas",
-    picture: "/images/Ali.png",
-    desg: "Strategy and Business Head",
-    linkedIn: "https://www.linkedin.com/in/s-ali-abbas-9a5579151/",
-    imagePosition: "center 25%", // Custom position to better frame face
-  };
+  const strategyHeads = [
+    {
+      name: "Ali Abbas",
+      picture: "/images/Ali.png",
+      desg: "Marketing & Business Head",
+      linkedIn: "https://www.linkedin.com/in/s-ali-abbas-9a5579151/",
+      imagePosition: "center 25%",
+      quote: "Driving CredoCarbon's market presence through strategic partnerships and ecosystem development",
+      bio: "Ali spearheads CredoCarbon's strategic growth and business development initiatives, bringing a wealth of experience in scaling climate technology ventures and building high-impact partnerships across the carbon market value chain.",
+    },
+    {
+      name: "Waqar Naqvi",
+      picture: "/images/Waqar.jpeg",
+      desg: "Strategy & Finance Head",
+      linkedIn: "https://www.linkedin.com/in/waqar-naqvi-79084415/",
+      imagePosition: "top",
+      quote: "Building sustainable financial frameworks for climate infrastructure growth",
+      bio: "Waqar brings extensive expertise in asset finance, portfolio management, and strategic advisory to drive CredoCarbon's financial operations and advertising strategy.",
+    },
+  ];
 
   const advisors = [
     {
@@ -62,19 +75,20 @@ export default function AboutUs() {
     {
       name: "Prof. Vikram Singh",
       picture: "/images/vikram.jpeg",
-      desg: "Advisor",
+      desg: "Advisor – Energy Systems & Climate Policy",
       expertise: "Energy systems, climate policy, and renewable energy markets",
       linkedIn:
         "https://www.linkedin.com/in/vikram-singh-53548521/?originalSubdomain=in",
       imagePosition: undefined as string | undefined,
     },
     {
-      name: "Waqar Naqvi",
-      picture: "/images/Waqar.jpeg",
-      desg: "Advisor",
-      expertise: "Asset finance, portfolio management, and strategic advisory",
-      linkedIn: "https://www.linkedin.com/in/waqar-naqvi-79084415/",
-      imagePosition: undefined as string | undefined,
+      name: "Fahreen Zehra Zaidi",
+      picture: "/images/fahreen.png",
+      desg: "Advisor – Technology & Analytics",
+      expertise: "Technology innovation and data analytics",
+      linkedIn: "https://www.linkedin.com/in/farheen-zehra-zaidi-3ba955ba/",
+      imagePosition: "center 30%",
+      hasWhiteBg: true,
     },
   ];
 
@@ -324,7 +338,7 @@ export default function AboutUs() {
           </div>
         </div>
 
-        {/* STRATEGY AND BUSINESS HEAD */}
+        {/* LEADERSHIP HEADS */}
         <div className="mb-28">
           {/* Decorative Title with Icon and Lines */}
           <div className="flex items-center justify-center gap-3 mb-12">
@@ -332,63 +346,69 @@ export default function AboutUs() {
             <div className="flex items-center gap-3">
               <TrendingUp className="w-6 h-6 text-emerald-400" />
               <h3 className="text-3xl font-bold text-slate-50">
-                Strategy & Business Head
+                Leadership
               </h3>
             </div>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-emerald-400/50" />
           </div>
 
-          <div className="relative max-w-3xl mx-auto border border-emerald-500/25 bg-[#0b1220]/80 rounded-[3rem] p-10 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10" />
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {strategyHeads.map((head) => (
+              <div
+                key={head.name}
+                className="relative border border-emerald-500/25 bg-[#0b1220]/80 rounded-[2rem] p-8 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10" />
 
-            <div className="relative flex flex-col items-center text-center space-y-6">
-              {/* Image - White Background */}
-              <div className="relative inline-block">
-                {/* White circular background for picture only */}
-                <div className="absolute inset-0 rounded-full bg-white" />
-                <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-emerald-400/20 to-cyan-400/20" />
-                <img
-                  src={strategyHead.picture}
-                  alt={strategyHead.name}
-                  className="relative w-48 h-48 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
-                  style={{ objectPosition: strategyHead.imagePosition || 'center' }}
-                />
-              </div>
+                <div className="relative flex flex-col items-center text-center space-y-5">
+                  {/* Image - White Background */}
+                  <div className="relative inline-block">
+                    <div className="absolute inset-0 rounded-full bg-white" />
+                    <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-emerald-400/20 to-cyan-400/20" />
+                    <img
+                      src={head.picture}
+                      alt={head.name}
+                      className="relative w-40 h-40 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
+                      style={{ objectPosition: head.imagePosition || 'center' }}
+                    />
+                  </div>
 
-              {/* Name and Title */}
-              <div>
-                <h4 className="text-xl font-semibold text-slate-50">
-                  {strategyHead.name}
-                </h4>
-                <p className="text-sm text-emerald-300 mt-1">
-                  {strategyHead.desg}
-                </p>
-              </div>
+                  {/* Name and Title */}
+                  <div>
+                    <h4 className="text-xl font-semibold text-slate-50">
+                      {head.name}
+                    </h4>
+                    <p className="text-sm text-emerald-300 mt-1">
+                      {head.desg}
+                    </p>
+                  </div>
 
-              {/* Vision Quote */}
-              <div className="relative w-full max-w-xl">
-                <div className="absolute -left-2 top-0 text-4xl text-emerald-400/20 font-serif">"</div>
-                <div className="pl-6 pr-4 py-3 border-l-2 border-emerald-400/40">
-                  <p className="text-base font-medium text-slate-200 leading-relaxed italic text-left">
-                    Driving CredoCarbon's market presence through strategic partnerships and ecosystem development
-                  </p>
+                  {/* Vision Quote */}
+                  <div className="relative w-full">
+                    <div className="absolute -left-2 top-0 text-3xl text-emerald-400/20 font-serif">"</div>
+                    <div className="pl-5 pr-3 py-2 border-l-2 border-emerald-400/40">
+                      <p className="text-sm font-medium text-slate-200 leading-relaxed italic text-left">
+                        {head.quote}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bio Content */}
+                  <div className="w-full text-left">
+                    <p className="text-sm text-slate-300 leading-relaxed">
+                      {head.bio}
+                    </p>
+                  </div>
+
+                  {/* LinkedIn */}
+                  <div className="mt-2 flex justify-center gap-5">
+                    <a href={head.linkedIn} target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-5 h-5 text-slate-400 hover:text-emerald-400 transition" />
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              {/* Bio Content */}
-              <div className="space-y-3 w-full max-w-xl text-left">
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  Ali spearheads CredoCarbon's strategic growth and business development initiatives, bringing a wealth of experience in scaling climate technology ventures and building high-impact partnerships across the carbon market value chain.
-                </p>
-              </div>
-
-              {/* LinkedIn */}
-              <div className="mt-2 flex justify-center gap-5">
-                <a href={strategyHead.linkedIn} target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="w-5 h-5 text-slate-400 hover:text-emerald-400 transition" />
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -473,11 +493,17 @@ export default function AboutUs() {
                 <div className="relative">
                   <div className="relative inline-block mb-5">
                     <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-br from-cyan-400/30 to-violet-400/30" />
+                    {member.hasWhiteBg && (
+                      <div className="absolute inset-0 rounded-full bg-white" />
+                    )}
                     {member.picture ? (
                       <img
                         src={member.picture}
                         alt={member.name}
-                        className="relative w-28 h-28 mx-auto rounded-full object-cover border border-cyan-300/40"
+                        className={`relative w-28 h-28 mx-auto rounded-full object-cover ${member.hasWhiteBg
+                          ? 'border-4 border-white shadow-lg'
+                          : 'border border-cyan-300/40'
+                          }`}
                         style={{ objectPosition: member.imagePosition || 'top' }}
                       />
                     ) : (
