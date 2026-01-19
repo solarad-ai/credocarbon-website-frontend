@@ -47,7 +47,7 @@ const blocks = [
   },
   {
     title: "Process automation & consistency checks",
-    desc: "Built-in automation removes repetitive tasks and ensures workflow consistency, reducing errors and cycle times.",
+    desc: "Intelligent automation removes repetitive tasks and ensures workflow consistency, reducing errors and cycle times.",
     items: [
       "Auto-run completeness checks before allowing submission state.",
       "Detect conflicting parameters or mismatched monitoring periods.",
@@ -76,7 +76,7 @@ export default function WorkflowEngine() {
       className="bg-slate-950 py-20 md:py-24 border-t border-emerald-500/10"
     >
       <div className="mx-auto max-w-6xl px-4">
-        
+
         {/* Section Header */}
         <div className="mb-10 text-center md:mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400/80">
@@ -86,8 +86,8 @@ export default function WorkflowEngine() {
             State-driven workflows, automation and SLA governance
           </h2>
           <p className="mt-4 text-sm md:text-base text-slate-400 max-w-3xl mx-auto">
-            A robust workflow engine ensures discipline, compliance and auditability across 
-            Developer → VVB → Registry cycles. Every action, state and deadline is structured 
+            A robust workflow engine ensures discipline, compliance and auditability across
+            Developer → VVB → Registry cycles. Every action, state and deadline is structured
             and documented.
           </p>
         </div>

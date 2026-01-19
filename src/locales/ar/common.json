@@ -1,0 +1,55 @@
+{
+    "nav": {
+        "home": "الرئيسية",
+        "platform": "المنصة",
+        "developers": "المطورون",
+        "vvbs": "VVBs",
+        "buyers": "المشترون",
+        "about": "من نحن"
+    },
+    "header": {
+        "explore": "استكشف",
+        "explorePlatform": "استكشف المنصة",
+        "tagline": "MRV موحد · السجل · التداول"
+    },
+    "footer": {
+        "description": "العمود الفقري الرقمي لأسواق الكربون في العصر الجديد — حيث تعمل الشفافية ونزاهة التحقق وثقة السوق على نظام سجل مشترك.",
+        "product": "المنتج",
+        "features": "المميزات",
+        "pricing": "الأسعار",
+        "api": "API",
+        "registries": "السجلات",
+        "company": "الشركة",
+        "aboutUs": "من نحن",
+        "insights": "رؤى",
+        "blog": "المدونة",
+        "careers": "الوظائف",
+        "press": "الصحافة",
+        "resources": "الموارد",
+        "documentation": "التوثيق",
+        "helpCenter": "مركز المساعدة",
+        "community": "المجتمع",
+        "webinars": "الندوات",
+        "faq": "الأسئلة الشائعة",
+        "legal": "القانونية",
+        "privacy": "سياسة الخصوصية",
+        "terms": "شروط الخدمة",
+        "cookies": "سياسة ملفات تعريف الارتباط",
+        "compliance": "الامتثال",
+        "allRightsReserved": "جميع الحقوق محفوظة.",
+        "newsletter": "النشرة الإخبارية",
+        "newsletterText": "ابق على اطلاع بأحدث رؤانا وأخبارنا.",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "subscribe": "اشترك"
+    },
+    "languageBar": {
+        "arabic": "العربية",
+        "english": "English"
+    },
+    "common": {
+        "learnMore": "اعرف المزيد",
+        "getStarted": "ابدأ الآن",
+        "contactUs": "اتصل بنا",
+        "viewAll": "عرض الكل"
+    }
+}

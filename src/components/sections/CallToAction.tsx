@@ -1,16 +1,18 @@
 import { Button } from "../ui/Button";
+import { useTranslation } from "react-i18next";
 
 export default function CallToAction() {
+  const { t } = useTranslation('home');
+
   return (
     <section className="relative overflow-hidden bg-slate-950 py-16 md:py-20">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(45,212,191,0.3),_transparent_55%)]" />
       <div className="relative mx-auto max-w-4xl px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-slate-50">
-          Ready to pilot CredoCarbon with a live project?
+          {t('callToAction.title')}
         </h2>
         <p className="mt-4 text-sm md:text-base text-slate-400">
-          Start with one asset or portfolio. We help you configure MRV, registry workflows and OTC rails
-          for your specific requirements.
+          {t('callToAction.description')}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Button
@@ -22,7 +24,7 @@ export default function CallToAction() {
               )
             }
           >
-            Book a 30-min discovery call
+            {t('callToAction.bookCall')}
           </Button>
           <a
             href="https://dashboard.credocarbon.com"
@@ -30,7 +32,7 @@ export default function CallToAction() {
             rel="noopener noreferrer"
           >
             <Button variant="outline" className="text-[13px] font-semibold">
-              Explore product walkthrough
+              {t('callToAction.exploreWalkthrough')}
             </Button>
           </a>
 

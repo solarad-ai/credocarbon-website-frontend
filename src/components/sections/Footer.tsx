@@ -1,31 +1,33 @@
 import { Mail, Phone, Linkedin } from "lucide-react";
 import { Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation('common');
   const year = new Date().getFullYear();
 
   const navigationLinks = {
     product: [
-      { label: "Pricing", href: "/pricing" },
-      { label: "Registries", href: "/registries" }
+      { labelKey: "footer.pricing", href: "/pricing" },
+      { labelKey: "footer.registries", href: "/registries" }
     ],
     company: [
-      { label: "About Us", href: "/about-us" },
-      { label: "Insights", href: "/insights" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blogs & Newsletters", href: "/blog" }
+      { labelKey: "footer.aboutUs", href: "/about-us" },
+      { labelKey: "footer.insights", href: "/insights" },
+      { labelKey: "footer.careers", href: "/careers" },
+      { labelKey: "footer.blog", href: "/blog" }
     ],
     resources: [
-      { label: "Documentation", href: "/docs" },
-      { label: "Help Center", href: "/help" },
-      { label: "FAQ", href: "/faq" }
+      { labelKey: "footer.documentation", href: "/docs" },
+      { labelKey: "footer.helpCenter", href: "/help" },
+      { labelKey: "footer.faq", href: "/faq" }
     ],
     legal: [
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Cookie Policy", href: "/cookies" },
-      { label: "Compliance", href: "/compliance" }
+      { labelKey: "footer.terms", href: "/terms" },
+      { labelKey: "footer.privacy", href: "/privacy" },
+      { labelKey: "footer.cookies", href: "/cookies" },
+      { labelKey: "footer.compliance", href: "/compliance" }
     ]
   };
 
@@ -57,7 +59,7 @@ export default function Footer() {
             </div>
 
             <p className="text-xs md:text-sm leading-relaxed text-slate-400 max-w-xs">
-              Infrastructure for carbon credit registration, validation, issuance, and trading across global registries.
+              {t('footer.description')}
             </p>
 
             {/* Contact Info */}
@@ -93,16 +95,16 @@ export default function Footer() {
           {/* PRODUCT */}
           <div>
             <h4 className="text-xs md:text-sm font-semibold text-slate-200 mb-2 md:mb-4">
-              Product
+              {t('footer.product')}
             </h4>
             <ul className="space-y-1.5 md:space-y-2.5 text-xs md:text-sm">
               {navigationLinks.product.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <Link
                     to={link.href}
                     className="hover:text-emerald-400 transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -112,16 +114,16 @@ export default function Footer() {
           {/* COMPANY */}
           <div>
             <h4 className="text-xs md:text-sm font-semibold text-slate-200 mb-2 md:mb-4">
-              Company
+              {t('footer.company')}
             </h4>
             <ul className="space-y-1.5 md:space-y-2.5 text-xs md:text-sm">
               {navigationLinks.company.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <Link
                     to={link.href}
                     className="hover:text-emerald-400 transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -131,16 +133,16 @@ export default function Footer() {
           {/* RESOURCES */}
           <div>
             <h4 className="text-xs md:text-sm font-semibold text-slate-200 mb-2 md:mb-4">
-              Resources
+              {t('footer.resources')}
             </h4>
             <ul className="space-y-1.5 md:space-y-2.5 text-xs md:text-sm">
               {navigationLinks.resources.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <Link
                     to={link.href}
                     className="hover:text-emerald-400 transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -150,16 +152,16 @@ export default function Footer() {
           {/* LEGAL */}
           <div>
             <h4 className="text-xs md:text-sm font-semibold text-slate-200 mb-2 md:mb-4">
-              Legal
+              {t('footer.legal')}
             </h4>
             <ul className="space-y-1.5 md:space-y-2.5 text-xs md:text-sm">
               {navigationLinks.legal.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <Link
                     to={link.href}
                     className="hover:text-emerald-400 transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -199,7 +201,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
           <p className="text-slate-500">
-            © {year} CredoCarbon. All rights reserved.
+            © {year} CredoCarbon. {t('footer.allRightsReserved')}
           </p>
 
           <div className="flex items-center gap-2">

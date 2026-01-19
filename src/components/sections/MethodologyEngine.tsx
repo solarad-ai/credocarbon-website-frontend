@@ -83,7 +83,6 @@ const ChartIllustration = () => (
   </svg>
 );
 
-// Abstract illustration: Compliance - Shield with checkmarks
 const ComplianceIllustration = () => (
   <svg viewBox="0 0 60 60" fill="none" className="w-full h-full">
     {/* Shield */}
@@ -104,34 +103,38 @@ const ComplianceIllustration = () => (
   </svg>
 );
 
-const methodologyFeatures = [
-  {
-    title: "Methodology Detection",
-    desc: "Auto-identify eligible methodologies and generate project templates",
-    tags: ["Verra", "Gold Standard", "GCC"],
-    Illustration: MappingIllustration,
-  },
-  {
-    title: "Baseline Setup",
-    desc: "Configure emission factors and technology profiles with fallback logic",
-    tags: ["Grid factors", "Conservative", "Fallback"],
-    Illustration: CalculatorIllustration,
-  },
-  {
-    title: "Monitoring Automation",
-    desc: "Auto-generated monitoring sheets with anomaly detection",
-    tags: ["Missing hours", "Outage adj.", "Curtailment"],
-    Illustration: ChartIllustration,
-  },
-  {
-    title: "Validation Rules",
-    desc: "Automated rule enforcement and cross-registry compatibility checks",
-    tags: ["Completeness", "Validation", "Format"],
-    Illustration: ComplianceIllustration,
-  }
-];
+import { useTranslation } from "react-i18next";
 
 export default function MethodologyEngine() {
+  const { t } = useTranslation('platform');
+
+  const methodologyFeatures = [
+    {
+      title: t('calculation.features.detection.title'),
+      desc: t('calculation.features.detection.desc'),
+      tags: t('calculation.features.detection.tags', { returnObjects: true }) as string[],
+      Illustration: MappingIllustration,
+    },
+    {
+      title: t('calculation.features.baseline.title'),
+      desc: t('calculation.features.baseline.desc'),
+      tags: t('calculation.features.baseline.tags', { returnObjects: true }) as string[],
+      Illustration: CalculatorIllustration,
+    },
+    {
+      title: t('calculation.features.monitoring.title'),
+      desc: t('calculation.features.monitoring.desc'),
+      tags: t('calculation.features.monitoring.tags', { returnObjects: true }) as string[],
+      Illustration: ChartIllustration,
+    },
+    {
+      title: t('calculation.features.validation.title'),
+      desc: t('calculation.features.validation.desc'),
+      tags: t('calculation.features.validation.tags', { returnObjects: true }) as string[],
+      Illustration: ComplianceIllustration,
+    }
+  ];
+
   return (
     <section
       id="methodology"
@@ -156,17 +159,17 @@ export default function MethodologyEngine() {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-2 mb-4 backdrop-blur-sm">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-400">
-              Calculation Engine
+              {t('calculation.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Automated{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Calculations</span>
+            {t('calculation.title1')}{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{t('calculation.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Methodology-aware computation with automated validation
+            {t('calculation.description')}
           </p>
         </div>
 

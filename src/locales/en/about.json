@@ -1,0 +1,50 @@
+{
+    "badge": "About CredoCarbon",
+    "hero": {
+        "title1": "Climate infrastructure,",
+        "title2": "engineered for trust",
+        "description": "CredoCarbon is a digital backbone for the next era of carbon markets — where transparency, verification integrity and market confidence operate on a shared system of record.",
+        "differentiator": "Unlike registries, consultants, or marketplaces, we are a",
+        "differentiatorHighlight": "neutral infrastructure layer",
+        "differentiatorEnd": "that connects all three."
+    },
+    "whyNow": {
+        "title": "Why now",
+        "description": "Rising compliance pressure, Article 6 implementation, increased buyer scrutiny, and registry scaling demands require infrastructure-grade solutions."
+    },
+    "mission": {
+        "badge": "Our Mission",
+        "title1": "To build infrastructure where",
+        "title2": "every credit, dataset, and verification",
+        "title3": "can be independently verified",
+        "subtitle": "Forming the backbone for scalable, credible global climate action"
+    },
+    "vision": {
+        "point1": {
+            "title": "Designed for a low-carbon world",
+            "text": "CredoCarbon is built for a future where climate transparency is as critical as financial transparency."
+        },
+        "point2": {
+            "title": "Structurally auditable",
+            "text": "Every action, dataset, and verification is traceable by design — not by policy, but by architecture."
+        },
+        "point3": {
+            "title": "Global from day one",
+            "text": "Built for cross-border compliance, multi-registry participation and international climate markets."
+        }
+    },
+    "team": {
+        "badge": "Our People",
+        "title": "Meet The",
+        "titleHighlight": "Team",
+        "subtitle": "The passionate individuals building the future of carbon market infrastructure"
+    },
+    "sections": {
+        "founderCEO": "Founder & CEO",
+        "leadership": "Leadership",
+        "advisoryBoard": "Advisory Board"
+    },
+    "footer": {
+        "tagline": "Independent climate infrastructure venture"
+    }
+}

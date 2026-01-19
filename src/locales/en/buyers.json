@@ -1,0 +1,119 @@
+{
+    "buyerJourney": {
+        "badge": "Buyer Experience",
+        "title1": "Intelligent",
+        "title2": "Procurement",
+        "description": "Risk-adjusted pricing, full provenance tracking, and VVB-verified documentation for confident carbon credit procurement",
+        "flow": {
+            "discover": {
+                "step": "Discover",
+                "title": "Smart Project Discovery",
+                "desc": "AI-powered filtering by geography, methodology, SDG alignment, and vintage"
+            },
+            "analyze": {
+                "step": "Analyze",
+                "title": "Portfolio Analytics",
+                "desc": "Diversification scoring, exposure analysis, and procurement optimization tools"
+            },
+            "negotiate": {
+                "step": "Negotiate",
+                "title": "Professional Deal Rooms",
+                "desc": "Secure negotiation spaces with term sheets, pricing trends, and escrow workflows"
+            },
+            "settle": {
+                "step": "Settle",
+                "title": "Automated Settlement",
+                "desc": "Registry-validated transfers with serial tracking"
+            }
+        },
+        "stats": {
+            "projects": {
+                "value": "2,500+",
+                "label": "Projects Available"
+            },
+            "dueDiligence": {
+                "value": "3 days",
+                "label": "Avg. Due Diligence"
+            },
+            "dealRooms": {
+                "value": "250+",
+                "label": "Deal Rooms Active"
+            },
+            "retirement": {
+                "value": "Instant",
+                "label": "Retirement Certificates"
+            }
+        }
+    },
+    "marketOps": {
+        "badge": "Market Operations",
+        "title1": "Professional carbon credit",
+        "title2": "infrastructure",
+        "description": "Advanced tools for pricing analysis, quality assessment, and transaction execution",
+        "features": {
+            "pricing": {
+                "title": "Pricing Intelligence",
+                "desc": "Real-time pricing signals by geography, methodology, and vintage with liquidity analysis",
+                "capabilities": [
+                    "Price band analysis",
+                    "Vintage premiums",
+                    "Market trend detection"
+                ]
+            },
+            "quality": {
+                "title": "Quality & Risk Scoring",
+                "desc": "Comprehensive scoring based on methodology strength, safeguards, co-benefits, and verification performance",
+                "capabilities": [
+                    "Multi-factor scoring",
+                    "Risk flag detection",
+                    "Batch metadata analysis"
+                ]
+            },
+            "dueDiligence": {
+                "title": "Due Diligence Suite",
+                "desc": "Access methodology analysis, project documentation, and auto-generated procurement bundles",
+                "capabilities": [
+                    "Document access",
+                    "Methodology review",
+                    "Procurement automation"
+                ]
+            },
+            "provenance": {
+                "title": "Credit Provenance",
+                "desc": "Complete chain-of-custody tracking from issuance to retirement with immutable records",
+                "capabilities": [
+                    "Full traceability",
+                    "Retirement certificates",
+                    "SDG impact labeling"
+                ]
+            },
+            "settlement": {
+                "title": "Settlement & Transfers",
+                "desc": "Automated settlement workflows with escrow, registry validation, serial tracking, and compliance logging",
+                "capabilities": [
+                    "Escrow workflows",
+                    "Registry validation",
+                    "Audit trail generation"
+                ]
+            }
+        },
+        "stats": {
+            "settlement": {
+                "value": "99.8%",
+                "label": "Settlement Success",
+                "desc": "Transaction completion rate"
+            },
+            "dealTime": {
+                "value": "3 days",
+                "label": "Avg. Deal Time",
+                "desc": "Negotiation to settlement"
+            },
+            "traded": {
+                "value": "$50M+",
+                "label": "Credits Traded",
+                "desc": "Total platform volume"
+            }
+        },
+        "cta": "Institutional-grade trading infrastructure for carbon markets"
+    }
+}

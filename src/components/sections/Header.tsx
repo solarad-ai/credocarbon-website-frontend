@@ -1,9 +1,17 @@
 import { NavLink } from "react-router-dom";
-import { Leaf, Menu, X, Sparkles } from "lucide-react";
+import { Leaf, Menu, X, Sparkles, Globe } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isArabic = i18n.language === 'ar';
+
+  const toggleLanguage = () => {
+    const newLang = isArabic ? 'en' : 'ar';
+    i18n.changeLanguage(newLang);
+  };
 
   const baseLink =
     "text-sm text-slate-300 hover:text-emerald-400 transition";
@@ -36,7 +44,7 @@ export default function Header() {
                 CredoCarbon
               </span>
               <span className="text-[10px] md:text-xs text-slate-400">
-                Unified MRV · Registry · Trading
+                {t('header.tagline')}
               </span>
             </div>
           </NavLink>
@@ -47,47 +55,57 @@ export default function Header() {
               to="/"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              Home
+              {t('nav.home')}
             </NavLink>
 
             <NavLink
               to="/platform"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              Platform
+              {t('nav.platform')}
             </NavLink>
 
             <NavLink
               to="/developers"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              Developers
+              {t('nav.developers')}
             </NavLink>
 
             <NavLink
               to="/vvb"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              VVBs
+              {t('nav.vvbs')}
             </NavLink>
 
             <NavLink
               to="/buyers"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              Buyers
+              {t('nav.buyers')}
             </NavLink>
 
             <NavLink
               to="/about"
               className={({ isActive }) => (isActive ? activeLink : baseLink)}
             >
-              About
+              {t('nav.about')}
             </NavLink>
           </nav>
 
           {/* CTA BUTTON & MOBILE MENU TOGGLE */}
           <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900/50 hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300 text-xs font-medium"
+              aria-label="Toggle language"
+            >
+              <Globe className="h-3.5 w-3.5 text-slate-400" />
+              <span className="text-slate-300">{isArabic ? 'EN' : 'العربية'}</span>
+            </button>
+
             <a
               href="https://dashboard.credocarbon.com"
               target="_blank"
@@ -108,7 +126,7 @@ export default function Header() {
               {/* Inner content */}
               <span className="relative z-10 flex items-center gap-1.5">
                 <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4 animate-spin-slow" />
-                <span>Explore</span>
+                <span>{t('header.explore')}</span>
               </span>
             </a>
 
@@ -160,7 +178,7 @@ export default function Header() {
                       }`
                     }
                   >
-                    Home
+                    {t('nav.home')}
                   </NavLink>
 
                   <NavLink
@@ -173,7 +191,7 @@ export default function Header() {
                       }`
                     }
                   >
-                    Platform
+                    {t('nav.platform')}
                   </NavLink>
 
                   <NavLink
@@ -186,7 +204,7 @@ export default function Header() {
                       }`
                     }
                   >
-                    Developers
+                    {t('nav.developers')}
                   </NavLink>
 
                   <NavLink
@@ -199,7 +217,7 @@ export default function Header() {
                       }`
                     }
                   >
-                    VVBs
+                    {t('nav.vvbs')}
                   </NavLink>
 
                   <NavLink
@@ -212,7 +230,7 @@ export default function Header() {
                       }`
                     }
                   >
-                    Buyers
+                    {t('nav.buyers')}
                   </NavLink>
 
                   <NavLink
@@ -225,8 +243,21 @@ export default function Header() {
                       }`
                     }
                   >
-                    About
+                    {t('nav.about')}
                   </NavLink>
+                </div>
+
+                {/* Mobile Language Toggle */}
+                <div className="px-4 py-3 border-t border-slate-800/30">
+                  <button
+                    onClick={toggleLanguage}
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg border border-slate-700 bg-slate-900/50 hover:border-emerald-500/50 hover:bg-slate-800/80 transition-all duration-300"
+                  >
+                    <Globe className="h-4 w-4 text-slate-400" />
+                    <span className="text-sm font-medium text-slate-300">
+                      {isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
+                    </span>
+                  </button>
                 </div>
               </nav>
 
@@ -248,7 +279,7 @@ export default function Header() {
 
                   <span className="relative z-10 flex items-center gap-2">
                     <Sparkles className="h-4 w-4 animate-spin-slow" />
-                    <span>Explore Platform</span>
+                    <span>{t('header.explorePlatform')}</span>
                   </span>
                 </a>
               </div>

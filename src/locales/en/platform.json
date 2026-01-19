@@ -1,0 +1,356 @@
+{
+    "lifecycle": {
+        "badge": "Complete Lifecycle Flow",
+        "title1": "From PDD to Retirement",
+        "title2": "One Seamless Journey",
+        "description": "Four interconnected stages. Complete visibility. Full traceability.",
+        "stages": {
+            "design": {
+                "title": "Design & Onboard",
+                "shortDesc": "Project Foundation",
+                "highlights": [
+                    "PDD Setup",
+                    "Baseline Logic",
+                    "Stakeholder Mapping"
+                ]
+            },
+            "monitor": {
+                "title": "Monitor & Validate",
+                "shortDesc": "Data Integrity",
+                "highlights": [
+                    "IoT Integration",
+                    "Anomaly Detection",
+                    "Auto-Correction"
+                ]
+            },
+            "report": {
+                "title": "Report & Submit",
+                "shortDesc": "Registry Ready",
+                "highlights": [
+                    "Auto-Reports",
+                    "Evidence Bundles",
+                    "Crypto Integrity"
+                ]
+            },
+            "verify": {
+                "title": "Verify & Trade",
+                "shortDesc": "Market Access",
+                "highlights": [
+                    "VVB Review",
+                    "Issuance",
+                    "Deal Rooms"
+                ]
+            }
+        },
+        "features": {
+            "realtime": {
+                "label": "Real-time Tracking",
+                "desc": "Live status updates"
+            },
+            "crypto": {
+                "label": "Crypto Integrity",
+                "desc": "Immutable records"
+            },
+            "traceability": {
+                "label": "Full Traceability",
+                "desc": "End-to-end audit"
+            },
+            "multiRegistry": {
+                "label": "Multi-Registry",
+                "desc": "Global compliance"
+            }
+        }
+    },
+    "mrv": {
+        "badge": "MRV Engine",
+        "title1": "MRV that feels like a",
+        "title2": "product",
+        "title3": "— not a process",
+        "description": "Every step encoded into a rule-based engine. Data streams, validations, and verification cycles on a single, traceable system.",
+        "pillars": {
+            "monitoring": {
+                "title": "Monitoring",
+                "desc": "AI-powered satellite and sensor analysis for real-time project monitoring"
+            },
+            "reporting": {
+                "title": "Reporting",
+                "desc": "Automated report generation with intelligent data synthesis and compliance mapping"
+            },
+            "verification": {
+                "title": "Verification",
+                "desc": "AI-assisted validation with outlier detection and confidence scoring"
+            }
+        },
+        "tagline": "One shared, versioned, auditable project record"
+    },
+    "registries": {
+        "badge": "Global Registry Integration",
+        "title1": "Integrated with",
+        "title2": "Global Registries",
+        "description": "CredoCarbon connects seamlessly with major carbon credit registries, renewable energy certificate systems, and compliance emission trading platforms worldwide — ensuring one unified interface for all your environmental assets.",
+        "stats": {
+            "carbon": "Carbon Registries",
+            "rec": "REC Systems",
+            "ets": "ETS Platforms",
+            "countries": "Countries"
+        },
+        "categories": {
+            "carbon": "Carbon Credit Registries",
+            "rec": "REC Registries",
+            "ets": "Compliance / ETS"
+        },
+        "featuredLabel": "Featured Integrations",
+        "whyMatters": {
+            "title1": "Why Our Registry Integration",
+            "title2": "Matters",
+            "description": "A unified platform for managing environmental assets across multiple registries with consistent data structures"
+        },
+        "features": {
+            "multiRegistry": {
+                "title": "Multi-Registry Compatibility",
+                "desc": "Unified data structure supporting all major registries with cross-registry consistency and seamless portfolio management."
+            },
+            "unifiedData": {
+                "title": "Unified Data Model",
+                "desc": "Standardized schemas across registries enabling consistent reporting, analytics, and compliance tracking."
+            },
+            "compliance": {
+                "title": "Compliance Assurance",
+                "desc": "Registry-specific validation rules and automated compliance checks ensure every submission meets requirements."
+            },
+            "realtime": {
+                "title": "Real-time Sync",
+                "desc": "Automatic synchronization with registry updates, methodology changes, and regulatory requirements."
+            },
+            "ets": {
+                "title": "ETS Integration",
+                "desc": "Direct connection to compliance markets for seamless offset management and regulatory reporting."
+            },
+            "firstPass": {
+                "title": "First-Pass Rate 99.5%",
+                "desc": "Machine-checkable submissions with pre-validation ensure near-perfect first-time registry acceptance."
+            }
+        }
+    },
+    "ai": {
+        "badge": "AI Intelligence Layer",
+        "title1": "System-level",
+        "title2": "intelligence",
+        "title3": "for MRV & procurement",
+        "description": "CredoCarbon uses contextual AI to enhance decision-making across project design, monitoring, verification and market operations — without overwhelming teams or replacing expert judgement.",
+        "capabilities": {
+            "mrvIntelligence": {
+                "title": "MRV Intelligence",
+                "desc": "Satellite and aerial imagery analysis with land use detection, vegetation change monitoring, and sensor data validation.",
+                "features": [
+                    "Satellite imagery analysis",
+                    "Anomaly detection",
+                    "Time-series validation"
+                ]
+            },
+            "forecasting": {
+                "title": "Generation Forecasting",
+                "desc": "Deep learning models for solar/wind forecasting, baseline estimation, and additionality calculations.",
+                "features": [
+                    "Predictive generation models",
+                    "Baseline modeling",
+                    "Dynamic model switching"
+                ]
+            },
+            "quality": {
+                "title": "Quality Assurance",
+                "desc": "Automated outlier detection, data gap imputation, and sensor error identification using ML-powered validation.",
+                "features": [
+                    "Outlier detection",
+                    "Data gap filling",
+                    "Sensor drift alerts"
+                ]
+            },
+            "reporting": {
+                "title": "Automated Reporting",
+                "desc": "Natural language generation for MRV reports, executive summaries, and compliance documentation.",
+                "features": [
+                    "Auto-generated reports",
+                    "Template mapping",
+                    "Compliance narratives"
+                ]
+            },
+            "verification": {
+                "title": "Verification Support",
+                "desc": "AI-powered credit calculation validation, confidence scoring, and statistical anomaly flagging.",
+                "features": [
+                    "Emission reduction estimation",
+                    "Confidence scores",
+                    "Uncertainty quantification"
+                ]
+            },
+            "regulatory": {
+                "title": "Regulatory Intelligence",
+                "desc": "Semantic parsing of Verra, Gold Standard, and CDM frameworks with change detection and eligibility alerts.",
+                "features": [
+                    "Standard interpretation",
+                    "Change detection",
+                    "Eligibility monitoring"
+                ]
+            }
+        },
+        "stats": {
+            "models": {
+                "value": "20+",
+                "label": "ML Models",
+                "desc": "Specialized algorithms"
+            },
+            "accuracy": {
+                "value": "99.2%",
+                "label": "Accuracy Rate",
+                "desc": "Anomaly detection"
+            },
+            "processing": {
+                "value": "Real-time",
+                "label": "Processing",
+                "desc": "Satellite & sensor data"
+            },
+            "dataPoints": {
+                "value": "5M+",
+                "label": "Data Points",
+                "desc": "Daily processing"
+            }
+        },
+        "cta": "AI-powered insights without replacing human expertise"
+    },
+    "developer": {
+        "badge": "Developer Tools",
+        "title1": "Project",
+        "title2": "Workflow",
+        "description": "Streamlined tools for every stage of your carbon project",
+        "features": {
+            "setup": {
+                "title": "Project Setup",
+                "desc": "AI-driven templates with auto-populated fields and guided workflows",
+                "highlight": "60% faster setup"
+            },
+            "data": {
+                "title": "Data Integration",
+                "desc": "Connect SCADA, meters, and sensors with ML-powered validation",
+                "highlight": "Real-time monitoring"
+            },
+            "vvb": {
+                "title": "VVB Collaboration",
+                "desc": "Organized workflows with completeness checks and comment threads",
+                "highlight": "Streamlined cycles"
+            },
+            "credits": {
+                "title": "Credit Management",
+                "desc": "Deal rooms, batch tracking, and retirement coordination",
+                "highlight": "Post-issuance tools"
+            }
+        }
+    },
+    "evidence": {
+        "badge": "Evidence Management",
+        "title1": "Organized",
+        "title2": "Documentation",
+        "description": "Structured evidence management with smart organization and version tracking",
+        "features": {
+            "document": {
+                "title": "Document Organization",
+                "desc": "AI-powered categorization with intelligent search across thousands of files",
+                "highlight": "Instant retrieval"
+            },
+            "version": {
+                "title": "Version Control",
+                "desc": "Track changes with automatic snapshots and rollback capability",
+                "highlight": "Full history"
+            },
+            "linking": {
+                "title": "Data Linking",
+                "desc": "Connect documents to monitoring periods, parameters, and calculations",
+                "highlight": "Contextual relationships"
+            },
+            "comments": {
+                "title": "Comment Threads",
+                "desc": "Structured VVB-developer communication with severity tracking",
+                "highlight": "No email chaos"
+            },
+            "export": {
+                "title": "Export Packages",
+                "desc": "Bundle documents with completeness checks for registry submission",
+                "highlight": "One-click export"
+            }
+        }
+    },
+    "pilot": {
+        "badge": "Implementation",
+        "title1": "Start with a",
+        "title2": "Live Pilot",
+        "description": "Real-world MRV workflows from setup to portfolio scaling",
+        "phases": {
+            "setup": {
+                "phase": "Start",
+                "title": "Pilot Setup",
+                "desc": "Configure your first project with methodology selection and data source integration",
+                "timeline": "Week 1-2"
+            },
+            "execute": {
+                "phase": "Execute",
+                "title": "Live MRV Cycle",
+                "desc": "Run monitoring, reporting, and verification with real data and VVB collaboration",
+                "timeline": "Week 3-8"
+            },
+            "scale": {
+                "phase": "Scale",
+                "title": "Portfolio Expansion",
+                "desc": "Clone successful templates across multiple assets and methodologies",
+                "timeline": "Month 3+"
+            }
+        },
+        "cta": {
+            "question": "Ready to start your pilot?",
+            "button": "Talk to us"
+        }
+    },
+    "calculation": {
+        "badge": "Calculation Engine",
+        "title1": "Automated",
+        "title2": "Calculations",
+        "description": "Methodology-aware computation with automated validation",
+        "features": {
+            "detection": {
+                "title": "Methodology Detection",
+                "desc": "ML-powered identification of eligible methodologies and project templates",
+                "tags": [
+                    "Verra",
+                    "Gold Standard",
+                    "GCC"
+                ]
+            },
+            "baseline": {
+                "title": "Baseline Setup",
+                "desc": "Configure emission factors and technology profiles with fallback logic",
+                "tags": [
+                    "Grid factors",
+                    "Conservative",
+                    "Fallback"
+                ]
+            },
+            "monitoring": {
+                "title": "Monitoring Automation",
+                "desc": "AI-generated monitoring sheets with intelligent anomaly detection",
+                "tags": [
+                    "Missing hours",
+                    "Outage adj.",
+                    "Curtailment"
+                ]
+            },
+            "validation": {
+                "title": "Validation Rules",
+                "desc": "Automated rule enforcement and cross-registry compatibility checks",
+                "tags": [
+                    "Completeness",
+                    "Validation",
+                    "Format"
+                ]
+            }
+        }
+    }
+}

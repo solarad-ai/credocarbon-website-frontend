@@ -1,6 +1,7 @@
 // src/components/sections/Registries.tsx
 import { Globe, Database, Zap, Shield, CheckCircle, MapPin, Building2, Leaf, Sun, Factory } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // Registry type definition
 interface Registry {
@@ -71,43 +72,6 @@ const etsRegistries: Registry[] = [
   { name: "Indonesia ETS", country: "Indonesia", abbr: "ID" },
 ];
 
-// Category tabs
-const categories = [
-  {
-    id: "carbon",
-    label: "Carbon Credit Registries",
-    icon: Leaf,
-    data: voluntaryCarbon,
-    color: "emerald",
-    gradient: "from-emerald-400 to-teal-400",
-    borderColor: "border-emerald-400/30",
-    bgColor: "bg-emerald-500/10",
-    count: voluntaryCarbon.length
-  },
-  {
-    id: "rec",
-    label: "REC Registries",
-    icon: Sun,
-    data: recRegistries,
-    color: "amber",
-    gradient: "from-amber-400 to-orange-400",
-    borderColor: "border-amber-400/30",
-    bgColor: "bg-amber-500/10",
-    count: recRegistries.length
-  },
-  {
-    id: "ets",
-    label: "Compliance / ETS",
-    icon: Factory,
-    data: etsRegistries,
-    color: "sky",
-    gradient: "from-sky-400 to-blue-400",
-    borderColor: "border-sky-400/30",
-    bgColor: "bg-sky-500/10",
-    count: etsRegistries.length
-  },
-];
-
 // Featured registries with logos
 const featuredLogos = [
   { src: "/images/verra.webp", alt: "Verra VCS" },
@@ -121,6 +85,44 @@ const featuredLogos = [
 
 export default function Registries() {
   const [activeCategory, setActiveCategory] = useState("carbon");
+  const { t } = useTranslation('platform');
+
+  // Category tabs
+  const categories = [
+    {
+      id: "carbon",
+      label: t('registries.categories.carbon', 'Carbon Credit Registries'),
+      icon: Leaf,
+      data: voluntaryCarbon,
+      color: "emerald",
+      gradient: "from-emerald-400 to-teal-400",
+      borderColor: "border-emerald-400/30",
+      bgColor: "bg-emerald-500/10",
+      count: voluntaryCarbon.length
+    },
+    {
+      id: "rec",
+      label: t('registries.categories.rec', 'REC Registries'),
+      icon: Sun,
+      data: recRegistries,
+      color: "amber",
+      gradient: "from-amber-400 to-orange-400",
+      borderColor: "border-amber-400/30",
+      bgColor: "bg-amber-500/10",
+      count: recRegistries.length
+    },
+    {
+      id: "ets",
+      label: t('registries.categories.ets', 'Compliance / ETS'),
+      icon: Factory,
+      data: etsRegistries,
+      color: "sky",
+      gradient: "from-sky-400 to-blue-400",
+      borderColor: "border-sky-400/30",
+      bgColor: "bg-sky-500/10",
+      count: etsRegistries.length
+    },
+  ];
 
   const currentCategory = categories.find(c => c.id === activeCategory) || categories[0];
   const totalRegistries = voluntaryCarbon.length + recRegistries.length + etsRegistries.length;
@@ -154,29 +156,28 @@ export default function Registries() {
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-5 py-2.5 mb-6">
             <Globe className="w-4 h-4 text-emerald-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-              Global Registry Integration
+              {t('registries.badge', 'Global Registry Integration')}
             </span>
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-50 mb-6 leading-tight">
-            Integrated with
+            {t('registries.title1', 'Integrated with')}
             <span className="block bg-gradient-to-r from-emerald-400 via-teal-400 to-sky-400 bg-clip-text text-transparent mt-2">
-              {totalRegistries}+ Global Registries
+              {totalRegistries}+ {t('registries.title2', 'Global Registries')}
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
-            CredoCarbon connects seamlessly with major carbon credit registries, renewable energy certificate systems,
-            and compliance emission trading platforms worldwide — ensuring one unified interface for all your environmental assets.
+            {t('registries.description', 'CredoCarbon connects seamlessly with major carbon credit registries, renewable energy certificate systems, and compliance emission trading platforms worldwide — ensuring one unified interface for all your environmental assets.')}
           </p>
 
           {/* Quick stats */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {[
-              { value: `${voluntaryCarbon.length}+`, label: "Carbon Registries", icon: Leaf, color: "emerald" },
-              { value: `${recRegistries.length}+`, label: "REC Systems", icon: Sun, color: "amber" },
-              { value: `${etsRegistries.length}+`, label: "ETS Platforms", icon: Factory, color: "sky" },
-              { value: `${totalCountries}+`, label: "Countries", icon: MapPin, color: "purple" },
+              { value: `${voluntaryCarbon.length}+`, label: t('registries.stats.carbon', 'Carbon Registries'), icon: Leaf, color: "emerald" },
+              { value: `${recRegistries.length}+`, label: t('registries.stats.rec', 'REC Systems'), icon: Sun, color: "amber" },
+              { value: `${etsRegistries.length}+`, label: t('registries.stats.ets', 'ETS Platforms'), icon: Factory, color: "sky" },
+              { value: `${totalCountries}+`, label: t('registries.stats.countries', 'Countries'), icon: MapPin, color: "purple" },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3 group">
                 <div className={`w-12 h-12 rounded-2xl bg-${stat.color}-500/10 border border-${stat.color}-400/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
@@ -197,7 +198,7 @@ export default function Registries() {
         <div className="mb-20">
           <div className="text-center mb-8">
             <span className="text-sm font-medium text-slate-400 uppercase tracking-widest">
-              Featured Integrations
+              {t('registries.featuredLabel', 'Featured Integrations')}
             </span>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-r from-white/[0.03] via-white/[0.07] to-white/[0.03] backdrop-blur-sm px-8 py-10">
@@ -256,11 +257,11 @@ export default function Registries() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
-              Why Our Registry Integration
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"> Matters</span>
+              {t('registries.whyMatters.title1', 'Why Our Registry Integration')}
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"> {t('registries.whyMatters.title2', 'Matters')}</span>
             </h3>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              A unified platform for managing environmental assets across multiple registries with consistent data structures
+              {t('registries.whyMatters.description', 'A unified platform for managing environmental assets across multiple registries with consistent data structures')}
             </p>
           </div>
 
@@ -268,48 +269,48 @@ export default function Registries() {
             {[
               {
                 icon: Globe,
-                title: "Multi-Registry Compatibility",
-                desc: "Unified data structure supporting all major registries with cross-registry consistency and seamless portfolio management.",
+                title: t('registries.features.multiRegistry.title', 'Multi-Registry Compatibility'),
+                desc: t('registries.features.multiRegistry.desc', 'Unified data structure supporting all major registries with cross-registry consistency and seamless portfolio management.'),
                 gradient: "from-emerald-500/20 to-teal-600/20",
                 borderColor: "border-emerald-400/30",
                 iconColor: "text-emerald-400"
               },
               {
                 icon: Database,
-                title: "Unified Data Model",
-                desc: "Standardized schemas across registries enabling consistent reporting, analytics, and compliance tracking.",
+                title: t('registries.features.unifiedData.title', 'Unified Data Model'),
+                desc: t('registries.features.unifiedData.desc', 'Standardized schemas across registries enabling consistent reporting, analytics, and compliance tracking.'),
                 gradient: "from-sky-500/20 to-blue-600/20",
                 borderColor: "border-sky-400/30",
                 iconColor: "text-sky-400"
               },
               {
                 icon: Shield,
-                title: "Compliance Assurance",
-                desc: "Registry-specific validation rules and automated compliance checks ensure every submission meets requirements.",
+                title: t('registries.features.compliance.title', 'Compliance Assurance'),
+                desc: t('registries.features.compliance.desc', 'Registry-specific validation rules and automated compliance checks ensure every submission meets requirements.'),
                 gradient: "from-amber-500/20 to-orange-600/20",
                 borderColor: "border-amber-400/30",
                 iconColor: "text-amber-400"
               },
               {
                 icon: Zap,
-                title: "Real-time Sync",
-                desc: "Automatic synchronization with registry updates, methodology changes, and regulatory requirements.",
+                title: t('registries.features.realtime.title', 'Real-time Sync'),
+                desc: t('registries.features.realtime.desc', 'Automatic synchronization with registry updates, methodology changes, and regulatory requirements.'),
                 gradient: "from-purple-500/20 to-pink-600/20",
                 borderColor: "border-purple-400/30",
                 iconColor: "text-purple-400"
               },
               {
                 icon: Building2,
-                title: "ETS Integration",
-                desc: "Direct connection to compliance markets for seamless offset management and regulatory reporting.",
+                title: t('registries.features.ets.title', 'ETS Integration'),
+                desc: t('registries.features.ets.desc', 'Direct connection to compliance markets for seamless offset management and regulatory reporting.'),
                 gradient: "from-cyan-500/20 to-sky-600/20",
                 borderColor: "border-cyan-400/30",
                 iconColor: "text-cyan-400"
               },
               {
                 icon: CheckCircle,
-                title: "99.5% First-Pass Rate",
-                desc: "Machine-checkable submissions with pre-validation ensure near-perfect first-time registry acceptance.",
+                title: t('registries.features.firstPass.title', 'First-Pass Rate 99.5%'),
+                desc: t('registries.features.firstPass.desc', 'Machine-checkable submissions with pre-validation ensure near-perfect first-time registry acceptance.'),
                 gradient: "from-teal-500/20 to-emerald-600/20",
                 borderColor: "border-teal-400/30",
                 iconColor: "text-teal-400"

@@ -1,41 +1,44 @@
 // src/components/sections/EvidenceRoom.tsx
 
 import { FileText, GitBranch, Link, MessageCircle, Package } from "lucide-react";
-
-const capabilities = [
-  {
-    icon: FileText,
-    title: "Document Organization",
-    desc: "Smart categorization with rapid search across thousands of files",
-    highlight: "Instant retrieval"
-  },
-  {
-    icon: GitBranch,
-    title: "Version Control",
-    desc: "Track changes with automatic snapshots and rollback capability",
-    highlight: "Full history"
-  },
-  {
-    icon: Link,
-    title: "Data Linking",
-    desc: "Connect documents to monitoring periods, parameters, and calculations",
-    highlight: "Contextual relationships"
-  },
-  {
-    icon: MessageCircle,
-    title: "Comment Threads",
-    desc: "Structured VVB-developer communication with severity tracking",
-    highlight: "No email chaos"
-  },
-  {
-    icon: Package,
-    title: "Export Packages",
-    desc: "Bundle documents with completeness checks for registry submission",
-    highlight: "One-click export"
-  }
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function EvidenceRoom() {
+  const { t } = useTranslation('platform');
+
+  const capabilities = [
+    {
+      icon: FileText,
+      title: t('evidence.features.document.title'),
+      desc: t('evidence.features.document.desc'),
+      highlight: t('evidence.features.document.highlight')
+    },
+    {
+      icon: GitBranch,
+      title: t('evidence.features.version.title'),
+      desc: t('evidence.features.version.desc'),
+      highlight: t('evidence.features.version.highlight')
+    },
+    {
+      icon: Link,
+      title: t('evidence.features.linking.title'),
+      desc: t('evidence.features.linking.desc'),
+      highlight: t('evidence.features.linking.highlight')
+    },
+    {
+      icon: MessageCircle,
+      title: t('evidence.features.comments.title'),
+      desc: t('evidence.features.comments.desc'),
+      highlight: t('evidence.features.comments.highlight')
+    },
+    {
+      icon: Package,
+      title: t('evidence.features.export.title'),
+      desc: t('evidence.features.export.desc'),
+      highlight: t('evidence.features.export.highlight')
+    }
+  ];
+
   return (
     <section
       id="evidence"
@@ -46,17 +49,17 @@ export default function EvidenceRoom() {
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2 mb-4">
             <FileText className="w-4 h-4 text-emerald-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-              Evidence Management
+              {t('evidence.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Organized{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Documentation</span>
+            {t('evidence.title1')}{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">{t('evidence.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Structured evidence management with smart organization and version tracking
+            {t('evidence.description')}
           </p>
         </div>
 

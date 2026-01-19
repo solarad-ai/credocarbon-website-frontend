@@ -1,6 +1,9 @@
 import { Award, Quote } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function VVBTestimonial() {
+    const { t } = useTranslation('vvb');
+
     return (
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 py-24 md:py-32">
             {/* Enhanced contrast edge */}
@@ -19,20 +22,19 @@ export default function VVBTestimonial() {
                     <div className="inline-flex items-center gap-2 rounded-full border border-indigo-600/30 bg-indigo-500/10 px-4 py-2">
                         <Award className="w-4 h-4 text-indigo-600" />
                         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-700">
-                            Verification Excellence
+                            {t('testimonial.badge')}
                         </span>
                     </div>
 
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                        Streamline your{" "}
+                        {t('testimonial.title1')}{" "}
                         <span className="block bg-gradient-to-r from-indigo-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-                            verification workflow
+                            {t('testimonial.title2')}
                         </span>
                     </h2>
 
                     <p className="text-base md:text-lg text-slate-600 max-w-xl leading-relaxed">
-                        From project intake to final certification, manage the entire verification
-                        lifecycle in one platform — with complete evidence tracking and compliance built in.
+                        {t('testimonial.description')}
                     </p>
                 </div>
 
@@ -52,9 +54,7 @@ export default function VVBTestimonial() {
 
                         <div className="relative pt-4">
                             <p className="text-base md:text-lg text-slate-100 leading-relaxed mb-8">
-                                "We've cut our verification cycle time in half. Everything we need —
-                                project documentation, monitoring data, validation reports — is
-                                organized and traceable. No more chasing developers for missing files."
+                                "{t('testimonial.quote')}"
                             </p>
 
                             {/* Elegant divider */}
@@ -62,10 +62,10 @@ export default function VVBTestimonial() {
 
                             <div className="space-y-1">
                                 <p className="text-sm font-bold uppercase tracking-wide text-sky-300">
-                                    Lead Verifier
+                                    {t('testimonial.role')}
                                 </p>
                                 <p className="text-sm text-indigo-200/70">
-                                    Independent Validation Body
+                                    {t('testimonial.company')}
                                 </p>
                             </div>
                         </div>

@@ -1,30 +1,33 @@
 // src/components/sections/WhyCredoCarbon.tsx
 import { Check, X, ArrowRight, Sparkles, Zap, Clock, Shield } from "lucide-react";
-
-const comparisonPoints = [
-    {
-        aspect: "Project Setup",
-        platform: "Days",
-        traditional: "Months",
-    },
-    {
-        aspect: "MRV Workflow",
-        platform: "Automated",
-        traditional: "Manual",
-    },
-    {
-        aspect: "Issuance Speed",
-        platform: "60% Faster",
-        traditional: "12-18 Months",
-    },
-    {
-        aspect: "Data Integrity",
-        platform: "Immutable",
-        traditional: "Fragmented",
-    },
-];
+import { useTranslation } from "react-i18next";
 
 export default function WhyCredoCarbon() {
+    const { t } = useTranslation('home');
+
+    const comparisonPoints = [
+        {
+            aspectKey: "comparison.projectSetup.aspect",
+            platformKey: "comparison.projectSetup.platform",
+            traditionalKey: "comparison.projectSetup.traditional",
+        },
+        {
+            aspectKey: "comparison.mrvWorkflow.aspect",
+            platformKey: "comparison.mrvWorkflow.platform",
+            traditionalKey: "comparison.mrvWorkflow.traditional",
+        },
+        {
+            aspectKey: "comparison.issuanceSpeed.aspect",
+            platformKey: "comparison.issuanceSpeed.platform",
+            traditionalKey: "comparison.issuanceSpeed.traditional",
+        },
+        {
+            aspectKey: "comparison.dataIntegrity.aspect",
+            platformKey: "comparison.dataIntegrity.platform",
+            traditionalKey: "comparison.dataIntegrity.traditional",
+        },
+    ];
+
     return (
         <section
             id="why-us"
@@ -46,20 +49,20 @@ export default function WhyCredoCarbon() {
                     <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-gradient-to-r from-cyan-500/8 to-emerald-500/8 px-5 py-2.5 mb-7 backdrop-blur-sm shadow-lg shadow-cyan-500/5">
                         <Sparkles className="w-4 h-4 text-cyan-400" />
                         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                            The Platform Advantage
+                            {t('whyCredoCarbon.badge')}
                         </span>
                     </div>
 
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                        Stop managing carbon projects{" "}
+                        {t('whyCredoCarbon.title1')}{" "}
                         <span className="bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                            like it's 2010
+                            {t('whyCredoCarbon.title2')}
                         </span>
                     </h2>
 
                     <p className="text-base md:text-lg text-slate-400 leading-relaxed">
-                        Traditional consulting means endless spreadsheets, email chains, and manual processes.{" "}
-                        <span className="text-slate-300">There's a better way.</span>
+                        {t('whyCredoCarbon.description')}{" "}
+                        <span className="text-slate-300">{t('whyCredoCarbon.betterWay')}</span>
                     </p>
                 </div>
 
@@ -72,7 +75,7 @@ export default function WhyCredoCarbon() {
                         <div className="relative p-7 md:p-10">
                             {/* Header Row */}
                             <div className="grid grid-cols-3 gap-6 mb-8 pb-7 border-b border-slate-700/40">
-                                <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Feature</div>
+                                <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider">{t('whyCredoCarbon.feature')}</div>
                                 <div className="text-center">
                                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/15 to-emerald-500/15 border border-cyan-400/25 shadow-lg shadow-cyan-500/10">
                                         <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -91,20 +94,20 @@ export default function WhyCredoCarbon() {
                             <div className="space-y-3">
                                 {comparisonPoints.map((point, index) => (
                                     <div
-                                        key={point.aspect}
+                                        key={index}
                                         className="grid grid-cols-3 gap-6 items-center py-5 px-5 rounded-xl bg-slate-800/20 border border-slate-700/20 hover:bg-slate-800/30 hover:border-cyan-500/20 transition-all duration-300 group"
                                     >
-                                        <div className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors">{point.aspect}</div>
+                                        <div className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors">{t(`whyCredoCarbon.${point.aspectKey}`)}</div>
                                         <div className="text-center">
                                             <span className="inline-flex items-center gap-2 text-sm font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors">
                                                 <Check className="w-4 h-4" strokeWidth={2.5} />
-                                                {point.platform}
+                                                {t(`whyCredoCarbon.${point.platformKey}`)}
                                             </span>
                                         </div>
                                         <div className="text-center">
                                             <span className="inline-flex items-center gap-2 text-sm font-medium text-slate-500">
                                                 <X className="w-4 h-4" strokeWidth={2} />
-                                                {point.traditional}
+                                                {t(`whyCredoCarbon.${point.traditionalKey}`)}
                                             </span>
                                         </div>
                                     </div>
@@ -119,8 +122,8 @@ export default function WhyCredoCarbon() {
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 w-full md:w-auto md:mx-auto md:px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 font-bold text-sm hover:from-cyan-400 hover:to-emerald-400 transition-all duration-300 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] group"
                                 >
-                                    <span>Experience the Platform</span>
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    <span>{t('whyCredoCarbon.experiencePlatform')}</span>
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
                                 </a>
                             </div>
                         </div>
@@ -130,12 +133,12 @@ export default function WhyCredoCarbon() {
                 {/* Refined Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
                     {[
-                        { icon: Zap, value: "60%", label: "Faster Issuance", color: "cyan" },
-                        { icon: Shield, value: "100%", label: "Audit Ready", color: "emerald" },
-                        { icon: Clock, value: "24/7", label: "Platform Access", color: "teal" },
+                        { icon: Zap, value: "60%", labelKey: "stats.fasterIssuance", color: "cyan" },
+                        { icon: Shield, value: "100%", labelKey: "stats.auditReady", color: "emerald" },
+                        { icon: Clock, value: "24/7", labelKey: "stats.platformAccess", color: "teal" },
                     ].map((stat) => (
                         <div
-                            key={stat.label}
+                            key={stat.labelKey}
                             className="text-center p-7 rounded-2xl bg-slate-900/40 border border-slate-800/50 hover:border-cyan-500/25 hover:bg-slate-900/50 transition-all duration-300 group"
                         >
                             <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/15 to-emerald-500/15 mb-4 group-hover:from-cyan-500/20 group-hover:to-emerald-500/20 transition-all shadow-lg shadow-cyan-500/10">
@@ -144,15 +147,14 @@ export default function WhyCredoCarbon() {
                             <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent mb-2">
                                 {stat.value}
                             </div>
-                            <div className="text-sm font-medium text-slate-300">{stat.label}</div>
+                            <div className="text-sm font-medium text-slate-300">{t(`whyCredoCarbon.${stat.labelKey}`)}</div>
                         </div>
                     ))}
                 </div>
 
                 {/* Subtle disclaimer */}
                 <p className="mt-14 text-center text-xs text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                    We're not replacing consultants — we're giving them superpowers.
-                    CredoCarbon works alongside your existing team and partners.
+                    {t('whyCredoCarbon.disclaimer')}
                 </p>
             </div>
         </section>

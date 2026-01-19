@@ -1,38 +1,41 @@
 // src/components/sections/BuyerJourney.tsx
 import { Search, BarChart3, Handshake, CheckCircle } from "lucide-react";
-
-const buyerFlow = [
-  {
-    step: "Discover",
-    title: "Smart Project Discovery",
-    desc: "AI-powered filtering by geography, methodology, SDG alignment, and vintage",
-    icon: Search,
-    color: "from-purple-400 to-pink-400"
-  },
-  {
-    step: "Analyze",
-    title: "Portfolio Analytics",
-    desc: "Diversification scoring, exposure analysis, and procurement optimization tools",
-    icon: BarChart3,
-    color: "from-pink-400 to-orange-400"
-  },
-  {
-    step: "Negotiate",
-    title: "Professional Deal Rooms",
-    desc: "Secure negotiation spaces with term sheets, pricing trends, and escrow workflows",
-    icon: Handshake,
-    color: "from-orange-400 to-yellow-400"
-  },
-  {
-    step: "Settle",
-    title: "Automated Settlement",
-    desc: "Registry-validated transfers with serial tracking",
-    icon: CheckCircle,
-    color: "from-yellow-400 to-emerald-400"
-  }
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function BuyerJourney() {
+  const { t } = useTranslation('buyers');
+
+  const buyerFlow = [
+    {
+      step: t('buyerJourney.flow.discover.step'),
+      title: t('buyerJourney.flow.discover.title'),
+      desc: t('buyerJourney.flow.discover.desc'),
+      icon: Search,
+      color: "from-purple-400 to-pink-400"
+    },
+    {
+      step: t('buyerJourney.flow.analyze.step'),
+      title: t('buyerJourney.flow.analyze.title'),
+      desc: t('buyerJourney.flow.analyze.desc'),
+      icon: BarChart3,
+      color: "from-pink-400 to-orange-400"
+    },
+    {
+      step: t('buyerJourney.flow.negotiate.step'),
+      title: t('buyerJourney.flow.negotiate.title'),
+      desc: t('buyerJourney.flow.negotiate.desc'),
+      icon: Handshake,
+      color: "from-orange-400 to-yellow-400"
+    },
+    {
+      step: t('buyerJourney.flow.settle.step'),
+      title: t('buyerJourney.flow.settle.title'),
+      desc: t('buyerJourney.flow.settle.desc'),
+      icon: CheckCircle,
+      color: "from-yellow-400 to-emerald-400"
+    }
+  ];
+
   return (
     <section
       id="buyer"
@@ -50,17 +53,17 @@ export default function BuyerJourney() {
           <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-2 mb-6">
             <Search className="w-4 h-4 text-purple-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-purple-400">
-              Buyer Experience
+              {t('buyerJourney.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-6">
-            Intelligent
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent"> Procurement</span>
+            {t('buyerJourney.title1')}
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent"> {t('buyerJourney.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Risk-adjusted pricing, full provenance tracking, and VVB-verified documentation for confident carbon credit procurement
+            {t('buyerJourney.description')}
           </p>
         </div>
 

@@ -1,4 +1,5 @@
 // src/components/sections/Roles.tsx
+import { useTranslation } from "react-i18next";
 
 // Developer Illustration - Person with project dashboard
 const DeveloperIllustration = () => (
@@ -116,41 +117,6 @@ const BuyerIllustration = () => (
   </svg>
 );
 
-const roles = [
-  {
-    title: "Project Developers",
-    subtitle: "& Asset Owners",
-    desc: "Guided workflows from onboarding to credit issuance",
-    theme: "emerald",
-    highlights: ["Guided onboarding", "Version-controlled docs", "Registry-ready submissions"],
-    Illustration: DeveloperIllustration,
-  },
-  {
-    title: "VVBs & Auditors",
-    subtitle: "Verification Bodies",
-    desc: "Professional verification with structured reviews and audit trails",
-    theme: "cyan",
-    highlights: ["Review queues & SLAs", "Data anomaly checks", "Signed opinions"],
-    Illustration: VVBIllustration,
-  },
-  {
-    title: "Registries",
-    subtitle: "& Standard Bodies",
-    desc: "Standardized submissions with automated validation",
-    theme: "purple",
-    highlights: ["Multi-registry support", "Hashed evidence", "Cross-registry mapping"],
-    Illustration: RegistryIllustration,
-  },
-  {
-    title: "Corporate Buyers",
-    subtitle: "Brokers & Funds",
-    desc: "Procurement tools with analytics and due diligence",
-    theme: "amber",
-    highlights: ["Portfolio filters", "Deal rooms", "Chain-of-custody"],
-    Illustration: BuyerIllustration,
-  },
-];
-
 const themeColors = {
   emerald: {
     border: "border-emerald-500/30",
@@ -187,6 +153,43 @@ const themeColors = {
 };
 
 export default function Roles() {
+  const { t } = useTranslation('home');
+
+  const roles = [
+    {
+      titleKey: "roles.projectDevelopers.title",
+      subtitleKey: "roles.projectDevelopers.subtitle",
+      descKey: "roles.projectDevelopers.desc",
+      highlightsKey: "roles.projectDevelopers.highlights",
+      theme: "emerald",
+      Illustration: DeveloperIllustration,
+    },
+    {
+      titleKey: "roles.vvbs.title",
+      subtitleKey: "roles.vvbs.subtitle",
+      descKey: "roles.vvbs.desc",
+      highlightsKey: "roles.vvbs.highlights",
+      theme: "cyan",
+      Illustration: VVBIllustration,
+    },
+    {
+      titleKey: "roles.registries.title",
+      subtitleKey: "roles.registries.subtitle",
+      descKey: "roles.registries.desc",
+      highlightsKey: "roles.registries.highlights",
+      theme: "purple",
+      Illustration: RegistryIllustration,
+    },
+    {
+      titleKey: "roles.buyers.title",
+      subtitleKey: "roles.buyers.subtitle",
+      descKey: "roles.buyers.desc",
+      highlightsKey: "roles.buyers.highlights",
+      theme: "amber",
+      Illustration: BuyerIllustration,
+    },
+  ];
+
   return (
     <section
       id="roles"
@@ -209,38 +212,39 @@ export default function Roles() {
               <div className="w-2.5 h-2.5 bg-teal-400 rounded-full" />
             </div>
             <span className="text-sm font-medium uppercase tracking-[0.2em] text-teal-300">
-              Who It's For
+              {t('roles.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-5 leading-tight">
-            Built for every actor in the{" "}
+            {t('roles.title1')}{" "}
             <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-              carbon ecosystem
+              {t('roles.title2')}
             </span>
           </h2>
 
           <p className="text-lg text-slate-400 leading-relaxed">
-            Connecting developers, VVBs, registries, and buyers with verification-grade collaboration
+            {t('roles.description')}
           </p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {roles.map((role) => {
+          {roles.map((role, index) => {
             const { Illustration } = role;
             const colors = themeColors[role.theme as keyof typeof themeColors];
+            const highlights = t(role.highlightsKey, { returnObjects: true }) as string[];
 
             return (
               <div
-                key={role.title}
+                key={index}
                 className={`group relative rounded-3xl ${colors.border} ${colors.hoverBorder} bg-slate-900/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:-translate-y-1`}
               >
                 {/* Themed background gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 {/* Corner glow */}
-                <div className={`absolute -top-20 -right-20 w-40 h-40 ${colors.glow} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute -top-20 -right-20 w-40 h-40 ${colors.glow} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rtl:-right-auto rtl:-left-20`} />
 
                 <div className="relative p-6 md:p-8 flex flex-col md:flex-row gap-6">
                   {/* Illustration */}
@@ -252,20 +256,20 @@ export default function Roles() {
                   <div className="flex-1">
                     <div className="mb-3">
                       <h3 className={`text-xl font-bold text-slate-50 group-hover:${colors.accent} transition-colors`}>
-                        {role.title}
+                        {t(role.titleKey)}
                       </h3>
-                      <span className={`text-sm ${colors.accent}`}>{role.subtitle}</span>
+                      <span className={`text-sm ${colors.accent}`}>{t(role.subtitleKey)}</span>
                     </div>
 
                     <p className="text-sm text-slate-400 mb-4 leading-relaxed group-hover:text-slate-300 transition-colors">
-                      {role.desc}
+                      {t(role.descKey)}
                     </p>
 
                     {/* Highlight tags */}
                     <div className="flex flex-wrap gap-2">
-                      {role.highlights.map((h) => (
+                      {highlights.map((h, i) => (
                         <span
-                          key={h}
+                          key={i}
                           className={`text-xs px-3 py-1 rounded-full border ${colors.tag}`}
                         >
                           {h}
@@ -288,7 +292,7 @@ export default function Roles() {
             {roles.map((role, index) => {
               const colors = themeColors[role.theme as keyof typeof themeColors];
               return (
-                <div key={role.title} className="flex items-center">
+                <div key={index} className="flex items-center">
                   <div className={`w-3 h-3 rounded-full ${colors.glow} border ${colors.border}`} />
                   {index < roles.length - 1 && (
                     <div className="w-12 h-px bg-gradient-to-r from-slate-600 to-slate-700 mx-2" />

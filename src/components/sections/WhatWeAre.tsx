@@ -1,4 +1,5 @@
 // src/components/sections/WhatWeAre.tsx
+import { useTranslation } from "react-i18next";
 
 // Illustration: Centralized Workspace - Hub with connected nodes
 const WorkspaceIllustration = () => (
@@ -145,28 +146,30 @@ const TradingIllustration = () => (
   </svg>
 );
 
-const pillars = [
-  {
-    title: "Project Management",
-    desc: "Consolidated workspace from documentation through verification to trading.",
-    highlights: ["Structured files", "Version control", "Auditable events"],
-    Illustration: WorkspaceIllustration,
-  },
-  {
-    title: "Automated MRV",
-    desc: "Methodology-specific validation rules and registry-aligned workflows.",
-    highlights: ["Methodology logic", "Registry alignment", "Configurable rules"],
-    Illustration: AutomatedIllustration,
-  },
-  {
-    title: "Market Intelligence",
-    desc: "Credit marketplace with pricing intelligence and portfolio management.",
-    highlights: ["Deal rooms", "Portfolio optimization", "Provenance tracking"],
-    Illustration: TradingIllustration,
-  },
-];
-
 export default function WhatWeAre() {
+  const { t } = useTranslation('home');
+
+  const pillars = [
+    {
+      titleKey: "pillars.projectManagement.title",
+      descKey: "pillars.projectManagement.desc",
+      highlightsKey: "pillars.projectManagement.highlights",
+      Illustration: WorkspaceIllustration,
+    },
+    {
+      titleKey: "pillars.automatedMRV.title",
+      descKey: "pillars.automatedMRV.desc",
+      highlightsKey: "pillars.automatedMRV.highlights",
+      Illustration: AutomatedIllustration,
+    },
+    {
+      titleKey: "pillars.marketIntelligence.title",
+      descKey: "pillars.marketIntelligence.desc",
+      highlightsKey: "pillars.marketIntelligence.highlights",
+      Illustration: TradingIllustration,
+    },
+  ];
+
   return (
     <section
       id="overview-deep"
@@ -187,31 +190,31 @@ export default function WhatWeAre() {
               <div className="w-2.5 h-2.5 bg-blue-400 rounded-full" />
             </div>
             <span className="text-sm font-medium uppercase tracking-[0.2em] text-blue-300">
-              What We Are
+              {t('whatWeAre.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-5 leading-tight">
-            The foundational{" "}
+            {t('whatWeAre.title1')}{" "}
             <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-              digital layer
+              {t('whatWeAre.title2')}
             </span>
-            <br />for carbon project operations
+            <br />{t('whatWeAre.title3')}
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed">
-            CredoCarbon provides the infrastructure where documents, data, workflows, and credits
-            maintain integrity across project operations.
+            {t('whatWeAre.description')}
           </p>
         </div>
 
         {/* Illustrated Cards */}
         <div className="grid md:grid-cols-3 gap-8">
-          {pillars.map((pillar) => {
+          {pillars.map((pillar, index) => {
             const { Illustration } = pillar;
+            const highlights = t(`whatWeAre.${pillar.highlightsKey}`, { returnObjects: true }) as string[];
             return (
               <div
-                key={pillar.title}
+                key={index}
                 className="group relative rounded-3xl bg-slate-900/50 border border-slate-700/40 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-blue-400/40 hover:bg-slate-800/60 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(59,130,246,0.25)]"
               >
                 {/* Illustration container */}
@@ -224,17 +227,17 @@ export default function WhatWeAre() {
                 {/* Content */}
                 <div className="p-6 pt-2">
                   <h3 className="text-xl font-bold text-slate-100 mb-2 text-center group-hover:text-blue-100 transition-colors">
-                    {pillar.title}
+                    {t(`whatWeAre.${pillar.titleKey}`)}
                   </h3>
                   <p className="text-sm text-slate-400 leading-relaxed text-center mb-4 group-hover:text-slate-300 transition-colors">
-                    {pillar.desc}
+                    {t(`whatWeAre.${pillar.descKey}`)}
                   </p>
 
                   {/* Highlight tags */}
                   <div className="flex flex-wrap justify-center gap-2">
-                    {pillar.highlights.map((h) => (
+                    {highlights.map((h, i) => (
                       <span
-                        key={h}
+                        key={i}
                         className="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-300/80 border border-blue-400/20"
                       >
                         {h}

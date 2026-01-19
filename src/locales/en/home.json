@@ -1,0 +1,183 @@
+{
+    "hero": {
+        "badge": "Carbon Infrastructure Platform",
+        "title": "CredoCarbon: AI-Powered Stack for Developers, VVBs & Buyers",
+        "description": "An intelligent platform that digitizes project MRV, registry workflows, and OTC trading — powered by AI-driven monitoring and verification.",
+        "cta": "Talk to us",
+        "stakeholders": "Developers · VVBs · Buyers · Registries",
+        "registriesAndCountries": "{{registries}} Registries · {{countries}} Countries",
+        "fallbackPortfolio": "Multi-registry portfolio · 300+ MW",
+        "connected": "Developer · VVB · Buyer connected",
+        "liveData": "Live data",
+        "verifiedCredits": "Verified credits (annual)",
+        "creditsRetired": "Carbon credits retired",
+        "recsIssued": "RECs issued (annual)",
+        "dataNote": "Live data from integrated registries. Last 12 months."
+    },
+    "whatWeAre": {
+        "badge": "What We Are",
+        "title1": "The foundational AI-enabled",
+        "title2": "digital layer",
+        "title3": "for carbon project operations",
+        "description": "CredoCarbon provides the infrastructure where documents, data, workflows, and credits maintain integrity across project operations.",
+        "pillars": {
+            "projectManagement": {
+                "title": "Project Management",
+                "desc": "Consolidated workspace from documentation through verification to trading.",
+                "highlights": [
+                    "Smart document analysis",
+                    "Version control",
+                    "Auditable events"
+                ]
+            },
+            "automatedMRV": {
+                "title": "Automated MRV",
+                "desc": "AI-powered validation with anomaly detection, sensor analysis, and methodology-aligned workflows.",
+                "highlights": [
+                    "Predictive modeling",
+                    "Anomaly detection",
+                    "Configurable rules"
+                ]
+            },
+            "marketIntelligence": {
+                "title": "Market Intelligence",
+                "desc": "Credit marketplace with AI-driven quality scoring, price forecasting, and portfolio optimization.",
+                "highlights": [
+                    "AI quality scoring",
+                    "Price intelligence",
+                    "Provenance tracking"
+                ]
+            }
+        }
+    },
+    "roles": {
+        "badge": "Who It's For",
+        "title1": "Built for every actor in the",
+        "title2": "carbon ecosystem",
+        "description": "Connecting developers, VVBs, registries, and buyers with verification-grade collaboration",
+        "projectDevelopers": {
+            "title": "Project Developers",
+            "subtitle": "& Asset Owners",
+            "desc": "Guided workflows from onboarding to credit issuance",
+            "highlights": [
+                "Guided onboarding",
+                "Version-controlled docs",
+                "Registry-ready submissions"
+            ]
+        },
+        "vvbs": {
+            "title": "VVBs & Auditors",
+            "subtitle": "Verification Bodies",
+            "desc": "AI-assisted verification with automated anomaly detection and structured audit trails",
+            "highlights": [
+                "Smart review prompts",
+                "Data anomaly detection",
+                "Signed opinions"
+            ]
+        },
+        "registries": {
+            "title": "Registries",
+            "subtitle": "& Standard Bodies",
+            "desc": "Standardized submissions with automated validation",
+            "highlights": [
+                "Multi-registry support",
+                "Hashed evidence",
+                "Cross-registry mapping"
+            ]
+        },
+        "buyers": {
+            "title": "Corporate Buyers",
+            "subtitle": "Brokers & Funds",
+            "desc": "AI-powered procurement with quality scoring and due diligence automation",
+            "highlights": [
+                "AI quality scoring",
+                "Deal rooms",
+                "Chain-of-custody"
+            ]
+        }
+    },
+    "exploreDashboard": {
+        "badge": "Platform Preview",
+        "title1": "Experience",
+        "title2": "Carbon Operations",
+        "title3": "Like Never Before",
+        "description": "One platform, infinite possibilities. See how we're transforming carbon credit management.",
+        "views": {
+            "dashboard": {
+                "title": "Unified Platform",
+                "subtitle": "Complete carbon credit lifecycle management"
+            },
+            "developer": {
+                "title": "Developer Experience",
+                "subtitle": "Streamlined project development workflows"
+            },
+            "buyer": {
+                "title": "Buyer Intelligence",
+                "subtitle": "AI-powered procurement and analytics"
+            },
+            "features": {
+                "title": "Advanced Features",
+                "subtitle": "Real-time tracking and comprehensive reporting"
+            }
+        },
+        "watchVideo": "Watch Video",
+        "ctaButton": "Start Exploring Now",
+        "ctaSubtext": "✨ Full access • No credit card • Instant setup"
+    },
+    "whyCredoCarbon": {
+        "badge": "The Platform Advantage",
+        "title1": "Stop managing carbon projects",
+        "title2": "like it's 2010",
+        "description": "Traditional consulting means endless spreadsheets, email chains, and manual processes.",
+        "betterWay": "There's a better way.",
+        "feature": "Feature",
+        "comparison": {
+            "projectSetup": {
+                "aspect": "Project Setup",
+                "platform": "Days",
+                "traditional": "Months"
+            },
+            "mrvWorkflow": {
+                "aspect": "MRV Workflow",
+                "platform": "AI-Automated",
+                "traditional": "Manual"
+            },
+            "issuanceSpeed": {
+                "aspect": "Issuance Speed",
+                "platform": "60% Faster",
+                "traditional": "12-18 Months"
+            },
+            "dataIntegrity": {
+                "aspect": "Data Integrity",
+                "platform": "Immutable",
+                "traditional": "Fragmented"
+            }
+        },
+        "experiencePlatform": "Experience the Platform",
+        "stats": {
+            "fasterIssuance": "Faster Issuance",
+            "auditReady": "Audit Ready",
+            "platformAccess": "Platform Access"
+        },
+        "disclaimer": "We're not replacing consultants — we're giving them superpowers. CredoCarbon works alongside your existing team and partners."
+    },
+    "trust": {
+        "badge": "Early Signal",
+        "title1": "AI-Driven MRV in weeks,",
+        "title2": "not quarters",
+        "description": "What used to take months of scattered coordination, document chasing and manual review is now executed inside a single structured system — with cryptographic auditability by default.",
+        "quote": "CredoCarbon condenses what used to be a maze of email threads, spreadsheets and PDF versions into a single, auditable system. Our internal teams, external verifiers and buyers finally operate on the same source of truth.",
+        "role": "Sustainability Lead",
+        "company": "Global renewable energy platform"
+    },
+    "callToAction": {
+        "title": "Ready to pilot CredoCarbon with a live project?",
+        "description": "Start with one asset or portfolio. We help you configure MRV, registry workflows and OTC rails for your specific requirements.",
+        "bookCall": "Book a 30-min discovery call",
+        "exploreWalkthrough": "Explore product walkthrough"
+    },
+    "features": {
+        "title": "Why CredoCarbon",
+        "subtitle": "Built for the future of carbon markets"
+    }
+}

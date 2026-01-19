@@ -7,59 +7,46 @@ import {
   FileCheck2,
   CheckCircle2,
 } from "lucide-react";
-
-const blocks = [
-  {
-    title: "File Verification",
-    desc: "Every uploaded file is hashed and tracked to ensure authenticity throughout the verification process.",
-    items: [
-      "SHA-256 hashing for all uploaded files and datasets",
-      "Version control with automatic freeze on VVB approval",
-      "Full lineage tracking from upload to final report",
-    ],
-    icon: ShieldCheck,
-    gradient: "from-indigo-500 to-purple-500",
-    glowColor: "rgba(99, 102, 241, 0.4)",
-  },
-  {
-    title: "Access Permissions",
-    desc: "Role-based controls ensure each stakeholder sees exactly what they need — nothing more, nothing less.",
-    items: [
-      "Customizable permissions for view, comment, upload, and approve",
-      "Isolated workspaces for developers, VVBs, and registries",
-      "Encrypted data transfer and storage",
-    ],
-    icon: Lock,
-    gradient: "from-purple-500 to-pink-500",
-    glowColor: "rgba(168, 85, 247, 0.4)",
-  },
-  {
-    title: "Activity Logging",
-    desc: "Track who did what and when, with exportable logs for registry compliance reviews.",
-    items: [
-      "Timestamped records of all user actions and changes",
-      "Filter by entity, project, or workflow phase",
-      "Export in JSON, CSV, or registry XML formats",
-    ],
-    icon: FileCheck2,
-    gradient: "from-cyan-500 to-blue-500",
-    glowColor: "rgba(6, 182, 212, 0.4)",
-  },
-  {
-    title: "Final Approval",
-    desc: "VVB sign-offs create a permanent, verifiable record that buyers and registries can trust.",
-    items: [
-      "One-click approval workflow for verified projects",
-      "Permanent record linking approval to evidence package",
-      "Automated notifications to all stakeholders",
-    ],
-    icon: KeyRound,
-    gradient: "from-emerald-500 to-teal-500",
-    glowColor: "rgba(16, 185, 129, 0.4)",
-  },
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function SecurityAudit() {
+  const { t } = useTranslation('vvb');
+
+  const blocks = [
+    {
+      title: t('security.blocks.fileVerification.title'),
+      desc: t('security.blocks.fileVerification.desc'),
+      items: t('security.blocks.fileVerification.items', { returnObjects: true }) as string[],
+      icon: ShieldCheck,
+      gradient: "from-indigo-500 to-purple-500",
+      glowColor: "rgba(99, 102, 241, 0.4)",
+    },
+    {
+      title: t('security.blocks.accessPermissions.title'),
+      desc: t('security.blocks.accessPermissions.desc'),
+      items: t('security.blocks.accessPermissions.items', { returnObjects: true }) as string[],
+      icon: Lock,
+      gradient: "from-purple-500 to-pink-500",
+      glowColor: "rgba(168, 85, 247, 0.4)",
+    },
+    {
+      title: t('security.blocks.activityLogging.title'),
+      desc: t('security.blocks.activityLogging.desc'),
+      items: t('security.blocks.activityLogging.items', { returnObjects: true }) as string[],
+      icon: FileCheck2,
+      gradient: "from-cyan-500 to-blue-500",
+      glowColor: "rgba(6, 182, 212, 0.4)",
+    },
+    {
+      title: t('security.blocks.finalApproval.title'),
+      desc: t('security.blocks.finalApproval.desc'),
+      items: t('security.blocks.finalApproval.items', { returnObjects: true }) as string[],
+      icon: KeyRound,
+      gradient: "from-emerald-500 to-teal-500",
+      glowColor: "rgba(16, 185, 129, 0.4)",
+    },
+  ];
+
   return (
     <section
       id="security"
@@ -79,19 +66,19 @@ export default function SecurityAudit() {
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 backdrop-blur-sm px-4 py-2 mb-6">
             <ShieldCheck className="w-4 h-4 text-indigo-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-300">
-              Platform Security
+              {t('security.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 leading-tight">
-            Built for{" "}
+            {t('security.title1')}{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Verification Trust
+              {t('security.title2')}
             </span>
           </h2>
 
           <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-            Secure infrastructure designed for multi-stakeholder carbon verification workflows.
+            {t('security.description')}
           </p>
         </div>
 
@@ -106,7 +93,7 @@ export default function SecurityAudit() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 text-sm text-slate-400">
             <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>SOC 2 Type II • ISO 27001 • GDPR Compliant</span>
+            <span>{t('security.compliance')}</span>
           </div>
         </div>
       </div>
@@ -114,9 +101,16 @@ export default function SecurityAudit() {
   );
 }
 
-type Block = (typeof blocks)[number];
+interface BlockType {
+  title: string;
+  desc: string;
+  items: string[];
+  icon: React.ComponentType<{ className?: string }>;
+  gradient: string;
+  glowColor: string;
+}
 
-function SecurityCard({ block, index }: { block: Block; index: number }) {
+function SecurityCard({ block, index }: { block: BlockType; index: number }) {
   const Icon = block.icon;
 
   return (
@@ -157,7 +151,7 @@ function SecurityCard({ block, index }: { block: Block; index: number }) {
 
           {/* Feature List */}
           <ul className="space-y-3">
-            {block.items.map((item, idx) => (
+            {block.items.map((item: string, idx: number) => (
               <li
                 key={idx}
                 className="flex gap-3 text-sm text-slate-300 group/item"

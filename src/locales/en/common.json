@@ -1,0 +1,55 @@
+{
+    "nav": {
+        "home": "Home",
+        "platform": "Platform",
+        "developers": "Developers",
+        "vvbs": "VVBs",
+        "buyers": "Buyers",
+        "about": "About"
+    },
+    "header": {
+        "explore": "Explore",
+        "explorePlatform": "Explore Platform",
+        "tagline": "Unified MRV · Registry · Trading"
+    },
+    "footer": {
+        "description": "The digital backbone for next-era carbon markets — where transparency, verification integrity and market confidence operate on a shared system of record.",
+        "product": "Product",
+        "features": "Features",
+        "pricing": "Pricing",
+        "api": "API",
+        "registries": "Registries",
+        "company": "Company",
+        "aboutUs": "About Us",
+        "insights": "Insights",
+        "blog": "Blog",
+        "careers": "Careers",
+        "press": "Press",
+        "resources": "Resources",
+        "documentation": "Documentation",
+        "helpCenter": "Help Center",
+        "community": "Community",
+        "webinars": "Webinars",
+        "faq": "FAQ",
+        "legal": "Legal",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "cookies": "Cookie Policy",
+        "compliance": "Compliance",
+        "allRightsReserved": "All rights reserved.",
+        "newsletter": "Newsletter",
+        "newsletterText": "Stay updated with our latest insights and news.",
+        "emailPlaceholder": "Enter your email",
+        "subscribe": "Subscribe"
+    },
+    "languageBar": {
+        "arabic": "العربية",
+        "english": "English"
+    },
+    "common": {
+        "learnMore": "Learn More",
+        "getStarted": "Get Started",
+        "contactUs": "Contact Us",
+        "viewAll": "View All"
+    }
+}

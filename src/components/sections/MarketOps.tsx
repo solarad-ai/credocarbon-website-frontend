@@ -1,40 +1,43 @@
 // src/components/sections/MarketOps.tsx
 import { TrendingUp, Shield, FileCheck, Link, CreditCard } from "lucide-react";
-
-const marketFeatures = [
-  {
-    icon: TrendingUp,
-    title: "Pricing Intelligence",
-    desc: "Real-time pricing signals by geography, methodology, and vintage with liquidity analysis",
-    capabilities: ["Price band analysis", "Vintage premiums", "Market trend detection"]
-  },
-  {
-    icon: Shield,
-    title: "Quality & Risk Scoring",
-    desc: "Comprehensive scoring based on methodology strength, safeguards, co-benefits, and verification performance",
-    capabilities: ["Multi-factor scoring", "Risk flag detection", "Batch metadata analysis"]
-  },
-  {
-    icon: FileCheck,
-    title: "Due Diligence Suite",
-    desc: "Access methodology analysis, project documentation, and auto-generated procurement bundles",
-    capabilities: ["Document access", "Methodology review", "Procurement automation"]
-  },
-  {
-    icon: Link,
-    title: "Credit Provenance",
-    desc: "Complete chain-of-custody tracking from issuance to retirement with immutable records",
-    capabilities: ["Full traceability", "Retirement certificates", "SDG impact labeling"]
-  },
-  {
-    icon: CreditCard,
-    title: "Settlement & Transfers",
-    desc: "Automated settlement workflows with escrow, registry validation, serial tracking, and compliance logging",
-    capabilities: ["Escrow workflows", "Registry validation", "Audit trail generation"]
-  }
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function MarketOps() {
+  const { t } = useTranslation('buyers');
+
+  const marketFeatures = [
+    {
+      icon: TrendingUp,
+      title: t('marketOps.features.pricing.title'),
+      desc: t('marketOps.features.pricing.desc'),
+      capabilities: t('marketOps.features.pricing.capabilities', { returnObjects: true }) as string[]
+    },
+    {
+      icon: Shield,
+      title: t('marketOps.features.quality.title'),
+      desc: t('marketOps.features.quality.desc'),
+      capabilities: t('marketOps.features.quality.capabilities', { returnObjects: true }) as string[]
+    },
+    {
+      icon: FileCheck,
+      title: t('marketOps.features.dueDiligence.title'),
+      desc: t('marketOps.features.dueDiligence.desc'),
+      capabilities: t('marketOps.features.dueDiligence.capabilities', { returnObjects: true }) as string[]
+    },
+    {
+      icon: Link,
+      title: t('marketOps.features.provenance.title'),
+      desc: t('marketOps.features.provenance.desc'),
+      capabilities: t('marketOps.features.provenance.capabilities', { returnObjects: true }) as string[]
+    },
+    {
+      icon: CreditCard,
+      title: t('marketOps.features.settlement.title'),
+      desc: t('marketOps.features.settlement.desc'),
+      capabilities: t('marketOps.features.settlement.capabilities', { returnObjects: true }) as string[]
+    }
+  ];
+
   return (
     <section
       id="marketops"
@@ -52,17 +55,17 @@ export default function MarketOps() {
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-2 mb-6">
             <TrendingUp className="w-4 h-4 text-amber-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-400">
-              Market Operations
+              {t('marketOps.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-6">
-            Professional carbon credit
-            <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"> infrastructure</span>
+            {t('marketOps.title1')}
+            <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"> {t('marketOps.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed">
-            Advanced tools for pricing analysis, quality assessment, and transaction execution
+            {t('marketOps.description')}
           </p>
         </div>
 
@@ -121,9 +124,9 @@ export default function MarketOps() {
         {/* MARKET PERFORMANCE METRICS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
-            { label: "Settlement Success", value: "99.8%", desc: "Transaction completion rate", icon: "✓" },
-            { label: "Avg. Deal Time", value: "3 days", desc: "Negotiation to settlement", icon: "⚡" },
-            { label: "Credits Traded", value: "$50M+", desc: "Total platform volume", icon: "📊" }
+            { label: t('marketOps.stats.settlement.label'), value: t('marketOps.stats.settlement.value'), desc: t('marketOps.stats.settlement.desc'), icon: "✓" },
+            { label: t('marketOps.stats.dealTime.label'), value: t('marketOps.stats.dealTime.value'), desc: t('marketOps.stats.dealTime.desc'), icon: "⚡" },
+            { label: t('marketOps.stats.traded.label'), value: t('marketOps.stats.traded.value'), desc: t('marketOps.stats.traded.desc'), icon: "📊" }
           ].map((stat) => (
             <div
               key={stat.label}
@@ -143,7 +146,7 @@ export default function MarketOps() {
         <div className="text-center">
           <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-700/80 bg-gradient-to-br from-slate-900/80 to-slate-900/60 backdrop-blur-sm px-10 py-5 shadow-lg hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
             <CreditCard className="w-6 h-6 text-amber-400" />
-            <span className="text-base font-medium text-slate-300">Institutional-grade trading infrastructure for carbon markets</span>
+            <span className="text-base font-medium text-slate-300">{t('marketOps.cta')}</span>
           </div>
         </div>
       </div>

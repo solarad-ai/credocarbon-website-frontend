@@ -4,6 +4,7 @@ import { Button } from "../ui/Button";
 import CarbonTradingBanner from "../ui/CarbonTradingBanner";
 import { useEffect, useRef, useState } from "react";
 import { DATA_URLS } from "../../config/dataUrls";
+import { useTranslation } from "react-i18next";
 
 interface RegistryTotals {
   carbon: { issued: number; retired: number };
@@ -25,6 +26,7 @@ const formatNumber = (num: number, decimals: number = 1): string => {
 };
 
 export default function Hero() {
+  const { t } = useTranslation('home');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [totals, setTotals] = useState<RegistryTotals | null>(null);
 
@@ -108,14 +110,13 @@ export default function Hero() {
         <div className="flex-1">
           <div className="mb-4 md:mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-700/20 px-2.5 md:px-3 py-1 md:py-1.5 text-[9px] md:text-[11px] font-semibold uppercase tracking-[0.12em] md:tracking-[0.18em] text-emerald-50 backdrop-blur">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-300" />
-            Carbon Infrastructure Platform
+            {t('hero.badge')}
           </div>
 
-          <TextGenerateEffect words={"CredoCarbon: One Stack for Developers, VVBs & Buyers"} />
+          <TextGenerateEffect words={t('hero.title')} />
 
           <p className="max-w-xl text-xs md:text-sm lg:text-lg leading-relaxed text-emerald-50/90 mb-4 md:mb-6 mt-3 md:mt-4">
-            A dedicated platform that digitizes project MRV, registry workflows, and OTC trading —
-            connecting developers, VVBs, and buyers.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
@@ -123,12 +124,12 @@ export default function Hero() {
               onClick={() => window.open('https://calendly.com/credocarbon-info/credocarbon-connect?month=2026-01', '_blank')}
               className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-[11px] md:text-[13px] font-extrabold px-4 md:px-6 py-2.5 md:py-3 text-white hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300"
             >
-              Talk to us
+              {t('hero.cta')}
             </Button>
           </div>
 
           <p className="mt-3 md:mt-4 text-[9px] md:text-[11px] uppercase tracking-[0.18em] md:tracking-[0.22em] text-emerald-100/80">
-            Developers · VVBs · Buyers · Registries
+            {t('hero.stakeholders')}
           </p>
         </div>
 
@@ -143,36 +144,36 @@ export default function Hero() {
                   </div>
                   <div className="flex flex-col text-xs">
                     <span className="font-semibold text-emerald-100">
-                      {totals ? `${totals.totalRegistries} Registries · ${totals.totalCountries} Countries` : 'Multi-registry portfolio · 300+ MW'}
+                      {totals ? t('hero.registriesAndCountries', { registries: totals.totalRegistries, countries: totals.totalCountries }) : t('hero.fallbackPortfolio')}
                     </span>
                     <span className="text-[11px] text-emerald-200/80">
-                      Developer · VVB · Buyer connected
+                      {t('hero.connected')}
                     </span>
                   </div>
                 </div>
 
                 <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-[10px] font-semibold text-emerald-100">
-                  Live data
+                  {t('hero.liveData')}
                 </span>
               </div>
 
               <div className="space-y-3 text-xs text-emerald-50/90">
                 <div className="flex items-center justify-between rounded-xl bg-slate-900/70 px-3 py-2">
-                  <span>Verified credits (annual)</span>
+                  <span>{t('hero.verifiedCredits')}</span>
                   <span className="font-semibold text-emerald-300">
                     {totals ? `${formatNumber(totals.carbon.issued)} tCO₂e` : 'Loading...'}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between rounded-xl bg-slate-900/70 px-3 py-2">
-                  <span>Carbon credits retired</span>
+                  <span>{t('hero.creditsRetired')}</span>
                   <span className="font-semibold text-emerald-300">
                     {totals ? `${formatNumber(totals.carbon.retired)} tCO₂e` : 'Loading...'}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between rounded-xl bg-slate-900/70 px-3 py-2">
-                  <span>RECs issued (annual)</span>
+                  <span>{t('hero.recsIssued')}</span>
                   <span className="font-semibold text-emerald-300">
                     {totals ? `${formatNumber(totals.rec.issued)} MWh` : 'Loading...'}
                   </span>
@@ -180,7 +181,7 @@ export default function Hero() {
               </div>
 
               <p className="mt-4 text-[10px] md:text-[11px] text-emerald-100/70">
-                Live data from integrated registries. Last 12 months.
+                {t('hero.dataNote')}
               </p>
             </div>
           </div>

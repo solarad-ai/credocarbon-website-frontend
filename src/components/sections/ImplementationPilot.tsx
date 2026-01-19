@@ -1,31 +1,34 @@
 // src/components/sections/ImplementationPilot.tsx
 import { Rocket, Zap, TrendingUp } from "lucide-react";
-
-const pilotPhases = [
-  {
-    icon: Rocket,
-    phase: "Start",
-    title: "Pilot Setup",
-    desc: "Configure your first project with methodology selection and data source integration",
-    timeline: "Week 1-2"
-  },
-  {
-    icon: Zap,
-    phase: "Execute",
-    title: "Live MRV Cycle",
-    desc: "Run monitoring, reporting, and verification with real data and VVB collaboration",
-    timeline: "Week 3-8"
-  },
-  {
-    icon: TrendingUp,
-    phase: "Scale",
-    title: "Portfolio Expansion",
-    desc: "Clone successful templates across multiple assets and methodologies",
-    timeline: "Month 3+"
-  }
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function ImplementationPilot() {
+  const { t } = useTranslation('platform');
+
+  const pilotPhases = [
+    {
+      icon: Rocket,
+      phase: t('pilot.phases.setup.phase'),
+      title: t('pilot.phases.setup.title'),
+      desc: t('pilot.phases.setup.desc'),
+      timeline: t('pilot.phases.setup.timeline')
+    },
+    {
+      icon: Zap,
+      phase: t('pilot.phases.execute.phase'),
+      title: t('pilot.phases.execute.title'),
+      desc: t('pilot.phases.execute.desc'),
+      timeline: t('pilot.phases.execute.timeline')
+    },
+    {
+      icon: TrendingUp,
+      phase: t('pilot.phases.scale.phase'),
+      title: t('pilot.phases.scale.title'),
+      desc: t('pilot.phases.scale.desc'),
+      timeline: t('pilot.phases.scale.timeline')
+    }
+  ];
+
   return (
     <section
       id="pilot"
@@ -41,17 +44,17 @@ export default function ImplementationPilot() {
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2 mb-4">
             <Rocket className="w-4 h-4 text-emerald-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-              Implementation
+              {t('pilot.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Start with a
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"> Live Pilot</span>
+            {t('pilot.title1')}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"> {t('pilot.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Real-world MRV workflows from setup to portfolio scaling
+            {t('pilot.description')}
           </p>
         </div>
 
@@ -107,13 +110,13 @@ export default function ImplementationPilot() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 rounded-2xl border border-slate-700 bg-slate-900/50 px-6 md:px-8 py-5 md:py-6">
-            <span className="text-sm font-medium text-slate-300">Ready to start your pilot?</span>
+            <span className="text-sm font-medium text-slate-300">{t('pilot.cta.question')}</span>
             <button
               onClick={() => window.open('https://calendly.com/credocarbon-info/credocarbon-connect?month=2026-01', '_blank')}
               className="group relative rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-2.5 text-sm font-semibold text-white hover:from-emerald-400 hover:to-emerald-500 transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Talk to us
+                {t('pilot.cta.button')}
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
               </span>
               <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />

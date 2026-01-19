@@ -151,7 +151,6 @@ const ReportingIllustration = () => (
   </svg>
 );
 
-// Verification Illustration - Clipboard with checkmarks and approval badge
 const VerificationIllustration = () => (
   <svg viewBox="0 0 200 160" fill="none" className="w-full h-full">
     <defs>
@@ -223,28 +222,32 @@ const VerificationIllustration = () => (
   </svg>
 );
 
-const pillars = [
-  {
-    id: "01",
-    title: "Monitoring",
-    desc: "Tracking project success and optimizing for impact",
-    Illustration: MonitoringIllustration,
-  },
-  {
-    id: "02",
-    title: "Reporting",
-    desc: "Summarizing data and impacts for transparency and verification",
-    Illustration: ReportingIllustration,
-  },
-  {
-    id: "03",
-    title: "Verification",
-    desc: "Independent checks to ensure accuracy and standard compliance",
-    Illustration: VerificationIllustration,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function MRV() {
+  const { t } = useTranslation('platform');
+
+  const pillars = [
+    {
+      id: "01",
+      title: t('mrv.pillars.monitoring.title'),
+      desc: t('mrv.pillars.monitoring.desc'),
+      Illustration: MonitoringIllustration,
+    },
+    {
+      id: "02",
+      title: t('mrv.pillars.reporting.title'),
+      desc: t('mrv.pillars.reporting.desc'),
+      Illustration: ReportingIllustration,
+    },
+    {
+      id: "03",
+      title: t('mrv.pillars.verification.title'),
+      desc: t('mrv.pillars.verification.desc'),
+      Illustration: VerificationIllustration,
+    },
+  ];
+
   return (
     <section
       id="mrv"
@@ -265,18 +268,18 @@ export default function MRV() {
               <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full" />
             </div>
             <span className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">
-              MRV Engine
+              {t('mrv.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-5 leading-tight">
-            MRV that feels like a{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">product</span>
-            <br />— not a process
+            {t('mrv.title1')}{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">{t('mrv.title2')}</span>
+            <br />{t('mrv.title3')}
           </h2>
 
           <p className="text-lg text-slate-400 leading-relaxed">
-            Every step encoded into a rule-based engine. Data streams, validations, and verification cycles on a single, traceable system.
+            {t('mrv.description')}
           </p>
         </div>
 
@@ -332,7 +335,7 @@ export default function MRV() {
 
         {/* Bottom tagline */}
         <p className="mt-8 text-center text-sm text-slate-500 px-4">
-          One shared, versioned, auditable project record
+          {t('mrv.tagline')}
         </p>
       </div>
     </section>

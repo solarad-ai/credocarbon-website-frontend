@@ -1,5 +1,6 @@
 // src/components/sections/VVBJourney.tsx
 import { Search, MessageSquare, Shield, TrendingUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Custom SVG Illustration: Intake - Document organizer
 const IntakeIllustration = () => (
@@ -112,42 +113,43 @@ const CertifyIllustration = () => (
   </svg>
 );
 
-const verificationSteps = [
-  {
-    phase: "Intake",
-    title: "Organized Project Review",
-    desc: "Receive organized dossiers with methodology alignment and version history",
-    icon: Search,
-    metrics: "90% faster intake",
-    Illustration: IntakeIllustration,
-  },
-  {
-    phase: "Review",
-    title: "Collaborative Verification",
-    desc: "Reviewer queues, comment threads, and real-time clarification cycles",
-    icon: MessageSquare,
-    metrics: "50% fewer cycles",
-    Illustration: ReviewIllustration,
-  },
-  {
-    phase: "Validate",
-    title: "Data & Compliance Checks",
-    desc: "Automated anomaly detection with methodology-specific validation",
-    icon: Shield,
-    metrics: "Zero missed issues",
-    Illustration: ValidateIllustration,
-  },
-  {
-    phase: "Certify",
-    title: "Issue & Monitor",
-    desc: "Digital sign-off with ongoing credit performance tracking",
-    icon: TrendingUp,
-    metrics: "Post-issuance monitoring",
-    Illustration: CertifyIllustration,
-  }
-] as const;
-
 export default function VVBJourney() {
+  const { t } = useTranslation('vvb');
+
+  const verificationSteps = [
+    {
+      phase: t('vvbJourney.steps.intake.phase'),
+      title: t('vvbJourney.steps.intake.title'),
+      desc: t('vvbJourney.steps.intake.desc'),
+      icon: Search,
+      metrics: t('vvbJourney.steps.intake.metrics'),
+      Illustration: IntakeIllustration,
+    },
+    {
+      phase: t('vvbJourney.steps.review.phase'),
+      title: t('vvbJourney.steps.review.title'),
+      desc: t('vvbJourney.steps.review.desc'),
+      icon: MessageSquare,
+      metrics: t('vvbJourney.steps.review.metrics'),
+      Illustration: ReviewIllustration,
+    },
+    {
+      phase: t('vvbJourney.steps.validate.phase'),
+      title: t('vvbJourney.steps.validate.title'),
+      desc: t('vvbJourney.steps.validate.desc'),
+      icon: Shield,
+      metrics: t('vvbJourney.steps.validate.metrics'),
+      Illustration: ValidateIllustration,
+    },
+    {
+      phase: t('vvbJourney.steps.certify.phase'),
+      title: t('vvbJourney.steps.certify.title'),
+      desc: t('vvbJourney.steps.certify.desc'),
+      icon: TrendingUp,
+      metrics: t('vvbJourney.steps.certify.metrics'),
+      Illustration: CertifyIllustration,
+    }
+  ];
   return (
     <section
       id="vvb"
@@ -164,17 +166,17 @@ export default function VVBJourney() {
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 mb-4">
             <Shield className="w-4 h-4 text-cyan-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-400">
-              VVB Workflow
+              {t('vvbJourney.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Streamlined
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"> Verification</span>
+            {t('vvbJourney.title1')}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"> {t('vvbJourney.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Systematic verification cycles with automated compliance checks
+            {t('vvbJourney.description')}
           </p>
         </div>
 

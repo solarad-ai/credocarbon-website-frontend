@@ -1,46 +1,49 @@
 // src/components/sections/AISection.tsx
 import { Brain, Zap, TrendingUp, Shield, Eye, AlertTriangle } from "lucide-react";
-
-const aiCapabilities = [
-  {
-    icon: Brain,
-    title: "Developer & MRV Intelligence",
-    desc: "Registry pathway suggestions, document completeness checks, and baseline validation using peer benchmarks and methodology logic.",
-    keyFeatures: ["Smart onboarding guidance", "Evidence gap detection", "Baseline sanity checks"]
-  },
-  {
-    icon: Zap,
-    title: "Document & Data Intelligence",
-    desc: "Contextual document analysis, parameter extraction, and conflict detection across PDDs, monitoring reports, and annexes.",
-    keyFeatures: ["Document hierarchy understanding", "Version change summaries", "Citation linking"]
-  },
-  {
-    icon: Eye,
-    title: "VVB Review Assistance",
-    desc: "Automated anomaly detection, review prompt generation, and structured verification notes for enhanced VVB workflows.",
-    keyFeatures: ["Dataset anomaly analysis", "Review prompt generation", "Verification note automation"]
-  },
-  {
-    icon: TrendingUp,
-    title: "Market & Pricing Intelligence",
-    desc: "Quality scoring, liquidity signals, and vintage predictions for informed procurement and portfolio management decisions.",
-    keyFeatures: ["Batch quality scoring", "Liquidity signal generation", "Portfolio optimization"]
-  },
-  {
-    icon: Shield,
-    title: "Risk & Portfolio Management",
-    desc: "Portfolio composition analysis, diversification strategies, and exposure scoring for long-term climate commitments.",
-    keyFeatures: ["Portfolio diversification", "Risk exposure scoring", "ESG target alignment"]
-  },
-  {
-    icon: AlertTriangle,
-    title: "Early Warning Systems",
-    desc: "Policy tracking, methodology revision alerts, and performance anomaly monitoring for proactive risk management.",
-    keyFeatures: ["Policy update tracking", "Methodology change alerts", "Performance monitoring"]
-  }
-] as const;
+import { useTranslation } from "react-i18next";
 
 export default function AISection() {
+  const { t } = useTranslation('platform');
+
+  const aiCapabilities = [
+    {
+      icon: Brain,
+      title: t('ai.capabilities.mrvIntelligence.title'),
+      desc: t('ai.capabilities.mrvIntelligence.desc'),
+      keyFeatures: t('ai.capabilities.mrvIntelligence.features', { returnObjects: true }) as string[]
+    },
+    {
+      icon: Zap,
+      title: t('ai.capabilities.forecasting.title'),
+      desc: t('ai.capabilities.forecasting.desc'),
+      keyFeatures: t('ai.capabilities.forecasting.features', { returnObjects: true }) as string[]
+    },
+    {
+      icon: Eye,
+      title: t('ai.capabilities.quality.title'),
+      desc: t('ai.capabilities.quality.desc'),
+      keyFeatures: t('ai.capabilities.quality.features', { returnObjects: true }) as string[]
+    },
+    {
+      icon: TrendingUp,
+      title: t('ai.capabilities.reporting.title'),
+      desc: t('ai.capabilities.reporting.desc'),
+      keyFeatures: t('ai.capabilities.reporting.features', { returnObjects: true }) as string[]
+    },
+    {
+      icon: Shield,
+      title: t('ai.capabilities.verification.title'),
+      desc: t('ai.capabilities.verification.desc'),
+      keyFeatures: t('ai.capabilities.verification.features', { returnObjects: true }) as string[]
+    },
+    {
+      icon: AlertTriangle,
+      title: t('ai.capabilities.regulatory.title'),
+      desc: t('ai.capabilities.regulatory.desc'),
+      keyFeatures: t('ai.capabilities.regulatory.features', { returnObjects: true }) as string[]
+    }
+  ];
+
   return (
     <section
       id="ai"
@@ -59,22 +62,20 @@ export default function AISection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 mb-4">
             <Brain className="w-4 h-4 text-violet-400" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-violet-400">
-              AI Intelligence Layer
+              {t('ai.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            System-level{" "}
+            {t('ai.title1')}{" "}
             <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              intelligence
+              {t('ai.title2')}
             </span>
-            {" "}for MRV & procurement
+            {" "}{t('ai.title3')}
           </h2>
 
           <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-8 px-4">
-            CredoCarbon uses contextual AI to enhance decision-making across project design,
-            monitoring, verification and market operations — without overwhelming teams or
-            replacing expert judgement.
+            {t('ai.description')}
           </p>
         </div>
 
@@ -115,7 +116,7 @@ export default function AISection() {
 
                   {/* Key features */}
                   <div className="space-y-2">
-                    {capability.keyFeatures.map((feature) => (
+                    {capability.keyFeatures.map((feature: string) => (
                       <div key={feature} className="flex gap-2 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-400 to-purple-400 animate-pulse" />
                         <span className="text-xs text-slate-400 font-medium">{feature}</span>
@@ -131,10 +132,10 @@ export default function AISection() {
         {/* AI PERFORMANCE METRICS */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {[
-            { label: "AI Models", value: "15+", desc: "Specialized models" },
-            { label: "Accuracy Rate", value: "99.2%", desc: "Anomaly detection" },
-            { label: "Processing Speed", value: "Real-time", desc: "Data analysis" },
-            { label: "Data Points", value: "1M+", desc: "Daily processing" }
+            { label: t('ai.stats.models.label'), value: t('ai.stats.models.value'), desc: t('ai.stats.models.desc') },
+            { label: t('ai.stats.accuracy.label'), value: t('ai.stats.accuracy.value'), desc: t('ai.stats.accuracy.desc') },
+            { label: t('ai.stats.processing.label'), value: t('ai.stats.processing.value'), desc: t('ai.stats.processing.desc') },
+            { label: t('ai.stats.dataPoints.label'), value: t('ai.stats.dataPoints.value'), desc: t('ai.stats.dataPoints.desc') }
           ].map((stat) => (
             <div key={stat.label} className="text-center p-6 rounded-2xl border border-slate-800 bg-slate-900/30 group hover:border-violet-400/30 transition-colors">
               <div className="text-3xl font-bold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent mb-1">
@@ -150,7 +151,7 @@ export default function AISection() {
         <div className="text-center">
           <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-700 bg-slate-900/50 px-8 py-4">
             <Brain className="w-5 h-5 text-violet-400" />
-            <span className="text-sm font-medium text-slate-300">AI-powered insights without replacing human expertise</span>
+            <span className="text-sm font-medium text-slate-300">{t('ai.cta')}</span>
           </div>
         </div>
       </div>

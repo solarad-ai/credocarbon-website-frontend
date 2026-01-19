@@ -6,7 +6,7 @@ const blocks = [
     desc: "Live dashboards for developers, asset owners and MRV teams to interpret monitoring data, anomalies and performance metrics across assets and periods.",
     items: [
       "Interactive charts for generation, anomalies, outages and curtailment.",
-      "Detect equipment underperformance, drift, or unexpected efficiency losses.",
+      "AI-driven detection of equipment underperformance, drift, or unexpected efficiency losses.",
       "Compare forecast vs actual generation with methodology-specific logic.",
       "Insights into missing hours, invalid data, SCADA gaps and sensor issues.",
       "Monitoring period roll-ups with methodology-compliant summaries.",
@@ -25,7 +25,7 @@ const blocks = [
   },
   {
     title: "Issuance forecasting & trajectory",
-    desc: "Predictive models estimate issuance timelines and potential quantities based on monitoring performance and project history.",
+    desc: "ML-powered predictive models estimate issuance timelines and potential quantities based on monitoring performance and project history.",
     items: [
       "Vintage-by-vintage projections with conservative and optimistic scenarios.",
       "Impact analysis of missing data or unresolved queries on issuance speed.",
@@ -76,7 +76,7 @@ export default function AnalyticsReporting() {
       className="bg-slate-950 py-20 md:py-24 border-t border-emerald-500/10"
     >
       <div className="mx-auto max-w-6xl px-4">
-        
+
         {/* Header */}
         <div className="mb-10 text-center md:mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400/80">
@@ -86,8 +86,8 @@ export default function AnalyticsReporting() {
             Intelligence for monitoring, verification and procurement
           </h2>
           <p className="mt-4 text-sm md:text-base text-slate-400 max-w-3xl mx-auto">
-            CredoCarbon provides analytics across monitoring performance, verification cycles, 
-            issuance forecasting and portfolio risk — empowering developers, VVBs, buyers and 
+            CredoCarbon provides analytics across monitoring performance, verification cycles,
+            issuance forecasting and portfolio risk — empowering developers, VVBs, buyers and
             sustainability teams with actionable insights.
           </p>
         </div>

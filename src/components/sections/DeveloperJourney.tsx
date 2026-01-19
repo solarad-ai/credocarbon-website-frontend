@@ -1,5 +1,6 @@
 // src/components/sections/DeveloperJourney.tsx
 import { FileText, Database, CheckCircle, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Illustration: Project Setup - Blueprint document
 const SetupIllustration = () => (
@@ -97,7 +98,6 @@ const VerifyIllustration = () => (
   </svg>
 );
 
-// Illustration: Credits - Coins and certificate
 const CreditsIllustration = () => (
   <svg viewBox="0 0 80 60" fill="none" className="w-full h-full">
     <defs>
@@ -137,38 +137,40 @@ const CreditsIllustration = () => (
   </svg>
 );
 
-const keyFeatures = [
-  {
-    icon: FileText,
-    title: "Project Setup",
-    desc: "Smart templates with auto-populated fields and guided workflows",
-    highlight: "60% faster setup",
-    Illustration: SetupIllustration,
-  },
-  {
-    icon: Database,
-    title: "Data Integration",
-    desc: "Connect SCADA, meters, and sensors with automated validation",
-    highlight: "Real-time monitoring",
-    Illustration: DataIllustration,
-  },
-  {
-    icon: CheckCircle,
-    title: "VVB Collaboration",
-    desc: "Organized workflows with completeness checks and comment threads",
-    highlight: "Streamlined cycles",
-    Illustration: VerifyIllustration,
-  },
-  {
-    icon: Zap,
-    title: "Credit Management",
-    desc: "Deal rooms, batch tracking, and retirement coordination",
-    highlight: "Post-issuance tools",
-    Illustration: CreditsIllustration,
-  }
-] as const;
-
 export default function DeveloperJourney() {
+  const { t } = useTranslation('platform');
+
+  const keyFeatures = [
+    {
+      icon: FileText,
+      title: t('developer.features.setup.title'),
+      desc: t('developer.features.setup.desc'),
+      highlight: t('developer.features.setup.highlight'),
+      Illustration: SetupIllustration,
+    },
+    {
+      icon: Database,
+      title: t('developer.features.data.title'),
+      desc: t('developer.features.data.desc'),
+      highlight: t('developer.features.data.highlight'),
+      Illustration: DataIllustration,
+    },
+    {
+      icon: CheckCircle,
+      title: t('developer.features.vvb.title'),
+      desc: t('developer.features.vvb.desc'),
+      highlight: t('developer.features.vvb.highlight'),
+      Illustration: VerifyIllustration,
+    },
+    {
+      icon: Zap,
+      title: t('developer.features.credits.title'),
+      desc: t('developer.features.credits.desc'),
+      highlight: t('developer.features.credits.highlight'),
+      Illustration: CreditsIllustration,
+    }
+  ];
+
   return (
     <section
       id="developer"
@@ -185,17 +187,17 @@ export default function DeveloperJourney() {
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2 mb-4">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
-              Developer Tools
+              {t('developer.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-            Project{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Workflow</span>
+            {t('developer.title1')}{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">{t('developer.title2')}</span>
           </h2>
 
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Streamlined tools for every stage of your carbon project
+            {t('developer.description')}
           </p>
         </div>
 

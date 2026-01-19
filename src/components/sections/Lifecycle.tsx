@@ -1,5 +1,6 @@
 // src/components/sections/Lifecycle.tsx
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // SVG Icons for each stage
 const DesignIcon = () => (
@@ -47,41 +48,6 @@ const MarketIcon = () => (
     <circle cx="56" cy="56" r="4" className="fill-emerald-400/30 stroke-emerald-400" strokeWidth="2" />
   </svg>
 );
-
-const stages = [
-  {
-    id: "01",
-    title: "Design & Onboard",
-    shortDesc: "Project Foundation",
-    icon: DesignIcon,
-    color: "emerald",
-    highlights: ["PDD Setup", "Baseline Logic", "Stakeholder Mapping"],
-  },
-  {
-    id: "02",
-    title: "Monitor & Validate",
-    shortDesc: "Data Integrity",
-    icon: MonitoringIcon,
-    color: "cyan",
-    highlights: ["IoT Integration", "Anomaly Detection", "Auto-Correction"],
-  },
-  {
-    id: "03",
-    title: "Report & Submit",
-    shortDesc: "Registry Ready",
-    icon: ReportingIcon,
-    color: "indigo",
-    highlights: ["Auto-Reports", "Evidence Bundles", "Crypto Integrity"],
-  },
-  {
-    id: "04",
-    title: "Verify & Trade",
-    shortDesc: "Market Access",
-    icon: MarketIcon,
-    color: "purple",
-    highlights: ["VVB Review", "Issuance", "Deal Rooms"],
-  },
-];
 
 const colorMap: Record<string, { gradient: string; bg: string; border: string; text: string; glow: string }> = {
   emerald: {
@@ -140,6 +106,42 @@ const FlowArrow = ({ className = "" }: { className?: string }) => (
 
 export default function Lifecycle() {
   const [activeStage, setActiveStage] = useState<number | null>(null);
+  const { t } = useTranslation('platform');
+
+  const stages = [
+    {
+      id: "01",
+      title: t('lifecycle.stages.design.title'),
+      shortDesc: t('lifecycle.stages.design.shortDesc'),
+      icon: DesignIcon,
+      color: "emerald",
+      highlights: t('lifecycle.stages.design.highlights', { returnObjects: true }) as string[],
+    },
+    {
+      id: "02",
+      title: t('lifecycle.stages.monitor.title'),
+      shortDesc: t('lifecycle.stages.monitor.shortDesc'),
+      icon: MonitoringIcon,
+      color: "cyan",
+      highlights: t('lifecycle.stages.monitor.highlights', { returnObjects: true }) as string[],
+    },
+    {
+      id: "03",
+      title: t('lifecycle.stages.report.title'),
+      shortDesc: t('lifecycle.stages.report.shortDesc'),
+      icon: ReportingIcon,
+      color: "indigo",
+      highlights: t('lifecycle.stages.report.highlights', { returnObjects: true }) as string[],
+    },
+    {
+      id: "04",
+      title: t('lifecycle.stages.verify.title'),
+      shortDesc: t('lifecycle.stages.verify.shortDesc'),
+      icon: MarketIcon,
+      color: "purple",
+      highlights: t('lifecycle.stages.verify.highlights', { returnObjects: true }) as string[],
+    },
+  ];
 
   return (
     <section
@@ -161,19 +163,19 @@ export default function Lifecycle() {
               <div className="w-2.5 h-2.5 bg-indigo-400 rounded-full" />
             </div>
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
-              Complete Lifecycle Flow
+              {t('lifecycle.badge')}
             </span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-slate-50 mb-6 leading-tight">
-            From PDD to Retirement
+            {t('lifecycle.title1')}
             <span className="block bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              One Seamless Journey
+              {t('lifecycle.title2')}
             </span>
           </h2>
 
           <p className="text-lg text-slate-400 leading-relaxed">
-            Four interconnected stages. Complete visibility. Full traceability.
+            {t('lifecycle.description')}
           </p>
         </div>
 

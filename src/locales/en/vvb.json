@@ -1,0 +1,94 @@
+{
+    "vvbJourney": {
+        "badge": "VVB Workflow",
+        "title1": "Streamlined",
+        "title2": "Verification",
+        "description": "Systematic verification cycles with automated compliance checks",
+        "steps": {
+            "intake": {
+                "phase": "Intake",
+                "title": "Organized Project Review",
+                "desc": "Receive organized dossiers with methodology alignment and version history",
+                "metrics": "90% faster intake"
+            },
+            "review": {
+                "phase": "Review",
+                "title": "Collaborative Verification",
+                "desc": "Reviewer queues, comment threads, and real-time clarification cycles",
+                "metrics": "50% fewer cycles"
+            },
+            "validate": {
+                "phase": "Validate",
+                "title": "Data & Compliance Checks",
+                "desc": "AI-powered anomaly detection with methodology-specific validation",
+                "metrics": "Zero missed issues"
+            },
+            "certify": {
+                "phase": "Certify",
+                "title": "Issue & Monitor",
+                "desc": "Digital sign-off with ongoing credit performance tracking",
+                "metrics": "Post-issuance monitoring"
+            }
+        },
+        "partners": {
+            "title": "Trusted by Leading",
+            "highlight": "VVBs",
+            "subtitle": "Partnering with world-class verification bodies"
+        },
+        "tagline": "Streamlined verification from intake to certification"
+    },
+    "security": {
+        "badge": "Platform Security",
+        "title1": "Built for",
+        "title2": "Verification Trust",
+        "description": "Secure infrastructure designed for multi-stakeholder carbon verification workflows.",
+        "blocks": {
+            "fileVerification": {
+                "title": "File Verification",
+                "desc": "Every uploaded file is hashed and tracked to ensure authenticity throughout the verification process.",
+                "items": [
+                    "SHA-256 hashing for all uploaded files and datasets",
+                    "Version control with automatic freeze on VVB approval",
+                    "Full lineage tracking from upload to final report"
+                ]
+            },
+            "accessPermissions": {
+                "title": "Access Permissions",
+                "desc": "Role-based controls ensure each stakeholder sees exactly what they need — nothing more, nothing less.",
+                "items": [
+                    "Customizable permissions for view, comment, upload, and approve",
+                    "Isolated workspaces for developers, VVBs, and registries",
+                    "Encrypted data transfer and storage"
+                ]
+            },
+            "activityLogging": {
+                "title": "Activity Logging",
+                "desc": "Track who did what and when, with exportable logs for registry compliance reviews.",
+                "items": [
+                    "Timestamped records of all user actions and changes",
+                    "Filter by entity, project, or workflow phase",
+                    "Export in JSON, CSV, or registry XML formats"
+                ]
+            },
+            "finalApproval": {
+                "title": "Final Approval",
+                "desc": "VVB sign-offs create a permanent, verifiable record that buyers and registries can trust.",
+                "items": [
+                    "One-click approval workflow for verified projects",
+                    "Permanent record linking approval to evidence package",
+                    "Automated notifications to all stakeholders"
+                ]
+            }
+        },
+        "compliance": "SOC 2 Type II • ISO 27001 • GDPR Compliant"
+    },
+    "testimonial": {
+        "badge": "Verification Excellence",
+        "title1": "Streamline your",
+        "title2": "verification workflow",
+        "description": "From project intake to final certification, manage the entire verification lifecycle in one platform — with complete evidence tracking and compliance built in.",
+        "quote": "We've cut our verification cycle time in half. Everything we need — project documentation, monitoring data, validation reports — is organized and traceable. No more chasing developers for missing files.",
+        "role": "Lead Verifier",
+        "company": "Independent Validation Body"
+    }
+}

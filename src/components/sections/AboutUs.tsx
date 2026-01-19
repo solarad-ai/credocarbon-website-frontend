@@ -9,23 +9,25 @@ import {
   TrendingUp,
   Globe,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function AboutUs() {
+  const { t } = useTranslation('about');
   const visionPoints = [
     {
       icon: Orbit,
-      title: "Designed for a low-carbon world",
-      text: "CredoCarbon is built for a future where climate transparency is as critical as financial transparency.",
+      titleKey: "vision.point1.title",
+      textKey: "vision.point1.text",
     },
     {
       icon: ShieldCheck,
-      title: "Structurally auditable",
-      text: "Every action, dataset, and verification is traceable by design — not by policy, but by architecture.",
+      titleKey: "vision.point2.title",
+      textKey: "vision.point2.text",
     },
     {
       icon: Globe2,
-      title: "Global from day one",
-      text: "Built for cross-border compliance, multi-registry participation and international climate markets.",
+      titleKey: "vision.point3.title",
+      textKey: "vision.point3.text",
     },
   ];
 
@@ -125,7 +127,7 @@ export default function AboutUs() {
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-cyan-300" />
               <span className="text-xs tracking-[0.3em] uppercase text-cyan-200">
-                About CredoCarbon
+                {t('badge')}
               </span>
             </div>
           </div>
@@ -137,26 +139,24 @@ export default function AboutUs() {
             <div className="lg:col-span-3 space-y-8">
               <div>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                  <span className="text-slate-50">Climate infrastructure,</span>
+                  <span className="text-slate-50">{t('hero.title1')}</span>
                   <br />
                   <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">
-                    engineered for trust
+                    {t('hero.title2')}
                   </span>
                 </h1>
 
                 <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-6">
-                  CredoCarbon is a digital backbone for the next era of carbon markets — where
-                  transparency, verification integrity and market confidence operate on a
-                  shared system of record.
+                  {t('hero.description')}
                 </p>
 
                 {/* Differentiator with visual emphasis */}
-                <div className="relative pl-6 border-l-2 border-emerald-400/30">
-                  <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-emerald-400 to-transparent" />
+                <div className="relative pl-6 border-l-2 border-emerald-400/30 rtl:pl-0 rtl:pr-6 rtl:border-l-0 rtl:border-r-2">
+                  <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-emerald-400 to-transparent rtl:left-auto rtl:right-0" />
                   <p className="text-base md:text-lg text-slate-300 leading-relaxed">
-                    Unlike registries, consultants, or marketplaces, we are a{" "}
-                    <span className="text-emerald-300 font-bold">neutral infrastructure layer</span>
-                    {" "}that connects all three.
+                    {t('hero.differentiator')}{" "}
+                    <span className="text-emerald-300 font-bold">{t('hero.differentiatorHighlight')}</span>
+                    {" "}{t('hero.differentiatorEnd')}
                   </p>
                 </div>
               </div>
@@ -175,11 +175,10 @@ export default function AboutUs() {
                     </div>
                     <div>
                       <h3 className="text-emerald-300 font-bold text-sm uppercase tracking-wider mb-2">
-                        Why now
+                        {t('whyNow.title')}
                       </h3>
                       <p className="text-slate-300 text-sm leading-relaxed">
-                        Rising compliance pressure, Article 6 implementation, increased buyer scrutiny,
-                        and registry scaling demands require infrastructure-grade solutions.
+                        {t('whyNow.description')}
                       </p>
                     </div>
                   </div>
@@ -194,20 +193,20 @@ export default function AboutUs() {
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                     <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
-                      Our Mission
+                      {t('mission.badge')}
                     </span>
                   </div>
 
                   <h3 className="text-xl md:text-2xl font-bold leading-tight mb-3">
-                    <span className="text-slate-50">To build infrastructure where </span>
+                    <span className="text-slate-50">{t('mission.title1')} </span>
                     <span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">
-                      every credit, dataset, and verification
+                      {t('mission.title2')}
                     </span>
-                    <span className="text-slate-50"> can be independently verified</span>
+                    <span className="text-slate-50"> {t('mission.title3')}</span>
                   </h3>
 
                   <p className="text-slate-400 text-sm leading-relaxed">
-                    Forming the backbone for scalable, credible global climate action
+                    {t('mission.subtitle')}
                   </p>
 
                   <div className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-gradient-to-r from-cyan-400 via-violet-400 to-transparent transition-all duration-700" />
@@ -220,9 +219,9 @@ export default function AboutUs() {
 
         {/* VISION — FLOATING NODES */}
         <div className="grid gap-12 md:grid-cols-3 mb-24">
-          {visionPoints.map((item) => (
+          {visionPoints.map((item, index) => (
             <div
-              key={item.title}
+              key={index}
               className="group relative rounded-[2rem] border border-cyan-500/20 bg-[#0b1220]/70 p-8 backdrop-blur-xl 
                          hover:-translate-y-2 hover:border-cyan-400/50 transition duration-500"
             >
@@ -235,10 +234,10 @@ export default function AboutUs() {
                   <item.icon className="w-7 h-7 text-cyan-300" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-50 mb-2">
-                  {item.title}
+                  {t(item.titleKey)}
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  {item.text}
+                  {t(item.textKey)}
                 </p>
               </div>
             </div>
@@ -253,14 +252,14 @@ export default function AboutUs() {
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-violet-400/30 bg-violet-400/10 backdrop-blur-sm mb-6">
               <Users className="w-4 h-4 text-violet-300" />
               <span className="text-xs tracking-[0.3em] uppercase text-violet-200">
-                Our People
+                {t('team.badge')}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-4">
-              Meet The <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">Team</span>
+              {t('team.title')} <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-300 bg-clip-text text-transparent">{t('team.titleHighlight')}</span>
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              The passionate individuals building the future of carbon market infrastructure
+              {t('team.subtitle')}
             </p>
           </div>
         </div>
@@ -273,7 +272,7 @@ export default function AboutUs() {
             <div className="flex items-center gap-3">
               <Sparkles className="w-6 h-6 text-violet-400" />
               <h3 className="text-3xl font-bold text-slate-50">
-                Founder & CEO
+                {t('sections.founderCEO')}
               </h3>
             </div>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-violet-400/50" />
@@ -346,7 +345,7 @@ export default function AboutUs() {
             <div className="flex items-center gap-3">
               <TrendingUp className="w-6 h-6 text-emerald-400" />
               <h3 className="text-3xl font-bold text-slate-50">
-                Leadership
+                {t('sections.leadership')}
               </h3>
             </div>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-emerald-400/50" />
@@ -477,7 +476,7 @@ export default function AboutUs() {
         {/* ADVISORY BOARD */}
         <div className="mb-28">
           <h3 className="text-3xl font-bold text-slate-50 mb-12 text-center">
-            Advisory Board
+            {t('sections.advisoryBoard')}
           </h3>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -549,7 +548,7 @@ export default function AboutUs() {
                           border border-slate-700 bg-[#070b14]/70 px-7 py-2.5 
                           text-xs tracking-wide text-slate-300">
             <Users className="w-4 h-4 text-cyan-400" />
-            Independent climate infrastructure venture
+            {t('footer.tagline')}
           </div>
         </div>
       </div>

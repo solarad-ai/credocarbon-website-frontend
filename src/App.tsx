@@ -4,6 +4,7 @@ import Header from "./components/sections/Header";
 import Footer from "./components/sections/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ExplorePopup from "./components/ui/ExplorePopup";
+import LanguageBar from "./components/ui/LanguageBar";
 
 // Main Pages
 import Home from "./pages/Home";
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <LanguageBar />
       <Header />
 
       <Routes>
