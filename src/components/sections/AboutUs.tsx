@@ -85,8 +85,8 @@ export default function AboutUs() {
     {
       name: "Farheen Zehra Zaidi",
       picture: "/images/farheen.png",
-      desg: t('people.advisors.farheen.desg'),
-      expertise: t('people.advisors.farheen.expertise'),
+      desg: t('people.advisors.fahreen.desg'),
+      expertise: t('people.advisors.fahreen.expertise'),
       linkedIn: "https://www.linkedin.com/in/farheen-zehra-zaidi-3ba955ba/",
       imagePosition: "center 30%",
       hasWhiteBg: true,
