@@ -53,15 +53,6 @@ export default function AboutUs() {
       quote: t('people.strategyHeads.ali.quote'),
       bio: t('people.strategyHeads.ali.bio'),
     },
-    {
-      name: "Waqar Naqvi",
-      picture: "/images/Waqar.jpeg",
-      desg: t('people.strategyHeads.waqar.desg'),
-      linkedIn: "https://www.linkedin.com/in/waqar-naqvi-79084415/",
-      imagePosition: "top",
-      quote: t('people.strategyHeads.waqar.quote'),
-      bio: t('people.strategyHeads.waqar.bio'),
-    },
   ];
 
   const advisors = [
@@ -350,7 +341,7 @@ export default function AboutUs() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-emerald-400/50" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
             {strategyHeads.map((head) => (
               <div
                 key={head.name}

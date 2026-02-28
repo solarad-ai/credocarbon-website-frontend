@@ -53,14 +53,9 @@
         },
         "strategyHeads": {
             "ali": {
-                "desg": "Marketing & Business Head",
+                "desg": "Chief Operating Officer (COO)",
                 "quote": "Driving CredoCarbon's market presence through strategic partnerships and ecosystem development",
                 "bio": "Ali spearheads CredoCarbon's strategic growth and business development initiatives, bringing a wealth of experience in scaling climate technology ventures and building high-impact partnerships across the carbon market value chain."
-            },
-            "waqar": {
-                "desg": "Strategy & Finance Head",
-                "quote": "Building sustainable financial frameworks for climate infrastructure growth",
-                "bio": "Waqar brings extensive expertise in asset finance, portfolio management, and strategic advisory to drive CredoCarbon's financial operations and advertising strategy."
             }
         },
         "advisors": {
